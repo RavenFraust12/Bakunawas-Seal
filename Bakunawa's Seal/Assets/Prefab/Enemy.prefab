@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 27982492895463385}
   - component: {fileID: 4597442752025328042}
   - component: {fileID: -5474793095192811523}
+  - component: {fileID: -5664372114835830712}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -143,5 +144,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 671a62d4355287e4d95fa4f69c34ef49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Str: 1
+  currentHealth: 0
+  currentAttack: 0
+  currentMagicAttack: 0
+  currentArmor: 0
+  currentMagicDefense: 0
+  movespeed: 3
+  attackspeed: 0
+  strength: 1
+  agility: 1
+  intelligence: 1
+  dexterity: 1
+  vitality: 1
   currentStat: 0
+--- !u!114 &-5664372114835830712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4819457148055003550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 590d2b078fce48f49a4d178ef2d4f3bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  attackRange: 2

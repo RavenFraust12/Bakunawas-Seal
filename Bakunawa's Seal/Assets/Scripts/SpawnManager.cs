@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    [Header("Scripts")]
-    public EnemyStats enemyStats;
+    //[Header("Scripts")]
 
     [Header("Spawn")]
     public GameObject[] unitsToSpawn;

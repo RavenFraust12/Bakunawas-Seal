@@ -28,7 +28,7 @@ public class EnemyStats : MonoBehaviour
     public float vitality = 1;
     public float currentStat;
 
-    [Header("SpawnManager")]
+    [Header("Scripts")]
     private SpawnManager spawnManager;
 
     private void Start()
