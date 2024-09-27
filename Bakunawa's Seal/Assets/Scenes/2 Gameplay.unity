@@ -727,7 +727,7 @@ MonoBehaviour:
   waveCount: 0
   currentUnitCount: 0
   spawnedUnitThisWave: 0
-  maxUnitCount: 0
+  maxUnitCount: 10
   destroyedUnits: 0
   onGoingWave: 1
 --- !u!1 &1787428949

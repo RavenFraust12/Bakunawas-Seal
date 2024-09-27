@@ -6,7 +6,6 @@ public class SpawnManager : MonoBehaviour
 {
     [Header("Spawn")]
     public GameObject[] unitsToSpawn;
-    public GameObject[] spawnPoint;
     public float spawnInterval;
     public float minSpawnInterval;
 
@@ -28,14 +27,27 @@ public class SpawnManager : MonoBehaviour
     {
         currentUnitCount++;
         spawnedUnitThisWave++;
-        float spawnPoint_x = Random.Range(0, 100);
-        float spawnPoint_y = Random.Range(0, 100);
-        Vector3 whereToSpawn = new Vector3(spawnPoint_x, spawnPoint_y, 0.5f);
+
+        int xspawnpoint = Random.Range(0, 2) == 0 ? 5 : 95;
+        int zspawnpoint = Random.Range(0, 2) == 0 ? 5 : 95;
+
+        Vector3 spawnPosition;
+        if (Random.Range(0, 2) == 0)
+        {
+            // x is fixed, z is random between 0 and 100
+            spawnPosition = new Vector3(xspawnpoint, 0.5f, Random.Range(0f, 100f));
+        }
+        else
+        {
+            // z is fixed, x is random between 0 and 100
+            spawnPosition = new Vector3(Random.Range(0f, 100f), 0.5f, zspawnpoint);
+        }
+
         //int spawnPointIndex = Random.Range(0, spawnPoint.Length);
         int randomEnemyIndex = Random.Range(0, unitsToSpawn.Length);
 
         //Instantiate(unitsToSpawn[randomEnemyIndex], spawnPoint[spawnPointIndex].transform.position, Quaternion.identity);
-        Instantiate(unitsToSpawn[randomEnemyIndex], whereToSpawn, Quaternion.identity);
+        Instantiate(unitsToSpawn[randomEnemyIndex], spawnPosition, Quaternion.identity);
 
         if (spawnedUnitThisWave >= maxUnitCount)
         {
@@ -61,6 +73,7 @@ public class SpawnManager : MonoBehaviour
             yield return null;
         }
     }
+    
     void StartNewWave()
     {
         Debug.Log("Starting Wave: " + waveCount);
