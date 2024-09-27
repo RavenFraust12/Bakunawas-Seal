@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    [Header("Scripts")]
+    public EnemyStats enemyStats;
+
     [Header("Spawn")]
     public GameObject[] unitsToSpawn;
     public float spawnInterval;
     public float minSpawnInterval;
+    public float enemyStatIncrement;
+    public float currentStat;
 
     [Header("Wave")]
     public int waveCount;
     public int currentUnitCount;
     public int spawnedUnitThisWave;
     public int maxUnitCount;
-    public int destroyedUnits;
+    public int killedUnits;
     public bool onGoingWave;
-
 
     private void Start()
     {
@@ -43,11 +47,14 @@ public class SpawnManager : MonoBehaviour
             spawnPosition = new Vector3(Random.Range(0f, 100f), 0.5f, zspawnpoint);
         }
 
-        //int spawnPointIndex = Random.Range(0, spawnPoint.Length);
         int randomEnemyIndex = Random.Range(0, unitsToSpawn.Length);
 
-        //Instantiate(unitsToSpawn[randomEnemyIndex], spawnPoint[spawnPointIndex].transform.position, Quaternion.identity);
-        Instantiate(unitsToSpawn[randomEnemyIndex], spawnPosition, Quaternion.identity);
+        GameObject newEnemy = Instantiate(unitsToSpawn[randomEnemyIndex], spawnPosition, Quaternion.identity);
+
+        EnemyStats enemyStats = newEnemy.GetComponent<EnemyStats>();
+
+        enemyStats.currentStat = currentStat;
+        currentStat += enemyStatIncrement;
 
         if (spawnedUnitThisWave >= maxUnitCount)
         {
@@ -81,13 +88,13 @@ public class SpawnManager : MonoBehaviour
         spawnedUnitThisWave = 0;
 
         maxUnitCount += 10;
-        spawnInterval = Mathf.Max(minSpawnInterval, spawnInterval - 0.2f);
+        spawnInterval = Mathf.Max(minSpawnInterval, spawnInterval - 0.1f);
     }
 
-    public void EnemyDestoryed()
+    public void EnemyDestroyed()
     {
         currentUnitCount--;
-        destroyedUnits++;
+        killedUnits++;
 
         if (currentUnitCount <= 0 && !onGoingWave && spawnedUnitThisWave >= maxUnitCount)
         {

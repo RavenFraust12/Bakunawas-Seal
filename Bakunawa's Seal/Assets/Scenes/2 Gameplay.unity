@@ -719,16 +719,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57eca7b8465859d4d8025459c5276786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyStats: {fileID: 0}
   unitsToSpawn:
   - {fileID: 4819457148055003550, guid: e53eb540744445a489df7e4a7331aa61, type: 3}
-  spawnPoint: []
   spawnInterval: 1
-  minSpawnInterval: 0.5
+  minSpawnInterval: 0.05
+  enemyStatIncrement: 0.05
+  currentStat: 0
   waveCount: 0
   currentUnitCount: 0
   spawnedUnitThisWave: 0
   maxUnitCount: 10
-  destroyedUnits: 0
+  killedUnits: 0
   onGoingWave: 1
 --- !u!1 &1787428949
 GameObject:
