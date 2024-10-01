@@ -11,6 +11,8 @@ public class PlayerAI : MonoBehaviour
     public Transform target; // The current target (closest unit)
     public float attackRange = 2f; // Set your attack range
     public float detectionRange = 5f;
+    public bool canAttack;
+    public GameObject weapon;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +37,7 @@ public class PlayerAI : MonoBehaviour
             if (Vector3.Distance(transform.position, target.position) <= attackRange)
             {
                 // Attack logic here, e.g., trigger attack animation
+                StartCoroutine(AttackDelay());
                 Debug.Log("Attacking " + target.name);
             }
         }
@@ -82,6 +85,14 @@ public class PlayerAI : MonoBehaviour
 
     IEnumerator AttackDelay()
     {
-        yield return new WaitForSeconds(2f);
+        if (canAttack == true)
+        {
+            weapon.SetActive(true);
+            canAttack = false;
+            yield return new WaitForSeconds(0.5f);
+            weapon.SetActive(false);
+            yield return new WaitForSeconds(charStats.currentAttackspeed);
+            canAttack = true;
+        }
     }
 }
