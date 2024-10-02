@@ -704,7 +704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitsToSpawn:
-  - {fileID: 4819457148055003550, guid: e53eb540744445a489df7e4a7331aa61, type: 3}
+  - {fileID: 1608405182290959222, guid: e53eb540744445a489df7e4a7331aa61, type: 3}
   spawnInterval: 1
   minSpawnInterval: 0.05
   enemyStatIncrement: 0.05
@@ -1019,7 +1019,7 @@ MonoBehaviour:
   currentCritRate: 0
   currentMovespeed: 0
   currentAttackspeed: 0
-  strength: 5
+  strength: 1
   agility: 1
   intelligence: 1
   dexterity: 1
@@ -1039,7 +1039,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   attackRange: 2
-  detectionRange: 10
+  detectionRange: 20
+  isRanged: 0
   canAttack: 1
   weapon: {fileID: 649462913}
 --- !u!1660057539 &9223372036854775807

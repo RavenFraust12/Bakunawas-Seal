@@ -11,9 +11,9 @@ public class PlayerAI : MonoBehaviour
     public Transform target; // The current target (closest unit)
     public float attackRange = 2f; // Set your attack range
     public float detectionRange = 5f;
-    public bool isRanged;
-    public bool canAttack;
-    public GameObject weapon;
+    public bool isRanged; //Is the unit ranged attack
+    public bool canAttack; //Can the unit attack
+    public GameObject weapon; //Collider for damage
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +45,7 @@ public class PlayerAI : MonoBehaviour
         else
         {
             navAgent.ResetPath();
+            Debug.Log("No Enemy Detected");
         }
     }
 

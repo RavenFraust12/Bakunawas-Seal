@@ -8,17 +8,17 @@ public class CombatCalculation : MonoBehaviour
     {
         float TotalDamage = AttackerDmgValue - DefenderArmor;
 
-        if (TotalDamage > 0)
+        /*if (TotalDamage > 0)
         {
             Debug.Log("Damage log final damage " + TotalDamage);
-            return TotalDamage;
         }
-        else
+        else */if(TotalDamage < 1)
         {
+            TotalDamage = 1;
             Debug.Log("1 Damage");
-            return 1;
+            
         }
 
-
+        return TotalDamage;
     }
 }

@@ -31,6 +31,7 @@ public class SpawnManager : MonoBehaviour
         currentUnitCount++;
         spawnedUnitThisWave++;
 
+        //Set the point for x and z axis
         int xspawnpoint = Random.Range(0, 2) == 0 ? 5 : 95;
         int zspawnpoint = Random.Range(0, 2) == 0 ? 5 : 95;
 
