@@ -41,7 +41,7 @@ public class PlayerAI : MonoBehaviour
                 // Attack logic here, e.g., trigger attack animation
                 navAgent.ResetPath();
                 StartCoroutine(AttackDelay());
-                //StartCoroutine(SkillDelay());
+                SkillDelay();
                 Debug.Log("Attacking " + target.name);
             }
         }
@@ -94,29 +94,36 @@ public class PlayerAI : MonoBehaviour
         {
             weapon.SetActive(true);
             canAttack = false;
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
             weapon.SetActive(false);
             yield return new WaitForSeconds(charStats.currentAttackspeed);
             canAttack = true;
         }
     }
 
-    /*IEnumerator SkillDelay()
+    void SkillDelay()
     {
         switch(charSelection)
         {
             case 1:
                 ApolakiSkills apolaki = GetComponent<ApolakiSkills>();
+                apolaki.Skills();
                 break;
-            case 1:
+            /*case 1:
                 MayariSkills mayari = GetComponent<MayariSkills>();
+                mayari.Skills();
                 break;
             case 1:
                 DumanganSkills dumangan = GetComponent<DumanganSkills>();
+                dumangan.Skills();
                 break;
             case 1:
                 DumakulemSkills dumakulem = GetComponent<DumakulemSkills>();
+                dumakulem.Skills();
+                break;*/
+            default:
+                Debug.Log("No Skills Detected");
                 break;
         }
-    }*/
+    }
 }

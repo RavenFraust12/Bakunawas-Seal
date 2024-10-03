@@ -33,13 +33,13 @@ public class Damage : MonoBehaviour
     {
         if(other.gameObject.tag == "Enemy") 
         { 
-            float FinalDamage = combatCalc.DoPhysDamage(charStats.currentAttack, other.GetComponent<EnemyStats>().currentArmor);
+            float FinalDamage = combatCalc.DoPhysDamage(charStats.currentAttack,charStats.currentCritRate, other.GetComponent<EnemyStats>().currentArmor);
 
             other.GetComponent<EnemyStats>().currentHealth -= FinalDamage;
         }
         else if (other.gameObject.tag == "Player")
         {
-            float FinalDamage = combatCalc.DoPhysDamage(enemyStats.currentAttack, other.GetComponent<CharStats>().currentArmor);
+            float FinalDamage = combatCalc.DoPhysDamage(enemyStats.currentAttack, 0f, other.GetComponent<CharStats>().currentArmor);
 
             other.GetComponent<CharStats>().currentHealth -= FinalDamage;
         }
