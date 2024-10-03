@@ -38,6 +38,7 @@ public class EnemyAI : MonoBehaviour
             if (Vector3.Distance(transform.position, target.position) <= attackRange)
             {
                 // Attack logic here, e.g., trigger attack animation
+                navAgent.ResetPath();
                 StartCoroutine(AttackDelay());
                 Debug.Log("Attacking " + target.name);
             }

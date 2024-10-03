@@ -14,6 +14,7 @@ public class PlayerAI : MonoBehaviour
     public bool isRanged; //Is the unit ranged attack
     public bool canAttack; //Can the unit attack
     public GameObject weapon; //Collider for damage
+    public int charSelection;//1 = Apolaki, 2 = Mayari, 3 = Dumangan, 4 = Dumakulem
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +39,9 @@ public class PlayerAI : MonoBehaviour
             if (Vector3.Distance(transform.position, target.position) <= attackRange)
             {
                 // Attack logic here, e.g., trigger attack animation
+                navAgent.ResetPath();
                 StartCoroutine(AttackDelay());
+                //StartCoroutine(SkillDelay());
                 Debug.Log("Attacking " + target.name);
             }
         }
@@ -97,4 +100,23 @@ public class PlayerAI : MonoBehaviour
             canAttack = true;
         }
     }
+
+    /*IEnumerator SkillDelay()
+    {
+        switch(charSelection)
+        {
+            case 1:
+                ApolakiSkills apolaki = GetComponent<ApolakiSkills>();
+                break;
+            case 1:
+                MayariSkills mayari = GetComponent<MayariSkills>();
+                break;
+            case 1:
+                DumanganSkills dumangan = GetComponent<DumanganSkills>();
+                break;
+            case 1:
+                DumakulemSkills dumakulem = GetComponent<DumakulemSkills>();
+                break;
+        }
+    }*/
 }

@@ -151,7 +151,7 @@ MonoBehaviour:
   currentArmor: 0
   currentMagicDefense: 0
   movespeed: 3
-  attackspeed: 0
+  attackspeed: 2
   strength: 1
   agility: 1
   intelligence: 1
