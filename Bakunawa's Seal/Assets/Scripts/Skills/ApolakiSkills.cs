@@ -11,6 +11,7 @@ public class ApolakiSkills : MonoBehaviour
     private void Awake()
     {
         charStats = GetComponentInParent<CharStats>();
+        //ApolakiStats();
     }
 
     public void Skills()
@@ -24,10 +25,19 @@ public class ApolakiSkills : MonoBehaviour
         {
             canSkill = false;
             weaponSkill.SetActive(true);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
             weaponSkill.SetActive(false);
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds((charStats.currentAttackspeed * 3) + 3);
             canSkill = true;
         }
+    }
+
+    public void ApolakiStats()
+    {
+        charStats.strength = PlayerPrefs.GetInt("Apolaki_Str", 1);
+        charStats.agility = PlayerPrefs.GetInt("Apolaki_Agi", 1);
+        charStats.intelligence = PlayerPrefs.GetInt("Apolaki_Int", 1);
+        charStats.dexterity = PlayerPrefs.GetInt("Apolaki_Dex", 1);
+        charStats.vitality = PlayerPrefs.GetInt("Apolaki_Vit", 1);
     }
 }

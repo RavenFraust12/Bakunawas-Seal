@@ -49,7 +49,7 @@ public class SpawnManager : MonoBehaviour
 
         int randomEnemyIndex = Random.Range(0, unitsToSpawn.Length);
 
-        GameObject newEnemy = Instantiate(unitsToSpawn[randomEnemyIndex], spawnPosition, Quaternion.identity);
+        GameObject newEnemy = Instantiate(unitsToSpawn[randomEnemyIndex], spawnPosition, Quaternion.identity, this.transform);
 
         EnemyStats enemyStats = newEnemy.GetComponent<EnemyStats>();
 

@@ -11,10 +11,15 @@ public class PlayerAI : MonoBehaviour
     public Transform target; // The current target (closest unit)
     public float attackRange = 2f; // Set your attack range
     public float detectionRange = 5f;
-    public bool isRanged; //Is the unit ranged attack
     public bool canAttack; //Can the unit attack
     public GameObject weapon; //Collider for damage
     public int charSelection;//1 = Apolaki, 2 = Mayari, 3 = Dumangan, 4 = Dumakulem
+
+    [Header("Range Attacks")]
+    public bool isRanged; //Is the unit ranged attack
+    public GameObject pointOfFire;
+    public GameObject rangeProjectile;
+
 
     // Start is called before the first frame update
     void Start()
@@ -90,14 +95,28 @@ public class PlayerAI : MonoBehaviour
 
     IEnumerator AttackDelay() //Change this later and turn it into animation
     {
-        if (canAttack == true)
+        if (!isRanged)
         {
-            weapon.SetActive(true);
-            canAttack = false;
-            yield return new WaitForSeconds(0.1f);
-            weapon.SetActive(false);
-            yield return new WaitForSeconds(charStats.currentAttackspeed);
-            canAttack = true;
+            if (canAttack == true)
+            {
+                weapon.SetActive(true);
+                canAttack = false;
+                yield return new WaitForSeconds(0.1f);
+                weapon.SetActive(false);
+                yield return new WaitForSeconds(charStats.currentAttackspeed);
+                canAttack = true;
+            }
+        }
+        else if (isRanged)
+        {
+            if (canAttack == true)
+            {
+                GameObject projectile = Instantiate(rangeProjectile,pointOfFire.transform.position, pointOfFire.transform.rotation, this.transform);
+
+                canAttack = false;
+                yield return new WaitForSeconds(charStats.currentAttackspeed);
+                canAttack = true;
+            }
         }
     }
 
@@ -126,4 +145,5 @@ public class PlayerAI : MonoBehaviour
                 break;
         }
     }
+
 }

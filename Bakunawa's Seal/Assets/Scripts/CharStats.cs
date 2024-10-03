@@ -65,6 +65,7 @@ public class CharStats : MonoBehaviour
     }
     void StatCalculation()
     {
+
         baseHealth = baseHealth + (25 * strength) + (10 * intelligence) + (50 * vitality);
         currentAttack = baseAttack + (5 * strength) + (3 * dexterity);
         currentMagicAttack = baseMagicAttack + (5 * intelligence);
