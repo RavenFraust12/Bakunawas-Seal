@@ -90,8 +90,9 @@ public class EnemyAI : MonoBehaviour
         {
             if (canAttack == true)
             {
-                GameObject projectile = Instantiate(rangeProjectile, pointOfFire.transform.position, pointOfFire.transform.rotation, this.transform);
-
+                GameObject projectile = Instantiate(rangeProjectile, pointOfFire.transform.position, pointOfFire.transform.rotation);
+                Damage projectileScript = projectile.GetComponent<Damage>();
+                projectileScript.charStats = GetComponent<CharStats>();
                 canAttack = false;
                 yield return new WaitForSeconds(enemyStats.attackspeed);
                 canAttack = true;

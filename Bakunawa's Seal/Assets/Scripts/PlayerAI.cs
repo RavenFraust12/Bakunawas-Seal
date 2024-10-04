@@ -111,9 +111,12 @@ public class PlayerAI : MonoBehaviour
         {
             if (canAttack == true)
             {
-                GameObject projectile = Instantiate(rangeProjectile,pointOfFire.transform.position, pointOfFire.transform.rotation, this.transform);
-
                 canAttack = false;
+
+                GameObject projectile = Instantiate(rangeProjectile,pointOfFire.transform.position, pointOfFire.transform.rotation);
+                Damage projectileScript = projectile.GetComponent<Damage>();
+                projectileScript.charStats = GetComponent<CharStats>();
+
                 yield return new WaitForSeconds(charStats.currentAttackspeed);
                 canAttack = true;
             }
@@ -128,22 +131,21 @@ public class PlayerAI : MonoBehaviour
                 ApolakiSkills apolaki = GetComponent<ApolakiSkills>();
                 apolaki.Skills();
                 break;
-            /*case 1:
+            /*case 2:
                 MayariSkills mayari = GetComponent<MayariSkills>();
                 mayari.Skills();
-                break;
-            case 1:
+                break;*/
+            case 3:
                 DumanganSkills dumangan = GetComponent<DumanganSkills>();
                 dumangan.Skills();
                 break;
-            case 1:
+            case 4:
                 DumakulemSkills dumakulem = GetComponent<DumakulemSkills>();
                 dumakulem.Skills();
-                break;*/
+                break;
             default:
                 Debug.Log("No Skills Detected");
                 break;
         }
     }
-
 }

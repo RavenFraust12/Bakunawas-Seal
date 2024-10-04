@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Damage : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class Damage : MonoBehaviour
 
     [Header("Scripts")]
     private EnemyStats enemyStats;
-    private CharStats charStats;
+    public CharStats charStats;
     private CombatCalculation combatCalc;
 
     [Header("Range Attacks")]
@@ -16,27 +17,30 @@ public class Damage : MonoBehaviour
     public float projectileSpeed;
     public bool isMagicDealing;
     private Rigidbody rbProjectile;
+    private Vector3 shootDirection;
 
     private void Start()
     {
         combatCalc = FindObjectOfType<CombatCalculation>();
 
-        if (target == "Enemy")
-        {
-            charStats = GetComponentInParent<CharStats>();
-        }
-        else if (target == "Player")
-        {
-            enemyStats = GetComponentInParent<EnemyStats>();
-        }
-        else
-        {
-            Debug.Log("Nu ginagawa mo");
-        }
-
         if (isProjectile)
         {
             rbProjectile = GetComponent<Rigidbody>();
+        }
+        else
+        {
+            if (target == "Enemy")
+            {
+                charStats = GetComponentInParent<CharStats>();
+            }
+            else if (target == "Player")
+            {
+                enemyStats = GetComponentInParent<EnemyStats>();
+            }
+            else
+            {
+                Debug.Log("Nu ginagawa mo");
+            }
         }
     }
 
@@ -93,7 +97,7 @@ public class Damage : MonoBehaviour
             Destroy(this.gameObject, 5f);
         }
     }
-       
+
     void Projectile()
     {
         if (isProjectile)

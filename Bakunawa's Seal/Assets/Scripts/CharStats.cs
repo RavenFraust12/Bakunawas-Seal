@@ -43,6 +43,9 @@ public class CharStats : MonoBehaviour
     private void Update()
     {
         DeathChecker();
+
+        if (currentCritRate >= 100) currentCritRate = 100;
+        if (currentAttackspeed <= 0.25f) currentAttackspeed = 0.25f;
     }
 
     void DeathChecker()
@@ -66,19 +69,15 @@ public class CharStats : MonoBehaviour
     void StatCalculation()
     {
 
-        baseHealth = baseHealth + (25 * strength) + (10 * intelligence) + (50 * vitality);
-        currentAttack = baseAttack + (5 * strength) + (3 * dexterity);
-        currentMagicAttack = baseMagicAttack + (5 * intelligence);
+        baseHealth = baseHealth + (25f * strength) + (10f * intelligence) + (50f * vitality);
+        currentAttack = baseAttack + (5f * strength) + (3f * dexterity);
+        currentMagicAttack = baseMagicAttack + (5f * intelligence);
         currentArmor = baseArmor + (0.5f * strength) + (0.2f * agility) + (1f * vitality);
         currentMagicDefense = baseMagicDefense + (1f * intelligence) + (0.5f * vitality);
         currentCritRate = baseCritRate + (0.5f * agility) + (0.2f * intelligence) + (1f * dexterity);
         currentMovespeed = baseMovespeed + ((0.2f / 100) * agility);
-        currentAttackspeed = baseAttackSpeed - ((1 / 100) * agility) - ((0.5f / 100) * dexterity);
+        currentAttackspeed = baseAttackSpeed - ((1f / 100f) * agility) - ((0.5f / 100f) * dexterity);
 
         currentHealth = baseHealth;
-
-        if (currentCritRate >= 100) currentCritRate = 100;
-        if (currentAttackspeed <= 0.25f) currentAttackspeed = 0.25f;
-
     }
 }

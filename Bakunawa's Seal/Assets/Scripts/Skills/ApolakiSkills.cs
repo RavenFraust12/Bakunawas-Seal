@@ -27,7 +27,7 @@ public class ApolakiSkills : MonoBehaviour
             weaponSkill.SetActive(true);
             yield return new WaitForSeconds(0.2f);
             weaponSkill.SetActive(false);
-            yield return new WaitForSeconds((charStats.currentAttackspeed * 3) + 3);
+            yield return new WaitForSeconds((charStats.currentAttackspeed * 3f) + 3f);
             canSkill = true;
         }
     }
