@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1883453317760997812}
   - component: {fileID: 4500130037402403604}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: Dumakulem Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

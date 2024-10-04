@@ -9,10 +9,14 @@ public class EnemyAI : MonoBehaviour
     private EnemyStats enemyStats;
 
     public Transform target; // The current target (closest unit)
-    public float attackRange = 2f; // Set your attack range
-    public bool isRanged; //Is the unit ranged attack
     public bool canAttack; //Can the unit attack
     public GameObject weapon; //Collider for damage
+
+    [Header("Range Attacks")]
+    public float attackRange = 2f; // Set your attack range
+    public bool isRanged; //Is the unit ranged attack
+    public GameObject pointOfFire; //Where the bullet will spawn
+    public GameObject rangeProjectile; //The bullet to spawn
 
     // Start is called before the first frame update
     void Start()
@@ -70,14 +74,28 @@ public class EnemyAI : MonoBehaviour
 
     IEnumerator AttackDelay() //Change this later and turn it into animation
     {
-        if (canAttack == true)
+        if (!isRanged)
         {
-            weapon.SetActive(true);
-            canAttack = false;
-            yield return new WaitForSeconds(0.5f);
-            weapon.SetActive(false);
-            yield return new WaitForSeconds(enemyStats.attackspeed);
-            canAttack = true;
+            if (canAttack == true)
+            {
+                weapon.SetActive(true);
+                canAttack = false;
+                yield return new WaitForSeconds(0.1f);
+                weapon.SetActive(false);
+                yield return new WaitForSeconds(enemyStats.attackspeed);
+                canAttack = true;
+            }
+        }
+        else if (isRanged)
+        {
+            if (canAttack == true)
+            {
+                GameObject projectile = Instantiate(rangeProjectile, pointOfFire.transform.position, pointOfFire.transform.rotation, this.transform);
+
+                canAttack = false;
+                yield return new WaitForSeconds(enemyStats.attackspeed);
+                canAttack = true;
+            }
         }
     }
 }

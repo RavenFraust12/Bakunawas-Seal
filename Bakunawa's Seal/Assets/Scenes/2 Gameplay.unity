@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  attackRange: 2.5
+  attackRange: 2
   detectionRange: 20
   canAttack: 1
   weapon: {fileID: 2017019602}
@@ -1238,6 +1238,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitsToSpawn:
   - {fileID: 1608405182290959222, guid: e53eb540744445a489df7e4a7331aa61, type: 3}
+  - {fileID: 1608405182290959222, guid: 88237d87cb98d9240b240ac76eb52801, type: 3}
+  - {fileID: 1608405182290959222, guid: 15601b0c5fea07145bd2c9df6b111dca, type: 3}
+  - {fileID: 1608405182290959222, guid: 2f51411f249c4504cacc4bc178752692, type: 3}
+  - {fileID: 1608405182290959222, guid: 682abfca9f70da941b8a6166dc9f4b7c, type: 3}
   spawnInterval: 1
   minSpawnInterval: 0.05
   enemyStatIncrement: 0.05

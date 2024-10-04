@@ -5,11 +5,11 @@ using UnityEngine;
 public class EnemyStats : MonoBehaviour
 {
     [Header("Base Enemy Stat")]
-    private float baseHealth = 10;
-    private float baseAttack = 1;
-    private float baseMagicAttack = 1;
-    private float baseArmor = 1;
-    private float baseMagicDefense = 1;
+    public float baseHealth = 10;
+    public float baseAttack = 1;
+    public float baseMagicAttack = 1;
+    public float baseArmor = 1;
+    public float baseMagicDefense = 1;
 
     [Header("Current Enemy Stat")]
     public float currentHealth;

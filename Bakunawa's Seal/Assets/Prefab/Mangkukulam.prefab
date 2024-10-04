@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2617684604430242914}
   - component: {fileID: 7232573346128178930}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Mangkukulam
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f06c82d359514384fbd21cd827f27dd0, type: 2}
+  - {fileID: 2100000, guid: 7841cc0ae4e674947bf28be25ad44716, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -145,6 +145,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 671a62d4355287e4d95fa4f69c34ef49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseHealth: 10
+  baseAttack: 1
+  baseMagicAttack: 1
+  baseArmor: 1
+  baseMagicDefense: 1
   currentHealth: 0
   currentAttack: 0
   currentMagicAttack: 0
@@ -154,7 +159,7 @@ MonoBehaviour:
   attackspeed: 2
   strength: 1
   agility: 1
-  intelligence: 1
+  intelligence: 2
   dexterity: 1
   vitality: 1
   currentStat: 0
@@ -171,10 +176,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  attackRange: 2
-  isRanged: 0
   canAttack: 1
   weapon: {fileID: 3762184959253834985}
+  attackRange: 7.5
+  isRanged: 1
+  pointOfFire: {fileID: 3762184959253834985}
+  rangeProjectile: {fileID: 3195827127240966767, guid: fa40cd189b60b7744b70a4cced3a86a6,
+    type: 3}
 --- !u!1 &3762184959253834985
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,14 +195,13 @@ GameObject:
   - component: {fileID: 6834666929695908170}
   - component: {fileID: 6979190272296404134}
   - component: {fileID: 6500809195190358456}
-  - component: {fileID: 311456965628074114}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9056591581679559955
 Transform:
   m_ObjectHideFlags: 0
@@ -205,7 +212,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.75}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 858133046739983159}
@@ -225,7 +232,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3762184959253834985}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -281,17 +288,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &311456965628074114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3762184959253834985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d1e0748b7a2f9043833459dedf07975, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: Player
-  isMagicDealing: 0
