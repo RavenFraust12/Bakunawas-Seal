@@ -155,12 +155,13 @@ Transform:
   m_GameObject: {fileID: 91744761}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 50, y: 8.44, z: 50}
+  m_LocalPosition: {x: 54.5, y: 8.44, z: 52.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2017019603}
   - {fileID: 506105121}
+  - {fileID: 963194228}
   m_Father: {fileID: 1678984414}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &91744763
@@ -196,6 +197,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d67dfde191f184b8a05dc677418661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseHealth: 100
+  baseAttack: 20
+  baseMagicAttack: 15
+  baseArmor: 5
+  baseMagicDefense: 5
+  baseCritRate: 5
+  baseMovespeed: 5
+  baseAttackSpeed: 1.5
   currentHealth: 0
   currentAttack: 0
   currentMagicAttack: 0
@@ -461,6 +470,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d67dfde191f184b8a05dc677418661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseHealth: 100
+  baseAttack: 20
+  baseMagicAttack: 15
+  baseArmor: 5
+  baseMagicDefense: 5
+  baseCritRate: 5
+  baseMovespeed: 5
+  baseAttackSpeed: 1.5
   currentHealth: 0
   currentAttack: 0
   currentMagicAttack: 0
@@ -608,6 +625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canSkill: 1
+  playerUnits: []
 --- !u!1 &420665958
 GameObject:
   m_ObjectHideFlags: 0
@@ -1229,13 +1247,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.60876137, y: 0, z: 0, w: 0.7933534}
+  m_LocalPosition: {x: 0, y: 15, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 91744762}
+  m_LocalEulerAnglesHint: {x: 75, y: 0, z: 0}
 --- !u!1 &1030733611
 GameObject:
   m_ObjectHideFlags: 0
@@ -1252,6 +1270,7 @@ GameObject:
   - component: {fileID: 1030733615}
   - component: {fileID: 1030733614}
   - component: {fileID: 1030733613}
+  - component: {fileID: 1030733620}
   m_Layer: 0
   m_Name: Mayari
   m_TagString: Player
@@ -1292,7 +1311,7 @@ MonoBehaviour:
   detectionRange: 20
   canAttack: 1
   weapon: {fileID: 0}
-  charSelection: 0
+  charSelection: 2
   isRanged: 1
   pointOfFire: {fileID: 1115003177}
   rangeProjectile: {fileID: 3195827127240966767, guid: a6c052c50b359c54089d9d84b1e6e165,
@@ -1309,6 +1328,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d67dfde191f184b8a05dc677418661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseHealth: 100
+  baseAttack: 20
+  baseMagicAttack: 15
+  baseArmor: 5
+  baseMagicDefense: 5
+  baseCritRate: 5
+  baseMovespeed: 5
+  baseAttackSpeed: 1.5
   currentHealth: 0
   currentAttack: 0
   currentMagicAttack: 0
@@ -1443,6 +1470,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030733611}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1030733620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030733611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89be5e45880a7ce4482b75d11e27959e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canSkill: 1
+  canHeal: 1
+  playerUnits: []
+  healEffect: {fileID: 7319916243448881828, guid: ca8497064d78422429a6bc4986b885b6,
+    type: 3}
+  heal: {fileID: 0}
+  target: {fileID: 0}
 --- !u!1 &1115003177
 GameObject:
   m_ObjectHideFlags: 0
@@ -1622,6 +1668,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d67dfde191f184b8a05dc677418661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseHealth: 100
+  baseAttack: 20
+  baseMagicAttack: 15
+  baseArmor: 5
+  baseMagicDefense: 5
+  baseCritRate: 5
+  baseMovespeed: 5
+  baseAttackSpeed: 1.5
   currentHealth: 0
   currentAttack: 0
   currentMagicAttack: 0
@@ -1915,6 +1969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: Enemy
+  enemyStats: {fileID: 0}
   charStats: {fileID: 161738000}
   isProjectile: 0
   projectileSpeed: 0
@@ -2131,6 +2186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: Enemy
+  enemyStats: {fileID: 0}
   charStats: {fileID: 0}
   isProjectile: 0
   projectileSpeed: 0
@@ -2210,7 +2266,6 @@ MeshFilter:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 797944474}
   - {fileID: 1678984414}

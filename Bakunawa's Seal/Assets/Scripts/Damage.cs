@@ -8,7 +8,7 @@ public class Damage : MonoBehaviour
     public string target;
 
     [Header("Scripts")]
-    private EnemyStats enemyStats;
+    public EnemyStats enemyStats;
     public CharStats charStats;
     private CombatCalculation combatCalc;
 

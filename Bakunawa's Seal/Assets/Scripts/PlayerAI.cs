@@ -131,10 +131,10 @@ public class PlayerAI : MonoBehaviour
                 ApolakiSkills apolaki = GetComponent<ApolakiSkills>();
                 apolaki.Skills();
                 break;
-            /*case 2:
+            case 2:
                 MayariSkills mayari = GetComponent<MayariSkills>();
                 mayari.Skills();
-                break;*/
+                break;
             case 3:
                 DumanganSkills dumangan = GetComponent<DumanganSkills>();
                 dumangan.Skills();

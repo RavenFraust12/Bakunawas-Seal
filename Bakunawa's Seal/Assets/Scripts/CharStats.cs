@@ -5,14 +5,14 @@ using UnityEngine;
 public class CharStats : MonoBehaviour
 {
     [Header("Base Character Stat")]
-    private float baseHealth = 100;
-    private float baseAttack = 20;
-    private float baseMagicAttack = 15;
-    private float baseArmor = 5;
-    private float baseMagicDefense = 5;
-    private float baseCritRate = 5;
-    private float baseMovespeed = 5;
-    private float baseAttackSpeed = 1.5f;
+    public float baseHealth = 100;
+    public float baseAttack = 20;
+    public float baseMagicAttack = 15;
+    public float baseArmor = 5;
+    public float baseMagicDefense = 5;
+    public float baseCritRate = 5;
+    public float baseMovespeed = 5;
+    public float baseAttackSpeed = 1.5f;
 
     [Header("Current Character Stat")]
     public float currentHealth;
