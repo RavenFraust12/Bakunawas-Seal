@@ -9,18 +9,31 @@ public class GameManager : MonoBehaviour
     public GameObject[] charSelection;
     public TextMeshProUGUI[] charNames;
     public int charCount;
+    public TextMeshProUGUI killCount, pearlCount, coinCount, waveCount;
 
     [Header("Main Menu")]
     public GameObject[] characters;
 
+    [Header("Scripts")]
+    private SpawnManager spawnManager;
 
+    private void Awake()
+    {
+        spawnManager = FindObjectOfType<SpawnManager>();
+    }
     public void Start()
     {
         CharacterSelection();
     }
     public void Update()
     {
-        
+        OnGameCounts();
+    }
+
+    public void OnGameCounts()
+    {
+        waveCount.text = "Wave: " + spawnManager.waveCount.ToString();
+        killCount.text = spawnManager.killedUnits.ToString();
     }
     public void CharacterSelection()
     {
