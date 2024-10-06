@@ -6,11 +6,12 @@ public class DumanganSkills : MonoBehaviour
 {
     private CharStats charStats;
     public bool canSkill;
-    public GameObject pointOfFire, rangeProjectile;
+    public GameObject pointOfFire, rangeProjectile, bulletHolder;
 
     private void Awake()
     {
         charStats = GetComponentInParent<CharStats>();
+        bulletHolder = GameObject.Find("BulletHolder");
     }
 
     public void Skills()
@@ -52,7 +53,7 @@ public class DumanganSkills : MonoBehaviour
                 Quaternion rotation = Quaternion.Euler(0, angle, 0) * pointOfFire.transform.rotation;
 
                 // Instantiate the projectile with the calculated rotation
-                GameObject projectile = Instantiate(rangeProjectile, pointOfFire.transform.position, rotation);
+                GameObject projectile = Instantiate(rangeProjectile, pointOfFire.transform.position, rotation, bulletHolder.transform);
                 Damage projectileScript = projectile.GetComponent<Damage>();
                 projectileScript.charStats = GetComponent<CharStats>();
             }

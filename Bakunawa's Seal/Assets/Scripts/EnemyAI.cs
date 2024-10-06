@@ -17,12 +17,14 @@ public class EnemyAI : MonoBehaviour
     public bool isRanged; //Is the unit ranged attack
     public GameObject pointOfFire; //Where the bullet will spawn
     public GameObject rangeProjectile; //The bullet to spawn
+    public GameObject bulletHolder;
 
     // Start is called before the first frame update
     void Start()
     {
         navAgent = GetComponent<NavMeshAgent>();
         enemyStats = GetComponent<EnemyStats>();
+        bulletHolder = GameObject.Find("BulletHolder");
     }
 
     // Update is called once per frame
@@ -92,7 +94,7 @@ public class EnemyAI : MonoBehaviour
             {
                 canAttack = false;
 
-                GameObject projectile = Instantiate(rangeProjectile, pointOfFire.transform.position, pointOfFire.transform.rotation);
+                GameObject projectile = Instantiate(rangeProjectile, pointOfFire.transform.position, pointOfFire.transform.rotation, bulletHolder.transform);
                 Damage projectileScript = projectile.GetComponent<Damage>();
                 projectileScript.enemyStats = GetComponent<EnemyStats>();
 

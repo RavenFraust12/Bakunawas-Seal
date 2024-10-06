@@ -1007,7 +1007,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerUnits: []
   cameraObject: {fileID: 963194225}
-  cameraSpeed: 15
+  cameraSpeed: 5
   charSelected: 4
 --- !u!1 &797944473
 GameObject:
@@ -1050,7 +1050,7 @@ GameObject:
   m_Component:
   - component: {fileID: 802750979}
   m_Layer: 0
-  m_Name: Bullet Holder
+  m_Name: BulletHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

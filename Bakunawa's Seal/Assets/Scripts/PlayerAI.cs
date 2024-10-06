@@ -19,6 +19,7 @@ public class PlayerAI : MonoBehaviour
     public bool isRanged; //Is the unit ranged attack
     public GameObject pointOfFire;
     public GameObject rangeProjectile;
+    public GameObject bulletHolder;
 
 
     // Start is called before the first frame update
@@ -26,6 +27,7 @@ public class PlayerAI : MonoBehaviour
     {
         navAgent = GetComponent<NavMeshAgent>();
         charStats = GetComponent<CharStats>();
+        bulletHolder = GameObject.Find("BulletHolder");
     }
 
     // Update is called once per frame
@@ -113,7 +115,7 @@ public class PlayerAI : MonoBehaviour
             {
                 canAttack = false;
 
-                GameObject projectile = Instantiate(rangeProjectile,pointOfFire.transform.position, pointOfFire.transform.rotation);
+                GameObject projectile = Instantiate(rangeProjectile,pointOfFire.transform.position, pointOfFire.transform.rotation, bulletHolder.transform);
                 Damage projectileScript = projectile.GetComponent<Damage>();
                 projectileScript.charStats = GetComponent<CharStats>();
 
