@@ -33,6 +33,7 @@ public class CharStats : MonoBehaviour
 
     [Header("Gameplay")]
     public bool isDead;
+    public string playerName;
 
 
     private void Start()

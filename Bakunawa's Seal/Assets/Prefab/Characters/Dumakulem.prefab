@@ -194,6 +194,7 @@ MonoBehaviour:
   dexterity: 1
   vitality: 1
   isDead: 0
+  playerName: Dumakulem
 --- !u!114 &1852640768953525740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,6 +216,7 @@ MonoBehaviour:
   isRanged: 0
   pointOfFire: {fileID: 0}
   rangeProjectile: {fileID: 0}
+  bulletHolder: {fileID: 0}
 --- !u!114 &738830470261814773
 MonoBehaviour:
   m_ObjectHideFlags: 0

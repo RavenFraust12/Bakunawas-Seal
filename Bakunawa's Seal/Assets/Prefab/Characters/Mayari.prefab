@@ -194,6 +194,7 @@ MonoBehaviour:
   dexterity: 1
   vitality: 1
   isDead: 0
+  playerName: Mayari
 --- !u!114 &2785278379452383576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,6 +217,7 @@ MonoBehaviour:
   pointOfFire: {fileID: 8354924409916782427}
   rangeProjectile: {fileID: 3195827127240966767, guid: a6c052c50b359c54089d9d84b1e6e165,
     type: 3}
+  bulletHolder: {fileID: 0}
 --- !u!114 &4254976588943614272
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -64,6 +64,10 @@ public class CameraScript : MonoBehaviour
         {
             charSelected = 2;
         }
+        else if (playerUnits[2] == null)
+        {
+            Debug.Log("No Third Character");
+        }
          
     }
     public void FourthChar()
@@ -76,6 +80,10 @@ public class CameraScript : MonoBehaviour
         {
             charSelected = 3;
         }
-         
+        else if (playerUnits[3] == null)
+        {
+            Debug.Log("No Fourth Character");
+        }
+
     }
 }

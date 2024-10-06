@@ -195,6 +195,7 @@ MonoBehaviour:
   dexterity: 1
   vitality: 1
   isDead: 0
+  playerName: Apolaki
 --- !u!114 &744162171188358329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,6 +217,7 @@ MonoBehaviour:
   isRanged: 0
   pointOfFire: {fileID: 0}
   rangeProjectile: {fileID: 0}
+  bulletHolder: {fileID: 0}
 --- !u!114 &2624648514030237111
 MonoBehaviour:
   m_ObjectHideFlags: 0
