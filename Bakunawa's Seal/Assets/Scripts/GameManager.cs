@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Main Menu")]
     public GameObject[] characters;
+    public GameObject charSpawnPoint, charHolder;
 
     [Header("Scripts")]
     private SpawnManager spawnManager;
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         spawnManager = FindObjectOfType<SpawnManager>();
+        charHolder = GameObject.Find("Character Holder");
     }
     public void Start()
     {
@@ -46,6 +48,17 @@ public class GameManager : MonoBehaviour
             charNames[charCount].text = charStats.playerName;
 
             charCount++;
+        }
+    }
+
+    public void SpawnCharacters()
+    {
+        for(int i = 0; i < characters.Length; i++)
+        {
+            if (characters[i] != null)
+            {
+                Instantiate(characters[i], charSpawnPoint.transform.position, Quaternion.identity, charHolder.transform);
+            }
         }
     }
 }
