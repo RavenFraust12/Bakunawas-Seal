@@ -12,11 +12,14 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI killCount, pearlCount, coinCount, waveCount;
 
     [Header("Main Menu")]
-    public GameObject[] characters;
-    public GameObject charSpawnPoint, charHolder;
+    public GameObject[] charactersPrefab, charSpawnPoint;
+    public GameObject charHolder;
 
     [Header("Scripts")]
     private SpawnManager spawnManager;
+
+    [Header("Test")]
+    public GameObject[] characterPrefabs;  // Same prefabs as in the main menu
 
     private void Awake()
     {
@@ -25,7 +28,10 @@ public class GameManager : MonoBehaviour
     }
     public void Start()
     {
+        InstantiateSelectedCharacters();//test
+
         CharacterSelection();
+
     }
     public void Update()
     {
@@ -51,14 +57,34 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SpawnCharacters()
+    /*public void SpawnCharacters()
     {
-        for(int i = 0; i < characters.Length; i++)
+        for(int i = 0; i < charactersPrefab.Length; i++)
         {
-            if (characters[i] != null)
+            if (charactersPrefab[i] != null)
             {
-                Instantiate(characters[i], charSpawnPoint.transform.position, Quaternion.identity, charHolder.transform);
+                Instantiate(charactersPrefab[i], charSpawnPoint.transform.position, Quaternion.identity, charHolder.transform);
             }
+            else if (charactersPrefab[i] == null)
+            {
+                Debug.Log("Character " + charactersPrefab[i].name + " is not selected");
+            }
+        }
+    }*/
+
+    private void InstantiateSelectedCharacters()
+    {
+        int selectedCount = PlayerPrefs.GetInt("SelectedCount", 0);
+
+        for (int i = 0; i < selectedCount; i++)
+        {
+            int characterIndex = PlayerPrefs.GetInt("SelectedCharacter_" + i, 0);
+
+            if (i < charSpawnPoint.Length)  // Ensure there are enough spawn points
+            {
+                Instantiate(characterPrefabs[characterIndex], charSpawnPoint[i].transform.position, Quaternion.identity);
+            }
+
         }
     }
 }
