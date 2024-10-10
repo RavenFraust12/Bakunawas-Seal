@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -10,10 +11,21 @@ public class CameraScript : MonoBehaviour
     public float cameraSpeed;
     public int charSelected;
 
+    public NavMeshSurface navMeshSurface;
+    public Vector3 navMeshMinBounds;
+    public Vector3 navMeshMaxBounds;
+
+    private void Start()
+    {
+        var bounds = navMeshSurface.navMeshData.sourceBounds;
+        navMeshMinBounds = bounds.min;
+        navMeshMaxBounds = bounds.max;
+    }
     private void Update()
     {
         playerUnits = GameObject.FindGameObjectsWithTag("Player");
         CameraLocation();
+
     }
 
     public void CameraLocation()
@@ -24,12 +36,30 @@ public class CameraScript : MonoBehaviour
         }
         else
         {
-            float distanceToPlayer = Vector3.Distance(transform.position, playerUnits[charSelected].transform.position);
+            Vector3 playerPos = playerUnits[charSelected].transform.position;
 
-            Vector3 targetPosition = new Vector3(playerUnits[charSelected].transform.position.x, 15f, playerUnits[charSelected].transform.position.z - 3f);
+            // Set target camera position
+            Vector3 targetPosition = new Vector3(playerPos.x, 15f, playerPos.z - 3f);
 
+            // Lerp the camera position
             cameraObject.transform.position = Vector3.Lerp(cameraObject.transform.position, targetPosition, Time.deltaTime * cameraSpeed);
+
+            // Clamp the camera position within the NavMesh bounds
+            cameraObject.transform.position = ClampCameraToNavMesh(cameraObject.transform.position);
+            //float distanceToPlayer = Vector3.Distance(transform.position, playerUnits[charSelected].transform.position);
+
+            //Vector3 targetPosition = new Vector3(playerUnits[charSelected].transform.position.x, 15f, playerUnits[charSelected].transform.position.z - 3f);
+
+            //cameraObject.transform.position = Vector3.Lerp(cameraObject.transform.position, targetPosition, Time.deltaTime * cameraSpeed);
         }
+    }
+    private Vector3 ClampCameraToNavMesh(Vector3 cameraPos)
+    {
+        float clampedX = Mathf.Clamp(cameraPos.x, navMeshMinBounds.x, navMeshMaxBounds.x);
+        float clampedZ = Mathf.Clamp(cameraPos.z, navMeshMinBounds.z, navMeshMaxBounds.z);
+
+        // Return the clamped position while keeping the Y-axis as it is
+        return new Vector3(clampedX, cameraPos.y, clampedZ);
     }
     public void FirstChar()
     {

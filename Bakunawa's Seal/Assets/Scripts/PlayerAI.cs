@@ -21,6 +21,7 @@ public class PlayerAI : MonoBehaviour
     public GameObject rangeProjectile;
     public GameObject bulletHolder;
 
+    private PlayerMovement playerMovement;
 
     // Start is called before the first frame update
     void Start()
@@ -28,11 +29,20 @@ public class PlayerAI : MonoBehaviour
         navAgent = GetComponent<NavMeshAgent>();
         charStats = GetComponent<CharStats>();
         bulletHolder = GameObject.Find("BulletHolder");
+
+        playerMovement = GetComponent<PlayerMovement>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Stop AI movement when the player is controlling the character
+        if (playerMovement != null && playerMovement.isPlayerControlling)
+        {
+            navAgent.ResetPath(); // Stop AI movement
+            return; // Skip further AI movement logic
+        }
         FindClosestEnemy();
         if (target != null)
         {
