@@ -3991,7 +3991,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7046587018343357331}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c828f0044b858d04f8a714cb215fcbab, type: 3}
   m_Name: 
@@ -5049,6 +5049,7 @@ MonoBehaviour:
   _joystick: {fileID: 2929252283773209651}
   _animator: {fileID: 8330752008622424792}
   _moveSpeed: 5
+  isPlayerControlling: 0
 --- !u!114 &7974884856070211008
 MonoBehaviour:
   m_ObjectHideFlags: 0
