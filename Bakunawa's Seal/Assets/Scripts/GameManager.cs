@@ -57,21 +57,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    /*public void SpawnCharacters()
-    {
-        for(int i = 0; i < charactersPrefab.Length; i++)
-        {
-            if (charactersPrefab[i] != null)
-            {
-                Instantiate(charactersPrefab[i], charSpawnPoint.transform.position, Quaternion.identity, charHolder.transform);
-            }
-            else if (charactersPrefab[i] == null)
-            {
-                Debug.Log("Character " + charactersPrefab[i].name + " is not selected");
-            }
-        }
-    }*/
-
     private void InstantiateSelectedCharacters()
     {
         int selectedCount = PlayerPrefs.GetInt("SelectedCount", 0);
@@ -82,7 +67,7 @@ public class GameManager : MonoBehaviour
 
             if (i < charSpawnPoint.Length)  // Ensure there are enough spawn points
             {
-                Instantiate(characterPrefabs[characterIndex], charSpawnPoint[i].transform.position, Quaternion.identity);
+                Instantiate(characterPrefabs[characterIndex], charSpawnPoint[i].transform.position, Quaternion.identity, charHolder.transform);
             }
 
         }
