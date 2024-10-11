@@ -87,4 +87,24 @@ public class MayariSkills : MonoBehaviour
             canSkill = true;
         }
     }
+
+    public void MayariStats()
+    {
+        charStats.strength = PlayerPrefs.GetInt("Mayari_Str", 1);
+        charStats.agility = PlayerPrefs.GetInt("Mayari_Agi", 1);
+        charStats.intelligence = PlayerPrefs.GetInt("Mayari_Int", 1);
+        charStats.dexterity = PlayerPrefs.GetInt("Mayari_Dex", 1);
+        charStats.vitality = PlayerPrefs.GetInt("Mayari_Vit", 1);
+    }
+
+    public void AcceptUpgrade()
+    {
+        PlayerPrefs.SetFloat("Mayari_Str", charStats.strength);
+        PlayerPrefs.SetFloat("Mayari_Agi", charStats.agility);
+        PlayerPrefs.SetFloat("Mayari_Int", charStats.intelligence);
+        PlayerPrefs.SetFloat("Mayari_Dex", charStats.dexterity);
+        PlayerPrefs.SetFloat("Mayari_Vit", charStats.vitality);
+
+        PlayerPrefs.Save();
+    }
 }

@@ -40,4 +40,15 @@ public class ApolakiSkills : MonoBehaviour
         charStats.dexterity = PlayerPrefs.GetInt("Apolaki_Dex", 1);
         charStats.vitality = PlayerPrefs.GetInt("Apolaki_Vit", 1);
     }
+
+    public void AcceptUpgrade()
+    {
+        PlayerPrefs.SetFloat("Apolaki_Str", charStats.strength);
+        PlayerPrefs.SetFloat("Apolaki_Agi", charStats.agility);
+        PlayerPrefs.SetFloat("Apolaki_Int", charStats.intelligence);
+        PlayerPrefs.SetFloat("Apolaki_Dex", charStats.dexterity);
+        PlayerPrefs.SetFloat("Apolaki_Vit", charStats.vitality);
+
+        PlayerPrefs.Save();
+    }
 }
