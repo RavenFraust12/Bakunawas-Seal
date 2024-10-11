@@ -78,7 +78,7 @@ public class UpgradeStats : MonoBehaviour
         if (charStats != null)
         {
             //Stat Text
-            healthText.text = charStats.baseHealth.ToString();
+            healthText.text = charStats.totalHealth.ToString();
             attackText.text = charStats.currentAttack.ToString();
             magicAttackText.text = charStats.currentMagicAttack.ToString();
             armorText.text = charStats.currentArmor.ToString();

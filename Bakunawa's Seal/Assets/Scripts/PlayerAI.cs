@@ -37,14 +37,14 @@ public class PlayerAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        FindClosestEnemy();
         // Stop AI movement when the player is controlling the character
         if (playerMovement != null && playerMovement.isPlayerControlling)
         {
             navAgent.ResetPath(); // Stop AI movement
             return; // Skip further AI movement logic
         }
-        FindClosestEnemy();
-        if (target != null)
+        else if (target != null)
         {
             // Rotate towards the target
             Vector3 direction = (target.position - transform.position).normalized;

@@ -15,6 +15,7 @@ public class CharStats : MonoBehaviour
     public float baseAttackSpeed = 1.5f;
 
     [Header("Current Character Stat")]
+    public float totalHealth;
     public float currentHealth;
     public float currentAttack;
     public float currentMagicAttack;
@@ -57,9 +58,9 @@ public class CharStats : MonoBehaviour
             currentHealth = 0;
             isDead = true;
         }
-        else if (currentHealth >= baseHealth)
+        else if (currentHealth >= totalHealth)
         {
-            currentHealth = baseHealth;
+            currentHealth = totalHealth;
             isDead = false;
         }
         else
@@ -77,5 +78,7 @@ public class CharStats : MonoBehaviour
         currentCritRate = baseCritRate + (0.5f * agility) + (0.2f * intelligence) + (1f * dexterity);
         currentMovespeed = baseMovespeed + ((0.2f / 100) * agility);
         currentAttackspeed = baseAttackSpeed - ((1f / 100f) * agility) - ((0.5f / 100f) * dexterity);
+
+        totalHealth = currentHealth;
     }
 }
