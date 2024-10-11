@@ -56,4 +56,24 @@ public class DumakulemSkills : MonoBehaviour
             Debug.Log("Dumakulem can skill again");
         }   
     }
+
+    public void DumakulemStats()
+    {
+        charStats.strength = PlayerPrefs.GetInt("Dumakulem_Str", 1);
+        charStats.agility = PlayerPrefs.GetInt("Dumakulem_Agi", 1);
+        charStats.intelligence = PlayerPrefs.GetInt("Dumakulem_Int", 1);
+        charStats.dexterity = PlayerPrefs.GetInt("Dumakulem_Dex", 1);
+        charStats.vitality = PlayerPrefs.GetInt("Dumakulem_Vit", 1);
+    }
+
+    public void AcceptUpgrade()
+    {
+        PlayerPrefs.SetFloat("Dumakulem_Str", charStats.strength);
+        PlayerPrefs.SetFloat("Dumakulem_Agi", charStats.agility);
+        PlayerPrefs.SetFloat("Dumakulem_Int", charStats.intelligence);
+        PlayerPrefs.SetFloat("Dumakulem_Dex", charStats.dexterity);
+        PlayerPrefs.SetFloat("Dumakulem_Vit", charStats.vitality);
+
+        PlayerPrefs.Save();
+    }
 }

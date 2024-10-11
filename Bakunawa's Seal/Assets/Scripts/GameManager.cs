@@ -29,15 +29,12 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         InstantiateSelectedCharacters();//test
-
         CharacterSelection();
-
     }
     public void Update()
     {
         OnGameCounts();
     }
-
     public void OnGameCounts()
     {
         waveCount.text = "Wave: " + spawnManager.waveCount.ToString();

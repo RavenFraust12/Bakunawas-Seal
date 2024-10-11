@@ -63,4 +63,23 @@ public class DumanganSkills : MonoBehaviour
 
         }
     }
+
+    public void DumanganStats()
+    {
+        charStats.strength = PlayerPrefs.GetInt("Dumangan_Str", 1);
+        charStats.agility = PlayerPrefs.GetInt("Dumangan_Agi", 1);
+        charStats.intelligence = PlayerPrefs.GetInt("Dumangan_Int", 1);
+        charStats.dexterity = PlayerPrefs.GetInt("Dumangan_Dex", 1);
+        charStats.vitality = PlayerPrefs.GetInt("Dumangan_Vit", 1);
+    }
+    public void AcceptUpgrade()
+    {
+        PlayerPrefs.SetFloat("Dumangan_Str", charStats.strength);
+        PlayerPrefs.SetFloat("Dumangan_Agi", charStats.agility);
+        PlayerPrefs.SetFloat("Dumangan_Int", charStats.intelligence);
+        PlayerPrefs.SetFloat("Dumangan_Dex", charStats.dexterity);
+        PlayerPrefs.SetFloat("Dumangan_Vit", charStats.vitality);
+
+        PlayerPrefs.Save();
+    }
 }
