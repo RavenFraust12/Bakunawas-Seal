@@ -996,7 +996,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 95507219}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 358814544}
+        m_TargetAssemblyTypeName: UpgradeStats, Assembly-CSharp
+        m_MethodName: SelectChar
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &95507219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2677,7 +2689,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 235435278}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 358814540}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 914808577}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &235435278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3668,6 +3704,7 @@ GameObject:
   - component: {fileID: 358814541}
   - component: {fileID: 358814543}
   - component: {fileID: 358814542}
+  - component: {fileID: 358814544}
   m_Layer: 5
   m_Name: CharacterPanel
   m_TagString: Untagged
@@ -3741,6 +3778,48 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 358814540}
   m_CullTransparentMesh: 1
+--- !u!114 &358814544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358814540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b41f990ecf99b47b083a3978aa8282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthText: {fileID: 1587718849}
+  attackText: {fileID: 52469397}
+  magicAttackText: {fileID: 2147063337}
+  armorText: {fileID: 1097708292}
+  magicDefText: {fileID: 941664797}
+  critRateText: {fileID: 812527008}
+  movespeedText: {fileID: 264093645}
+  attackspeedText: {fileID: 481101574}
+  strText: {fileID: 917979449}
+  agiText: {fileID: 1688091244}
+  intText: {fileID: 1004116619}
+  dexText: {fileID: 1482124062}
+  vitText: {fileID: 940693374}
+  strUpgrade: {fileID: 303246915}
+  agiUpgrade: {fileID: 1757782992}
+  intUpgrade: {fileID: 733754886}
+  dexUpgrade: {fileID: 1817838538}
+  vitUpgrade: {fileID: 353231917}
+  strPrice: {fileID: 1728917657}
+  agiPrice: {fileID: 1510014857}
+  intPrice: {fileID: 1452338182}
+  dexPrice: {fileID: 168002065}
+  vitPrice: {fileID: 865190966}
+  characters:
+  - {fileID: 224860449981939120, guid: fd1b1640d11e50441915d58938308717, type: 3}
+  - {fileID: 1940074806959869395, guid: 2ea14e0fad4b0ff4f9681f211b9b216e, type: 3}
+  - {fileID: 8898002524685575854, guid: d87d1e57aa3344a4b9389d013e09aaed, type: 3}
+  - {fileID: 4666918264517803756, guid: 1d97d2fb15be3504b8da01635ab10e04, type: 3}
+  charStats: {fileID: 0}
+  charNumber: 0
 --- !u!1 &360367747
 GameObject:
   m_ObjectHideFlags: 0
@@ -6602,7 +6681,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 718353829}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 358814544}
+        m_TargetAssemblyTypeName: UpgradeStats, Assembly-CSharp
+        m_MethodName: SelectChar
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &718353829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12748,7 +12839,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1536884109}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 358814544}
+        m_TargetAssemblyTypeName: UpgradeStats, Assembly-CSharp
+        m_MethodName: SelectChar
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1536884109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13834,7 +13937,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1776552991}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 358814544}
+        m_TargetAssemblyTypeName: UpgradeStats, Assembly-CSharp
+        m_MethodName: SelectChar
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1776552991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14829,7 +14944,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1940966429}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 914808577}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 358814540}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1940966429
 MonoBehaviour:
   m_ObjectHideFlags: 0

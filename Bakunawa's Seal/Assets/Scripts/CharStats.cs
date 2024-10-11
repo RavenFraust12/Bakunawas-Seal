@@ -67,10 +67,9 @@ public class CharStats : MonoBehaviour
             isDead = false;
         }
     }
-    void StatCalculation()
+    public void StatCalculation()
     {
-
-        baseHealth = baseHealth + (25f * strength) + (10f * intelligence) + (50f * vitality);
+        currentHealth = baseHealth + (25f * strength) + (10f * intelligence) + (50f * vitality);
         currentAttack = baseAttack + (5f * strength) + (3f * dexterity);
         currentMagicAttack = baseMagicAttack + (5f * intelligence);
         currentArmor = baseArmor + (0.5f * strength) + (0.2f * agility) + (1f * vitality);
@@ -78,7 +77,5 @@ public class CharStats : MonoBehaviour
         currentCritRate = baseCritRate + (0.5f * agility) + (0.2f * intelligence) + (1f * dexterity);
         currentMovespeed = baseMovespeed + ((0.2f / 100) * agility);
         currentAttackspeed = baseAttackSpeed - ((1f / 100f) * agility) - ((0.5f / 100f) * dexterity);
-
-        currentHealth = baseHealth;
     }
 }
