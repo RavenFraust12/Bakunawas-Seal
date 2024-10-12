@@ -15,6 +15,8 @@ public class CameraScript : MonoBehaviour
     public Vector3 navMeshMinBounds;
     public Vector3 navMeshMaxBounds;
 
+    public bool isPlayerControlled;
+
     private void Start()
     {
         
@@ -23,6 +25,7 @@ public class CameraScript : MonoBehaviour
     {
         playerUnits = GameObject.FindGameObjectsWithTag("Player");
         CameraLocation();
+        CameraPanningMovement();
     }
 
     public void CameraLocation() //Camera on who to follow
@@ -64,5 +67,38 @@ public class CameraScript : MonoBehaviour
         {
             charSelected = charNumber;
         }
+    }
+
+    public void CameraPanningMovement()
+    {
+        if (!isPlayerControlled)
+        {
+            if (Input.touchCount == 1) // Ensure there is exactly one touch
+            {
+                Touch touch = Input.GetTouch(0);
+
+                Debug.Log("Camera Panned");
+
+                if (touch.phase == TouchPhase.Moved) // Detect swipe movement
+                {
+                    // Scale down delta to control the movement speed
+                    Vector2 delta = touch.deltaPosition * cameraSpeed * Time.deltaTime;
+
+                    // Calculate the movement on XZ plane (Y stays constant)
+                    Vector3 move = new Vector3(-delta.x, 0, -delta.y);
+
+                    // Apply the movement to the camera's position
+                    Vector3 newPos = cameraObject.transform.position + move;
+
+                    //ClampCameraToNavMesh(newPos);
+
+                    // Clamp the new position to the defined limits
+                    newPos.x = Mathf.Clamp(newPos.x, navMeshMinBounds.x, navMeshMaxBounds.x);
+                    newPos.z = Mathf.Clamp(newPos.z, navMeshMinBounds.z, navMeshMaxBounds.z);
+
+                    cameraObject.transform.position = newPos;  // Apply the clamped position
+                }
+            }
+        }     
     }
 }
