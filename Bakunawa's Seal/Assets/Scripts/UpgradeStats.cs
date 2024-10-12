@@ -111,9 +111,9 @@ public class UpgradeStats : MonoBehaviour
     }
     public void ConfirmStatUpgrade()
     {
-        if (charNumber >= 1 && charNumber <= characters.Length)
+        if (charNumber >= 0 && charNumber <= characters.Length)
         {
-            GameObject selectedUnit = characters[charNumber - 1]; // charNumber is 1-based, so subtract 1
+            GameObject selectedUnit = characters[charNumber]; // charNumber is 1-based, so subtract 1
 
             switch (charNumber)
             {

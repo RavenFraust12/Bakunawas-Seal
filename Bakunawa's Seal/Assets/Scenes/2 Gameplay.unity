@@ -1984,6 +1984,7 @@ MonoBehaviour:
   navMeshSurface: {fileID: 513967552}
   navMeshMinBounds: {x: 15, y: 0, z: 2}
   navMeshMaxBounds: {x: 85, y: 0, z: 88}
+  isPlayerControlled: 0
 --- !u!1 &797944473
 GameObject:
   m_ObjectHideFlags: 0
@@ -4751,6 +4752,7 @@ MonoBehaviour:
   baseCritRate: 5
   baseMovespeed: 5
   baseAttackSpeed: 1.5
+  totalHealth: 0
   currentHealth: 0
   currentAttack: 0
   currentMagicAttack: 0
