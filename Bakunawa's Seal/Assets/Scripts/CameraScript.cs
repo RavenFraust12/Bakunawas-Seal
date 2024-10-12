@@ -61,10 +61,12 @@ public class CameraScript : MonoBehaviour
     {
         if (playerUnits[charNumber] != null && charSelected == charNumber)
         {
+            isPlayerControlled = false;
             charSelected = 4;
         }
         else if (playerUnits[charNumber] != null)
         {
+            isPlayerControlled = true;
             charSelected = charNumber;
         }
     }
