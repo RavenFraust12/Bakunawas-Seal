@@ -22,6 +22,7 @@ public class PlayerAI : MonoBehaviour
     public GameObject bulletHolder;
 
     private PlayerMovement playerMovement;
+    private CameraScript cameraScript;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,7 @@ public class PlayerAI : MonoBehaviour
         bulletHolder = GameObject.Find("BulletHolder");
 
         playerMovement = GetComponent<PlayerMovement>();
+        cameraScript = FindObjectOfType<CameraScript>();
 
     }
 
@@ -39,9 +41,18 @@ public class PlayerAI : MonoBehaviour
     {
         FindClosestEnemy();
         // Stop AI movement when the player is controlling the character
-        if (playerMovement != null && playerMovement.isPlayerControlling)
+        if (playerMovement != null && cameraScript.isPlayerControlled)
         {
             navAgent.ResetPath(); // Stop AI movement
+            // Check if within attack range
+            if (Vector3.Distance(transform.position, target.position) <= attackRange)
+            {
+                // Attack logic here, e.g., trigger attack animation
+                navAgent.ResetPath();
+                StartCoroutine(AttackDelay());
+                SkillDelay();
+                Debug.Log("Attacking " + target.name);
+            }
             return; // Skip further AI movement logic
         }
         else if (target != null)

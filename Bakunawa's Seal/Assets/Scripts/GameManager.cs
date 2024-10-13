@@ -5,11 +5,14 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public bool isMainMenu;
+
     [Header("Game HUD")]
     public GameObject[] charSelection;
     public TextMeshProUGUI[] charNames;
     public int charCount;
-    public TextMeshProUGUI killCount, pearlCount, coinCount, waveCount;
+    public TextMeshProUGUI killCountText, pearlCountText, coinCountText, waveCountText;
+    public int coinCount;
 
     [Header("Main Menu")]
     public GameObject[] charactersPrefab, charSpawnPoint;
@@ -33,12 +36,20 @@ public class GameManager : MonoBehaviour
     }
     public void Update()
     {
-        OnGameCounts();
+        if (isMainMenu)
+        {
+            coinCount = PlayerPrefs.GetInt("Coins", 1);
+        }
+        if (!isMainMenu)
+        {
+            OnGameCounts();
+        }
     }
     public void OnGameCounts()
     {
-        waveCount.text = "Wave: " + spawnManager.waveCount.ToString();
-        killCount.text = spawnManager.killedUnits.ToString();
+        coinCountText.text = "Coins: " + coinCount.ToString();
+        waveCountText.text = "Wave: " + spawnManager.waveCount.ToString();
+        killCountText.text = spawnManager.killedUnits.ToString();
     }
     public void CharacterSelection()
     {
