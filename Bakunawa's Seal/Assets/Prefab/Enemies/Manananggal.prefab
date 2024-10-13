@@ -163,6 +163,8 @@ MonoBehaviour:
   dexterity: 2
   vitality: 1
   currentStat: 0
+  lootDrop: {fileID: 8722337840919282068, guid: 4e6d415d86ac4734eb09585f17637e7d,
+    type: 3}
 --- !u!114 &7232573346128178930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,10 +178,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  attackRange: 2
-  isRanged: 0
   canAttack: 1
   weapon: {fileID: 3762184959253834985}
+  attackRange: 2
+  isRanged: 0
+  pointOfFire: {fileID: 0}
+  rangeProjectile: {fileID: 0}
+  bulletHolder: {fileID: 0}
 --- !u!1 &3762184959253834985
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,6 +304,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: Player
+  enemyStats: {fileID: 0}
+  charStats: {fileID: 0}
   isProjectile: 0
   projectileSpeed: 0
   isMagicDealing: 0

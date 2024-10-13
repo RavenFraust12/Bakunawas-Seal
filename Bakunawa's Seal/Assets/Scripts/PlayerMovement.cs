@@ -73,16 +73,18 @@ using UnityEngine;
 //}
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private Rigidbody _rigidbody;
+    public Rigidbody _rigidbody;
     [Header("Joystick Holder")]
     [SerializeField] private FixedJoystick _joystick; //palitan mo nlng FixedJoystick kung di mo trip
 
-    [SerializeField] private Animator _animator;
+    //[SerializeField] private Animator _animator;
     [SerializeField] private float _moveSpeed;
-    public bool isPlayerControlling;
 
-    private void Start()
+    private CameraScript _cameraScript;
+
+    private void Awake()
     {
+        _cameraScript = FindObjectOfType<CameraScript>();
         // Find the joystick in the scene if it's not assigned in the Inspector
         if (_joystick == null)
         {
@@ -93,21 +95,33 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+    private void Start()
+    {
+        
+    }
 
     private void FixedUpdate()
     {
         if (_joystick == null) return; // Exit if no joystick is found
+        if (_cameraScript.charSelected == 4) return; // Exit if no player object is found
+
+        if (_cameraScript.playerUnits[_cameraScript.charSelected] != null)
+        {
+            _rigidbody = _cameraScript.playerUnits[_cameraScript.charSelected].GetComponent<Rigidbody>();
+        }
+
+        _moveSpeed = _cameraScript.playerUnits[_cameraScript.charSelected].GetComponent<CharStats>().currentMovespeed;
 
         _rigidbody.velocity = new Vector3(_joystick.Horizontal * _moveSpeed, _rigidbody.velocity.y, _joystick.Vertical * _moveSpeed);
 
         if (_joystick.Horizontal != 0 || _joystick.Vertical != 0)
         {
             transform.rotation = Quaternion.LookRotation(_rigidbody.velocity);
-            _animator.SetBool("isRunning", true);
+            //_animator.SetBool("isRunning", true);
         }
         else
         {
-            _animator.SetBool("isRunning", false);
+            //_animator.SetBool("isRunning", false);
         }
     }
 }

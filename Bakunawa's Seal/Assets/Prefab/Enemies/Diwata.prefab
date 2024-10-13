@@ -163,6 +163,8 @@ MonoBehaviour:
   dexterity: 1
   vitality: 1
   currentStat: 0
+  lootDrop: {fileID: 8722337840919282068, guid: 4e6d415d86ac4734eb09585f17637e7d,
+    type: 3}
 --- !u!114 &7232573346128178930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +185,7 @@ MonoBehaviour:
   pointOfFire: {fileID: 3762184959253834985}
   rangeProjectile: {fileID: 3195827127240966767, guid: 08b8293746a283a4abfda225d6b679f4,
     type: 3}
+  bulletHolder: {fileID: 0}
 --- !u!1 &3762184959253834985
 GameObject:
   m_ObjectHideFlags: 0

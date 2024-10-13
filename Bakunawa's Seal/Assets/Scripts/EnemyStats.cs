@@ -28,6 +28,9 @@ public class EnemyStats : MonoBehaviour
     public float vitality = 1;
     public float currentStat;
 
+    [Header("Drops")]
+    public GameObject lootDrop;
+
     [Header("Scripts")]
     private SpawnManager spawnManager;
 
@@ -42,7 +45,8 @@ public class EnemyStats : MonoBehaviour
         if (currentHealth <= 0)
         {
             spawnManager.EnemyDestroyed();
-            Destroy(this.gameObject);
+
+            ChanceToDrop();
         }
     }
 
@@ -65,5 +69,13 @@ public class EnemyStats : MonoBehaviour
         currentMagicDefense = baseMagicDefense + (0.1f * intelligence) + (0.05f * vitality);
     }
 
+    public void ChanceToDrop()
+    {
+        if (Random.Range(0, 100) <= 50f)
+        {
+            Instantiate(lootDrop, transform.position, Quaternion.identity);
+        }
+        Destroy(this.gameObject);
+    }
     
 }
