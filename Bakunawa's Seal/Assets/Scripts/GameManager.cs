@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -9,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Game HUD")]
     public GameObject[] charSelection;
+    public Slider[] healthSlider;
+    public Slider[] skillSlider;
     public TextMeshProUGUI[] charNames;
     public int charCount;
     public TextMeshProUGUI killCountText, pearlCountText, coinCountText, waveCountText;
@@ -42,6 +45,7 @@ public class GameManager : MonoBehaviour
         }
         if (!isMainMenu)
         {
+            UpdateHealthSliders();
             OnGameCounts();
         }
     }
@@ -60,6 +64,26 @@ public class GameManager : MonoBehaviour
             CharStats charStats = player.GetComponent<CharStats>();
             charSelection[charCount].SetActive(true);
             charNames[charCount].text = charStats.playerName;
+
+            //healthSlider[charCount].maxValue = charStats.totalHealth;
+            //healthSlider[charCount].value = charStats.currentHealth;
+
+            charCount++;
+        }
+    }
+
+    private void UpdateHealthSliders()
+    {
+        charCount = 0;  // Reset character count
+
+        GameObject[] playerUnits = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (GameObject player in playerUnits)
+        {
+            CharStats charStats = player.GetComponent<CharStats>();
+
+            healthSlider[charCount].maxValue = charStats.totalHealth;
+            healthSlider[charCount].value = charStats.currentHealth;
 
             charCount++;
         }
