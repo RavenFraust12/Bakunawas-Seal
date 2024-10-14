@@ -14,9 +14,6 @@ public class CameraScript : MonoBehaviour
     public NavMeshSurface navMeshSurface;
     public Vector3 navMeshMinBounds;
     public Vector3 navMeshMaxBounds;
-
-    public bool isPlayerControlled;
-
     private void Start()
     {
         
@@ -61,19 +58,22 @@ public class CameraScript : MonoBehaviour
     {
         if (playerUnits[charNumber] != null && charSelected == charNumber)
         {
-            isPlayerControlled = false;
+            playerUnits[charNumber].GetComponent<PlayerAI>().isPlayerControlled = false;
             charSelected = 4;
         }
         else if (playerUnits[charNumber] != null)
         {
-            isPlayerControlled = true;
+            if (playerUnits[charNumber].GetComponent<CharStats>().isDead == false)
+            {
+                playerUnits[charNumber].GetComponent<PlayerAI>().isPlayerControlled = true;
+            }
             charSelected = charNumber;
         }
     }
 
     public void CameraPanningMovement()
     {
-        if (!isPlayerControlled)
+        if (charSelected == 4)
         {
             if (Input.touchCount == 1) // Ensure there is exactly one touch
             {
