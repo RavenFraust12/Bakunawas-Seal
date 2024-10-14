@@ -40,29 +40,36 @@ public class PlayerAI : MonoBehaviour
     void Update()
     {
         FindClosestEnemy();
+
+        if(target != null)
+        {
+            PlayerActionAI();
+        }  
+    }
+
+    void PlayerActionAI()
+    {
+        // Rotate towards the target
+        Vector3 direction = (target.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+
         // Stop AI movement when the player is controlling the character
-        if (playerMovement != null && cameraScript.isPlayerControlled)
+        if (cameraScript.isPlayerControlled)
         {
             navAgent.ResetPath(); // Stop AI movement
-            // Check if within attack range
+                                  // Check if within attack range
             if (Vector3.Distance(transform.position, target.position) <= attackRange)
             {
                 // Attack logic here, e.g., trigger attack animation
-                navAgent.ResetPath();
                 StartCoroutine(AttackDelay());
                 SkillDelay();
                 Debug.Log("Attacking " + target.name);
             }
             return; // Skip further AI movement logic
         }
-        else if (target != null)
+        else if (!cameraScript.isPlayerControlled)
         {
-            // Rotate towards the target
-            Vector3 direction = (target.position - transform.position).normalized;
-            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
-            navAgent.SetDestination(target.transform.position);
-
             // Check if within attack range
             if (Vector3.Distance(transform.position, target.position) <= attackRange)
             {
@@ -79,7 +86,6 @@ public class PlayerAI : MonoBehaviour
             Debug.Log("No Enemy Detected");
         }
     }
-
     void FindClosestEnemy()
     {
         if (charStats.isDead == false)
