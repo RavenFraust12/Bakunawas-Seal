@@ -14,4 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/3 End Credits.unity
     guid: 87d1170397e2b5a46a4ad4373a39a6de
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
+      guid: 95c0767fb1438454db05d181872ed74c, type: 2}
