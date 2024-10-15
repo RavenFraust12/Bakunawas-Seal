@@ -10,14 +10,30 @@ public class DumakulemSkills : MonoBehaviour
 
     public GameObject[] playerUnits;
 
+    public float maxCooldown;
+
     private void Awake()
     {
         charStats = GetComponentInParent<CharStats>();
+        
     }
-
+    private void Start()
+    {
+        maxCooldown = (charStats.currentAttackspeed * 3f) + 3f;
+        charStats.skillCooldown = maxCooldown;
+        charStats.skillTime = maxCooldown;
+    }
     public void Update()
     {
         playerUnits = GameObject.FindGameObjectsWithTag("Player");
+        if (!canSkill)
+        {
+            charStats.skillTime += Time.deltaTime;
+        }
+        else
+        {
+            charStats.skillTime = maxCooldown;
+        }
     }
     public void Skills()
     {

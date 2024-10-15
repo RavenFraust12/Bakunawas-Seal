@@ -35,6 +35,8 @@ public class CharStats : MonoBehaviour
     [Header("Gameplay")]
     public bool isDead;
     public string playerName;
+    public float skillCooldown;
+    public float skillTime;
 
 
     private void Start()
@@ -48,6 +50,8 @@ public class CharStats : MonoBehaviour
 
         if (currentCritRate >= 100) currentCritRate = 100;
         if (currentAttackspeed <= 0.25f) currentAttackspeed = 0.25f;
+
+
     }
 
     void DeathChecker()

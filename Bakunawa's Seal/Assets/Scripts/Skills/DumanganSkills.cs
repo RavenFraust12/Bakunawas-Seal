@@ -8,12 +8,31 @@ public class DumanganSkills : MonoBehaviour
     public bool canSkill;
     public GameObject pointOfFire, rangeProjectile, bulletHolder;
 
+    public float maxCooldown;
+
     private void Awake()
     {
         charStats = GetComponentInParent<CharStats>();
         bulletHolder = GameObject.Find("BulletHolder");
+        
     }
-
+    private void Start()
+    {
+        maxCooldown = (charStats.currentAttackspeed * 3f) + 3f;
+        charStats.skillCooldown = maxCooldown;
+        charStats.skillTime = maxCooldown;
+    }
+    public void Update()
+    {
+        if (!canSkill)
+        {
+            charStats.skillTime += Time.deltaTime;
+        }
+        else
+        {
+            charStats.skillTime = maxCooldown;
+        }
+    }
     public void Skills()
     {
         StartCoroutine(SkillNiDumangan());
@@ -39,6 +58,8 @@ public class DumanganSkills : MonoBehaviour
 
             //SpreadShot Skill
             canSkill = false;
+            charStats.skillTime = 0f;
+
             int numberOfProjectiles = 5;
             float spreadAngle = 45f;  // Total spread angle for the cone
             float angleStep = spreadAngle / (numberOfProjectiles - 1);

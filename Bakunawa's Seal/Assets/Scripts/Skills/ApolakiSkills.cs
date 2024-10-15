@@ -7,6 +7,7 @@ public class ApolakiSkills : MonoBehaviour
     public GameObject weaponSkill;
     public bool canSkill;
     private CharStats charStats;
+    public float maxCooldown;
 
     private void Awake()
     {
@@ -14,15 +15,34 @@ public class ApolakiSkills : MonoBehaviour
         //ApolakiStats();
     }
 
+    private void Start()
+    {
+        maxCooldown = (charStats.currentAttackspeed * 3f) + 3f;
+        charStats.skillCooldown = maxCooldown;
+        charStats.skillTime = maxCooldown;
+    }
     public void Skills()
     {
         StartCoroutine(SkillNiApolaki());
+    }
+
+    public void Update()
+    {
+        if (!canSkill)
+        {
+            charStats.skillTime += Time.deltaTime;
+        }   
+        else
+        {
+            charStats.skillTime = maxCooldown;
+        }
     }
 
     IEnumerator SkillNiApolaki()
     {
         if(canSkill)
         {
+            charStats.skillTime = 0f;
             canSkill = false;
             weaponSkill.SetActive(true);
             yield return new WaitForSeconds(0.2f);
