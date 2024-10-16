@@ -85,6 +85,9 @@ public class GameManager : MonoBehaviour
             healthSlider[charCount].maxValue = charStats.totalHealth;
             healthSlider[charCount].value = charStats.currentHealth;
 
+            skillSlider[charCount].maxValue = charStats.skillCooldown;
+            skillSlider[charCount].value = charStats.skillTime;
+
             charCount++;
         }
     }

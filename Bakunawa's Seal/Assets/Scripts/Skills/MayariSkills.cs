@@ -13,15 +13,29 @@ public class MayariSkills : MonoBehaviour
     public GameObject heal;
     public Transform target;
 
+    public float maxCooldown;
+
     private void Awake()
     {
         charStats = GetComponentInParent<CharStats>();
     }
-
+    private void Start()
+    {
+        maxCooldown = (charStats.currentAttackspeed * 5f) + 5f;
+        charStats.skillCooldown = maxCooldown;
+        charStats.skillTime = maxCooldown;
+    }
     public void Update()
     {
         playerUnits = GameObject.FindGameObjectsWithTag("Player");
-
+        if (!canSkill)
+        {
+            charStats.skillTime += Time.deltaTime;
+        }
+        else
+        {
+            charStats.skillTime = maxCooldown;
+        }
     }
     public void Skills()
     {
@@ -31,6 +45,7 @@ public class MayariSkills : MonoBehaviour
     {
         if (canSkill)
         {
+            charStats.skillTime = 0f;
             canSkill = false;
 
             float closestDistance = Mathf.Infinity;
