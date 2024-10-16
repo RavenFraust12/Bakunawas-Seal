@@ -35,13 +35,18 @@ public class UpgradeStats : MonoBehaviour
     public float baseVitality;
 
     [Header("Archive Upgrade Price")]
-    public TextMeshProUGUI strPrice;
-    public TextMeshProUGUI agiPrice;
-    public TextMeshProUGUI intPrice;
-    public TextMeshProUGUI dexPrice;
-    public TextMeshProUGUI vitPrice;
+    public TextMeshProUGUI strPriceText;
+    public TextMeshProUGUI agiPriceText;
+    public TextMeshProUGUI intPriceText;
+    public TextMeshProUGUI dexPriceText;
+    public TextMeshProUGUI vitPriceText;
+    public float strPrice;
+    public float agiPrice;
+    public float intPrice;
+    public float dexPrice;
+    public float vitPrice;
 
-    [Header("Characters")]
+[Header("Characters")]
     public GameObject[] characters;
     public CharStats charStats;
     public int charNumber;
@@ -51,6 +56,11 @@ public class UpgradeStats : MonoBehaviour
 
 
     private void Awake()
+    {
+        
+    }
+
+    private void Start()
     {
         UpdateSelectedCharacterStats();
 
@@ -96,6 +106,19 @@ public class UpgradeStats : MonoBehaviour
             intText.text = charStats.intelligence.ToString();
             dexText.text = charStats.dexterity.ToString();
             vitText.text = charStats.vitality.ToString();
+
+            //Attribute Price
+            strPrice = charStats.strength * 5f;
+            agiPrice = charStats.agility * 5f;
+            intPrice = charStats.intelligence * 5f;
+            dexPrice = charStats.dexterity * 5f;
+            vitPrice = charStats.vitality * 5f;
+
+            strPriceText.text = strPrice.ToString();
+            agiPriceText.text = agiPrice.ToString();
+            intPriceText.text = intPrice.ToString();
+            dexPriceText.text = dexPrice.ToString();
+            vitPriceText.text = vitPrice.ToString();
         }
     }
     public void SelectChar(int selectNumber)
@@ -120,28 +143,28 @@ public class UpgradeStats : MonoBehaviour
                 case 1:
                     ApolakiSkills apolaki = selectedUnit.GetComponent<ApolakiSkills>();
                     if (apolaki != null)
-                        apolaki.AcceptUpgrade();
+                        apolaki.AcceptUpgrade(charStats.strength, charStats.agility, charStats.intelligence, charStats.dexterity, charStats.vitality);
                     else
                         Debug.LogError("ApolakiSkills not found on the selected unit");
                     break;
                 case 2:
                     MayariSkills mayari = selectedUnit.GetComponent<MayariSkills>();
                     if (mayari != null)
-                        mayari.AcceptUpgrade();
+                        mayari.AcceptUpgrade(charStats.strength, charStats.agility, charStats.intelligence, charStats.dexterity, charStats.vitality);
                     else
                         Debug.LogError("MayariSkills not found on the selected unit");
                     break;
                 case 3:
                     DumanganSkills dumangan = selectedUnit.GetComponent<DumanganSkills>();
                     if (dumangan != null)
-                        dumangan.AcceptUpgrade();
+                        dumangan.AcceptUpgrade(charStats.strength, charStats.agility, charStats.intelligence, charStats.dexterity, charStats.vitality);
                     else
                         Debug.LogError("DumanganSkills not found on the selected unit");
                     break;
                 case 4:
                     DumakulemSkills dumakulem = selectedUnit.GetComponent<DumakulemSkills>();
                     if (dumakulem != null)
-                        dumakulem.AcceptUpgrade();
+                        dumakulem.AcceptUpgrade(charStats.strength, charStats.agility, charStats.intelligence, charStats.dexterity, charStats.vitality);
                     else
                         Debug.LogError("DumakulemSkills not found on the selected unit");
                     break;
@@ -157,11 +180,36 @@ public class UpgradeStats : MonoBehaviour
     }
     public void AddAttribute(string attributeName)
     {
-        if (attributeName == "Strength") charStats.strength++;
-        else if (attributeName == "Agility") charStats.agility++;
-        else if (attributeName == "Intelligence") charStats.intelligence++;
-        else if (attributeName == "Dexterity") charStats.dexterity++;
-        else if (attributeName == "Vitality") charStats.vitality++;
+        float currentCoins = PlayerPrefs.GetFloat("Coins", 0);
+
+        if (attributeName == "Strength" && strPrice <= currentCoins)
+        {
+            currentCoins -= strPrice;
+            charStats.strength++;
+        }
+        else if (attributeName == "Agility" && agiPrice <= currentCoins)
+        {
+            currentCoins -= agiPrice;
+            charStats.agility++;
+        }
+        else if (attributeName == "Intelligence" && intPrice <= currentCoins)
+        {
+            currentCoins -= intPrice;
+            charStats.intelligence++;
+        }
+        else if (attributeName == "Dexterity" && dexPrice <= currentCoins)
+        {
+            currentCoins -= dexPrice;
+            charStats.dexterity++;
+        }
+        else if (attributeName == "Vitality" && vitPrice <= currentCoins)
+        {
+            currentCoins -= vitPrice;
+            charStats.vitality++;
+        }
+
+        PlayerPrefs.SetFloat("Coins", currentCoins); // Save the updated coin count
+
     }
     public void SubtractAttribute(string attributeName)
     {

@@ -28,9 +28,4 @@ public class HPandSkillsHUD : MonoBehaviour
             manager.charCount++;
         }
     }
-
-    public void CharacterSkill()
-    {
-
-    }
 }

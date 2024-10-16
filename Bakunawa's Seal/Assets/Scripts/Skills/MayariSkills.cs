@@ -112,13 +112,13 @@ public class MayariSkills : MonoBehaviour
         charStats.vitality = PlayerPrefs.GetInt("Mayari_Vit", 1);
     }
 
-    public void AcceptUpgrade()
+    public void AcceptUpgrade(float strength, float agility, float intelligence, float dexterity, float vitality)
     {
-        PlayerPrefs.SetFloat("Mayari_Str", charStats.strength);
-        PlayerPrefs.SetFloat("Mayari_Agi", charStats.agility);
-        PlayerPrefs.SetFloat("Mayari_Int", charStats.intelligence);
-        PlayerPrefs.SetFloat("Mayari_Dex", charStats.dexterity);
-        PlayerPrefs.SetFloat("Mayari_Vit", charStats.vitality);
+        PlayerPrefs.SetFloat("Mayari_Str", strength);
+        PlayerPrefs.SetFloat("Mayari_Agi", agility);
+        PlayerPrefs.SetFloat("Mayari_Int", intelligence);
+        PlayerPrefs.SetFloat("Mayari_Dex", dexterity);
+        PlayerPrefs.SetFloat("Mayari_Vit", vitality);
 
         PlayerPrefs.Save();
     }

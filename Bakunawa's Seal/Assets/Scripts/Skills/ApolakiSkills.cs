@@ -61,13 +61,13 @@ public class ApolakiSkills : MonoBehaviour
         charStats.vitality = PlayerPrefs.GetInt("Apolaki_Vit", 1);
     }
 
-    public void AcceptUpgrade()
+    public void AcceptUpgrade(float strength, float agility, float intelligence, float dexterity, float vitality)
     {
-        PlayerPrefs.SetFloat("Apolaki_Str", charStats.strength);
-        PlayerPrefs.SetFloat("Apolaki_Agi", charStats.agility);
-        PlayerPrefs.SetFloat("Apolaki_Int", charStats.intelligence);
-        PlayerPrefs.SetFloat("Apolaki_Dex", charStats.dexterity);
-        PlayerPrefs.SetFloat("Apolaki_Vit", charStats.vitality);
+        PlayerPrefs.SetFloat("Apolaki_Str", strength);
+        PlayerPrefs.SetFloat("Apolaki_Agi", agility);
+        PlayerPrefs.SetFloat("Apolaki_Int", intelligence);
+        PlayerPrefs.SetFloat("Apolaki_Dex", dexterity);
+        PlayerPrefs.SetFloat("Apolaki_Vit", vitality);
 
         PlayerPrefs.Save();
     }

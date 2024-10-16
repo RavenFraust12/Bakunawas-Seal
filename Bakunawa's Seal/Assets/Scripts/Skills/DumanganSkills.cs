@@ -93,13 +93,13 @@ public class DumanganSkills : MonoBehaviour
         charStats.dexterity = PlayerPrefs.GetInt("Dumangan_Dex", 1);
         charStats.vitality = PlayerPrefs.GetInt("Dumangan_Vit", 1);
     }
-    public void AcceptUpgrade()
+    public void AcceptUpgrade(float strength, float agility, float intelligence, float dexterity, float vitality)
     {
-        PlayerPrefs.SetFloat("Dumangan_Str", charStats.strength);
-        PlayerPrefs.SetFloat("Dumangan_Agi", charStats.agility);
-        PlayerPrefs.SetFloat("Dumangan_Int", charStats.intelligence);
-        PlayerPrefs.SetFloat("Dumangan_Dex", charStats.dexterity);
-        PlayerPrefs.SetFloat("Dumangan_Vit", charStats.vitality);
+        PlayerPrefs.SetFloat("Dumangan_Str", strength);
+        PlayerPrefs.SetFloat("Dumangan_Agi", agility);
+        PlayerPrefs.SetFloat("Dumangan_Int", intelligence);
+        PlayerPrefs.SetFloat("Dumangan_Dex", dexterity);
+        PlayerPrefs.SetFloat("Dumangan_Vit", vitality);
 
         PlayerPrefs.Save();
     }

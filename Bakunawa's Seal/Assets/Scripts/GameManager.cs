@@ -6,6 +6,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
     public bool isMainMenu;
 
     [Header("Game HUD")]
@@ -14,8 +15,8 @@ public class GameManager : MonoBehaviour
     public Slider[] skillSlider;
     public TextMeshProUGUI[] charNames;
     public int charCount;
-    public TextMeshProUGUI killCountText, pearlCountText, coinCountText, waveCountText;
-    public int coinCount;
+    public TextMeshProUGUI killCountText, coinCountText, waveCountText;
+    public float coinCount;
 
     [Header("Main Menu")]
     public GameObject[] charactersPrefab, charSpawnPoint;
@@ -24,11 +25,13 @@ public class GameManager : MonoBehaviour
     [Header("Scripts")]
     private SpawnManager spawnManager;
 
-    [Header("Test")]
+    [Header("Character Objects")]
     public GameObject[] characterPrefabs;  // Same prefabs as in the main menu
 
     private void Awake()
     {
+        if(Instance == null) { Instance = this; } else { Destroy(gameObject); }
+
         spawnManager = FindObjectOfType<SpawnManager>();
         charHolder = GameObject.Find("Character Holder");
     }
@@ -41,7 +44,7 @@ public class GameManager : MonoBehaviour
     {
         if (isMainMenu)
         {
-            coinCount = PlayerPrefs.GetInt("Coins", 1);
+            OnMainMenuCounts();
         }
         if (!isMainMenu)
         {
@@ -53,7 +56,13 @@ public class GameManager : MonoBehaviour
     {
         coinCountText.text = "Coins: " + coinCount.ToString();
         waveCountText.text = "Wave: " + spawnManager.waveCount.ToString();
-        killCountText.text = spawnManager.killedUnits.ToString();
+        killCountText.text = "Kills: " + spawnManager.killedUnits.ToString();
+    }
+
+    public void OnMainMenuCounts()
+    {
+        coinCount = PlayerPrefs.GetFloat("Coins", 0);
+        coinCountText.text = coinCount.ToString();
     }
     public void CharacterSelection()
     {
@@ -64,9 +73,6 @@ public class GameManager : MonoBehaviour
             CharStats charStats = player.GetComponent<CharStats>();
             charSelection[charCount].SetActive(true);
             charNames[charCount].text = charStats.playerName;
-
-            //healthSlider[charCount].maxValue = charStats.totalHealth;
-            //healthSlider[charCount].value = charStats.currentHealth;
 
             charCount++;
         }

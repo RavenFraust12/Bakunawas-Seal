@@ -7,12 +7,10 @@ public class Drops : MonoBehaviour
 {
     public Transform target;
     public float detectionRange;
-    public GameManager manager;
     public float speed;
 
     private void Awake()
     {
-        manager = FindObjectOfType<GameManager>();
     }
 
     public void Update()
@@ -53,8 +51,9 @@ public class Drops : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            manager.coinCount++;
-            //PlayerPrefs.SetInt("Coins", +1);
+            GameManager.Instance.coinCount++;
+            float currentCoins = PlayerPrefs.GetFloat("Coins", 0);
+            PlayerPrefs.SetFloat("Coins", currentCoins + 1);
             Destroy(this.gameObject);
         }
     }

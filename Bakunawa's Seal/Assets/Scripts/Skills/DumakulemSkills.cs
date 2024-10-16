@@ -82,13 +82,13 @@ public class DumakulemSkills : MonoBehaviour
         charStats.vitality = PlayerPrefs.GetInt("Dumakulem_Vit", 1);
     }
 
-    public void AcceptUpgrade()
+    public void AcceptUpgrade(float strength, float agility, float intelligence, float dexterity, float vitality)
     {
-        PlayerPrefs.SetFloat("Dumakulem_Str", charStats.strength);
-        PlayerPrefs.SetFloat("Dumakulem_Agi", charStats.agility);
-        PlayerPrefs.SetFloat("Dumakulem_Int", charStats.intelligence);
-        PlayerPrefs.SetFloat("Dumakulem_Dex", charStats.dexterity);
-        PlayerPrefs.SetFloat("Dumakulem_Vit", charStats.vitality);
+        PlayerPrefs.SetFloat("Dumakulem_Str", strength);
+        PlayerPrefs.SetFloat("Dumakulem_Agi", agility);
+        PlayerPrefs.SetFloat("Dumakulem_Int", intelligence);
+        PlayerPrefs.SetFloat("Dumakulem_Dex", dexterity);
+        PlayerPrefs.SetFloat("Dumakulem_Vit", vitality);
 
         PlayerPrefs.Save();
     }
