@@ -12,12 +12,12 @@ public class ApolakiSkills : MonoBehaviour
     private void Awake()
     {
         charStats = GetComponentInParent<CharStats>();
-        //ApolakiStats();
     }
 
     private void Start()
     {
         maxCooldown = (charStats.currentAttackspeed * 3f) + 3f;
+        ApolakiStats();
         charStats.skillCooldown = maxCooldown;
         charStats.skillTime = maxCooldown;
     }

@@ -140,28 +140,28 @@ public class UpgradeStats : MonoBehaviour
 
             switch (charNumber)
             {
-                case 1:
+                case 0:
                     ApolakiSkills apolaki = selectedUnit.GetComponent<ApolakiSkills>();
                     if (apolaki != null)
                         apolaki.AcceptUpgrade(charStats.strength, charStats.agility, charStats.intelligence, charStats.dexterity, charStats.vitality);
                     else
                         Debug.LogError("ApolakiSkills not found on the selected unit");
                     break;
-                case 2:
+                case 1:
                     MayariSkills mayari = selectedUnit.GetComponent<MayariSkills>();
                     if (mayari != null)
                         mayari.AcceptUpgrade(charStats.strength, charStats.agility, charStats.intelligence, charStats.dexterity, charStats.vitality);
                     else
                         Debug.LogError("MayariSkills not found on the selected unit");
                     break;
-                case 3:
+                case 2:
                     DumanganSkills dumangan = selectedUnit.GetComponent<DumanganSkills>();
                     if (dumangan != null)
                         dumangan.AcceptUpgrade(charStats.strength, charStats.agility, charStats.intelligence, charStats.dexterity, charStats.vitality);
                     else
                         Debug.LogError("DumanganSkills not found on the selected unit");
                     break;
-                case 4:
+                case 3:
                     DumakulemSkills dumakulem = selectedUnit.GetComponent<DumakulemSkills>();
                     if (dumakulem != null)
                         dumakulem.AcceptUpgrade(charStats.strength, charStats.agility, charStats.intelligence, charStats.dexterity, charStats.vitality);

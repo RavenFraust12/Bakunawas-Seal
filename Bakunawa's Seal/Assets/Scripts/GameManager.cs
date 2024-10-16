@@ -54,9 +54,9 @@ public class GameManager : MonoBehaviour
     }
     public void OnGameCounts()
     {
-        coinCountText.text = "Coins: " + coinCount.ToString();
-        waveCountText.text = "Wave: " + spawnManager.waveCount.ToString();
-        killCountText.text = "Kills: " + spawnManager.killedUnits.ToString();
+        coinCountText.text = coinCount.ToString();
+        waveCountText.text = spawnManager.waveCount.ToString();
+        killCountText.text = spawnManager.killedUnits.ToString();
     }
 
     public void OnMainMenuCounts()

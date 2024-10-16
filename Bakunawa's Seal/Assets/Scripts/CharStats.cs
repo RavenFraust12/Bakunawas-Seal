@@ -50,10 +50,7 @@ public class CharStats : MonoBehaviour
 
         if (currentCritRate >= 100) currentCritRate = 100;
         if (currentAttackspeed <= 0.25f) currentAttackspeed = 0.25f;
-
-
     }
-
     void DeathChecker()
     {
         if (currentHealth <= 0)
