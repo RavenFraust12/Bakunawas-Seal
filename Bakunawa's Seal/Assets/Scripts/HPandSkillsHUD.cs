@@ -24,6 +24,9 @@ public class HPandSkillsHUD : MonoBehaviour
     public TextMeshProUGUI[] dexText;
     public TextMeshProUGUI[] vitText;
 
+    [Header("Kills, Coins, Waves, and Time")]
+    public TextMeshProUGUI killCount, coinCount, waveCount, timer;
+
     public void Start()
     {
         // Find all PlayerObjects in the scene (tag them as "Player")
@@ -55,5 +58,14 @@ public class HPandSkillsHUD : MonoBehaviour
                 vitText[i].text = charStats.vitality.ToString();
             }
         }
+    }
+
+    public void Update()
+    {
+        killCount.text = GameManager.Instance.killCountText.text;
+        coinCount.text = GameManager.Instance.coinCountText.text;
+        waveCount.text = "Waves: " + GameManager.Instance.waveCountText.text;
+        GameManager.Instance.Timer();
+        timer.text = "GameTime: " + GameManager.Instance.finalTimer;      
     }
 }

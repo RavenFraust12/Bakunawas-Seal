@@ -180,7 +180,7 @@ MonoBehaviour:
   target: {fileID: 0}
   canAttack: 1
   weapon: {fileID: 3762184959253834985}
-  attackRange: 3
+  attackRange: 2.5
   isRanged: 0
   pointOfFire: {fileID: 0}
   rangeProjectile: {fileID: 0}
