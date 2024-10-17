@@ -180,6 +180,7 @@ MonoBehaviour:
   baseCritRate: 5
   baseMovespeed: 5
   baseAttackSpeed: 1.5
+  totalHealth: 0
   currentHealth: 0
   currentAttack: 0
   currentMagicAttack: 0
@@ -193,8 +194,11 @@ MonoBehaviour:
   intelligence: 1
   dexterity: 1
   vitality: 1
-  isDead: 0
+  charProfile: {fileID: 21300000, guid: 5eddb4f8dd751cc498779887942c56fa, type: 3}
   playerName: Mayari
+  isDead: 0
+  skillCooldown: 0
+  skillTime: 0
 --- !u!114 &2785278379452383576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +222,7 @@ MonoBehaviour:
   rangeProjectile: {fileID: 3195827127240966767, guid: a6c052c50b359c54089d9d84b1e6e165,
     type: 3}
   bulletHolder: {fileID: 0}
+  isPlayerControlled: 0
 --- !u!114 &4254976588943614272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,6 +242,7 @@ MonoBehaviour:
     type: 3}
   heal: {fileID: 0}
   target: {fileID: 0}
+  maxCooldown: 0
 --- !u!1 &8354924409916782427
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,12 +12,20 @@ public class GameManager : MonoBehaviour
 
     [Header("Game HUD")]
     public GameObject[] charSelection;
-    public Slider[] healthSlider;
-    public Slider[] skillSlider;
+    public GameObject[] charStatHUD;
+    public Image[] healthSlider;
+    public Image[] skillSlider;
     public TextMeshProUGUI[] charNames;
     public int charCount;
-    public TextMeshProUGUI killCountText, coinCountText, waveCountText;
+    public TextMeshProUGUI killCountText, coinCountText, waveCountText, gameTimeText;
     public float coinCount;
+    public float timer;
+    public string finalTimer;
+    public bool allDead = false;
+
+    [Header("Defeat Panel")]
+    public GameObject losePanel;
+    public TextMeshProUGUI finalKillCountText, finalCoinCountText, finalWaveCountText, finalGameTimeText;
 
     [Header("Main Menu")]
     public GameObject[] charactersPrefab, charSpawnPoint;
@@ -50,6 +59,33 @@ public class GameManager : MonoBehaviour
         {
             UpdateHealthSliders();
             OnGameCounts();
+            DeathChecker();
+        }
+    }
+
+    public void DeathChecker()
+    {
+        allDead = true;  // Assume all are dead initially
+
+        GameObject[] playerUnits = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (GameObject player in playerUnits)
+        {
+            CharStats charStats = player.GetComponent<CharStats>();
+
+            if (!charStats.isDead)
+            {
+                allDead = false;
+            }
+        }
+
+        if(allDead)
+        {
+            losePanel.SetActive(true);
+            finalCoinCountText.text = coinCount.ToString();
+            finalWaveCountText.text = spawnManager.waveCount.ToString();
+            finalKillCountText.text = spawnManager.killedUnits.ToString();
+            finalGameTimeText.text = finalTimer;
         }
     }
     public void OnGameCounts()
@@ -57,6 +93,24 @@ public class GameManager : MonoBehaviour
         coinCountText.text = coinCount.ToString();
         waveCountText.text = spawnManager.waveCount.ToString();
         killCountText.text = spawnManager.killedUnits.ToString();
+    }
+
+    public void Timer()
+    {
+        if (!allDead)
+        {
+            // Increment the timer by the time passed since the last frame
+            timer += Time.deltaTime;
+
+            // Calculate minutes and seconds
+            TimeSpan timeSpan = TimeSpan.FromSeconds(timer);
+
+            // Format the time as MM:SS
+            finalTimer = string.Format("{0:D2}:{1:D2}", timeSpan.Minutes, timeSpan.Seconds);
+
+            // Update the clockText UI
+            //finalGameTimeText.text = timeText;
+        }   
     }
 
     public void OnMainMenuCounts()
@@ -72,7 +126,10 @@ public class GameManager : MonoBehaviour
         {
             CharStats charStats = player.GetComponent<CharStats>();
             charSelection[charCount].SetActive(true);
-            charNames[charCount].text = charStats.playerName;
+            charStatHUD[charCount].SetActive(true);
+
+            Image charImage = charSelection[charCount].GetComponent<Image>();
+            charImage.sprite = charStats.charProfile;
 
             charCount++;
         }
@@ -88,11 +145,9 @@ public class GameManager : MonoBehaviour
         {
             CharStats charStats = player.GetComponent<CharStats>();
 
-            healthSlider[charCount].maxValue = charStats.totalHealth;
-            healthSlider[charCount].value = charStats.currentHealth;
+            healthSlider[charCount].fillAmount = charStats.currentHealth / charStats.totalHealth;
 
-            skillSlider[charCount].maxValue = charStats.skillCooldown;
-            skillSlider[charCount].value = charStats.skillTime;
+            skillSlider[charCount].fillAmount = charStats.skillTime / charStats.skillCooldown;
 
             charCount++;
         }

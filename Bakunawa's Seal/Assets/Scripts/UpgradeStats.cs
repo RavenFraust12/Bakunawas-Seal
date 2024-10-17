@@ -6,6 +6,8 @@ using TMPro;
 public class UpgradeStats : MonoBehaviour
 {
     [Header("Archive Stats")]
+    public TextMeshProUGUI charNameText;
+    public string charName;
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI attackText;
     public TextMeshProUGUI magicAttackText;
@@ -126,6 +128,7 @@ public class UpgradeStats : MonoBehaviour
         charNumber = selectNumber;
         StatText();
 
+        charName = charStats.playerName;
         baseStrength = charStats.strength;
         baseAgility = charStats.agility;
         baseIntelligence = charStats.intelligence;
@@ -134,7 +137,15 @@ public class UpgradeStats : MonoBehaviour
     }
     public void ConfirmStatUpgrade()
     {
-        if (charNumber >= 0 && charNumber <= characters.Length)
+        PlayerPrefs.SetFloat(charName + "_Str", charStats.strength);
+        PlayerPrefs.SetFloat(charName + "_Agi", charStats.agility);
+        PlayerPrefs.SetFloat(charName + "_Int", charStats.intelligence);
+        PlayerPrefs.SetFloat(charName + "_Dex", charStats.dexterity);
+        PlayerPrefs.SetFloat(charName + "_Vit", charStats.vitality);
+
+        PlayerPrefs.Save();
+
+        /*if (charNumber >= 0 && charNumber <= characters.Length)
         {
             GameObject selectedUnit = characters[charNumber]; // charNumber is 1-based, so subtract 1
 
@@ -176,7 +187,7 @@ public class UpgradeStats : MonoBehaviour
         else
         {
             Debug.LogError("charNumber out of range of playerUnits array");
-        }
+        }*/
     }
     public void AddAttribute(string attributeName)
     {
@@ -213,26 +224,50 @@ public class UpgradeStats : MonoBehaviour
     }
     public void SubtractAttribute(string attributeName)
     {
+        float currentCoins = PlayerPrefs.GetFloat("Coins", 0);
+
         if (attributeName == "Strength")
         {
-            if (charStats.strength > baseStrength) charStats.strength--;
+            if (charStats.strength > baseStrength) 
+            {
+                currentCoins += strPrice - 5;
+                charStats.strength--;
+            }
         }
         else if (attributeName == "Agility")
         {
-            if (charStats.agility > baseAgility) charStats.agility--;
+            if (charStats.agility > baseAgility)
+            {
+                currentCoins += agiPrice - 5;
+                charStats.agility--; 
+            }
         }
         else if (attributeName == "Intelligence")
         {
-            if (charStats.intelligence > baseIntelligence) charStats.intelligence--;
+            if (charStats.intelligence > baseIntelligence)
+            {
+                currentCoins += intPrice - 5;
+                charStats.intelligence--;
+            }
         }
         else if (attributeName == "Dexterity") 
         {
-            if (charStats.dexterity > baseDexterity) charStats.dexterity--; 
+            if (charStats.dexterity > baseDexterity)
+            {
+                currentCoins += dexPrice - 5;
+                charStats.dexterity--;
+            }
         }
         else if (attributeName == "Vitality") 
         {
-            if (charStats.vitality > baseVitality) charStats.vitality--;
+            if (charStats.vitality > baseVitality)
+            {
+                currentCoins += vitPrice - 5;
+                charStats.vitality--;
+            }
         }
+
+        PlayerPrefs.SetFloat("Coins", currentCoins); // Save the updated coin count
     }
     public void ResetStats()
     {

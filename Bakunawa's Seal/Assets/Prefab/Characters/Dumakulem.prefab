@@ -180,6 +180,7 @@ MonoBehaviour:
   baseCritRate: 5
   baseMovespeed: 5
   baseAttackSpeed: 1.5
+  totalHealth: 0
   currentHealth: 0
   currentAttack: 0
   currentMagicAttack: 0
@@ -193,8 +194,11 @@ MonoBehaviour:
   intelligence: 1
   dexterity: 1
   vitality: 1
-  isDead: 0
+  charProfile: {fileID: 21300000, guid: 3a9319fd70a170e46b2e463d0f790758, type: 3}
   playerName: Dumakulem
+  isDead: 0
+  skillCooldown: 0
+  skillTime: 0
 --- !u!114 &1852640768953525740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +221,7 @@ MonoBehaviour:
   pointOfFire: {fileID: 0}
   rangeProjectile: {fileID: 0}
   bulletHolder: {fileID: 0}
+  isPlayerControlled: 0
 --- !u!114 &738830470261814773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,6 +236,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canSkill: 1
   playerUnits: []
+  maxCooldown: 0
+  skillCountdown: 0
 --- !u!1 &5117355212716539066
 GameObject:
   m_ObjectHideFlags: 0

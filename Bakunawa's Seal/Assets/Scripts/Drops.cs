@@ -9,10 +9,6 @@ public class Drops : MonoBehaviour
     public float detectionRange;
     public float speed;
 
-    private void Awake()
-    {
-    }
-
     public void Update()
     {
         FindClosestPlayer();

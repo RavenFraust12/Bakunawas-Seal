@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharStats : MonoBehaviour
 {
@@ -33,8 +34,9 @@ public class CharStats : MonoBehaviour
     public float vitality = 1;
 
     [Header("Gameplay")]
-    public bool isDead;
+    public Sprite charProfile;
     public string playerName;
+    public bool isDead;
     public float skillCooldown;
     public float skillTime;
 

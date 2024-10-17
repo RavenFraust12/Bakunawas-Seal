@@ -196,8 +196,11 @@ MonoBehaviour:
   intelligence: 1
   dexterity: 1
   vitality: 1
-  isDead: 0
+  charProfile: {fileID: 21300000, guid: a70e94f241eeb0c4c9ba45b020aa533a, type: 3}
   playerName: Apolaki
+  isDead: 0
+  skillCooldown: 0
+  skillTime: 0
 --- !u!114 &744162171188358329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,6 +223,7 @@ MonoBehaviour:
   pointOfFire: {fileID: 0}
   rangeProjectile: {fileID: 0}
   bulletHolder: {fileID: 0}
+  isPlayerControlled: 0
 --- !u!114 &2624648514030237111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,6 +238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponSkill: {fileID: 5059833265612602531}
   canSkill: 1
+  maxCooldown: 0
 --- !u!95 &5285891143564450485
 Animator:
   serializedVersion: 5

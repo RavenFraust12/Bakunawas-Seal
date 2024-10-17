@@ -12,6 +12,8 @@ public class DumakulemSkills : MonoBehaviour
 
     public float maxCooldown;
 
+    public bool skillCountdown;
+
     private void Awake()
     {
         charStats = GetComponentInParent<CharStats>();
@@ -28,7 +30,7 @@ public class DumakulemSkills : MonoBehaviour
         playerUnits = GameObject.FindGameObjectsWithTag("Player");
         if (!canSkill)
         {
-            charStats.skillTime += Time.deltaTime;
+            if(skillCountdown) charStats.skillTime += Time.deltaTime;
         }
         else
         {
@@ -44,6 +46,7 @@ public class DumakulemSkills : MonoBehaviour
     {
         if(canSkill)
         {
+            charStats.skillTime = 0f;
             canSkill = false;
 
             float[] addedArmorValues = new float[playerUnits.Length];
@@ -58,6 +61,7 @@ public class DumakulemSkills : MonoBehaviour
                 addedArmorValues[i] = addedArmor;
             }
 
+            skillCountdown = false;
             yield return new WaitForSeconds(5f);
 
             for (int i = 0; i < playerUnits.Length; i++)
@@ -66,7 +70,7 @@ public class DumakulemSkills : MonoBehaviour
 
                 currentCharStats.currentArmor -= addedArmorValues[i];
             }
-
+            skillCountdown = true;
             yield return new WaitForSeconds((charStats.currentAttackspeed * 3f) + 3f);
             canSkill = true;
             Debug.Log("Dumakulem can skill again");
