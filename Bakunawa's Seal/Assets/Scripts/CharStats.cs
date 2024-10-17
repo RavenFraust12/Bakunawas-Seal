@@ -34,7 +34,7 @@ public class CharStats : MonoBehaviour
     public float vitality = 1;
 
     [Header("Gameplay")]
-    public Image charProfile;
+    public Sprite charProfile;
     public string playerName;
     public bool isDead;
     public float skillCooldown;

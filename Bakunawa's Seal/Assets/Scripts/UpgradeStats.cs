@@ -6,6 +6,8 @@ using TMPro;
 public class UpgradeStats : MonoBehaviour
 {
     [Header("Archive Stats")]
+    public TextMeshProUGUI charNameText;
+    public string charName;
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI attackText;
     public TextMeshProUGUI magicAttackText;
@@ -126,6 +128,7 @@ public class UpgradeStats : MonoBehaviour
         charNumber = selectNumber;
         StatText();
 
+        charName = charStats.playerName;
         baseStrength = charStats.strength;
         baseAgility = charStats.agility;
         baseIntelligence = charStats.intelligence;
@@ -134,7 +137,15 @@ public class UpgradeStats : MonoBehaviour
     }
     public void ConfirmStatUpgrade()
     {
-        if (charNumber >= 0 && charNumber <= characters.Length)
+        PlayerPrefs.SetFloat(charName + "_Str", charStats.strength);
+        PlayerPrefs.SetFloat(charName + "_Agi", charStats.agility);
+        PlayerPrefs.SetFloat(charName + "_Int", charStats.intelligence);
+        PlayerPrefs.SetFloat(charName + "_Dex", charStats.dexterity);
+        PlayerPrefs.SetFloat(charName + "_Vit", charStats.vitality);
+
+        PlayerPrefs.Save();
+
+        /*if (charNumber >= 0 && charNumber <= characters.Length)
         {
             GameObject selectedUnit = characters[charNumber]; // charNumber is 1-based, so subtract 1
 
@@ -176,7 +187,7 @@ public class UpgradeStats : MonoBehaviour
         else
         {
             Debug.LogError("charNumber out of range of playerUnits array");
-        }
+        }*/
     }
     public void AddAttribute(string attributeName)
     {

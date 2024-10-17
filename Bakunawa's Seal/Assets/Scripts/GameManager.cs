@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour
     [Header("Game HUD")]
     public GameObject[] charSelection;
     public GameObject[] charStatHUD;
-    public Slider[] healthSlider;
-    public Slider[] skillSlider;
+    public Image[] healthSlider;
+    public Image[] skillSlider;
     public TextMeshProUGUI[] charNames;
     public int charCount;
     public TextMeshProUGUI killCountText, coinCountText, waveCountText, gameTimeText;
@@ -127,10 +127,9 @@ public class GameManager : MonoBehaviour
             CharStats charStats = player.GetComponent<CharStats>();
             charSelection[charCount].SetActive(true);
             charStatHUD[charCount].SetActive(true);
-            charNames[charCount].text = charStats.playerName;
 
             Image charImage = charSelection[charCount].GetComponent<Image>();
-            charImage = charStats.charProfile;
+            charImage.sprite = charStats.charProfile;
 
             charCount++;
         }
@@ -146,11 +145,9 @@ public class GameManager : MonoBehaviour
         {
             CharStats charStats = player.GetComponent<CharStats>();
 
-            healthSlider[charCount].maxValue = charStats.totalHealth;
-            healthSlider[charCount].value = charStats.currentHealth;
+            healthSlider[charCount].fillAmount = charStats.currentHealth / charStats.totalHealth;
 
-            skillSlider[charCount].maxValue = charStats.skillCooldown;
-            skillSlider[charCount].value = charStats.skillTime;
+            skillSlider[charCount].fillAmount = charStats.skillTime / charStats.skillCooldown;
 
             charCount++;
         }
