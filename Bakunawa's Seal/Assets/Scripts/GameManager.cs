@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Game HUD")]
     public GameObject[] charSelection;
+    public GameObject[] charStatHUD;
     public Slider[] healthSlider;
     public Slider[] skillSlider;
     public TextMeshProUGUI[] charNames;
@@ -72,6 +73,7 @@ public class GameManager : MonoBehaviour
         {
             CharStats charStats = player.GetComponent<CharStats>();
             charSelection[charCount].SetActive(true);
+            charStatHUD[charCount].SetActive(true);
             charNames[charCount].text = charStats.playerName;
 
             charCount++;

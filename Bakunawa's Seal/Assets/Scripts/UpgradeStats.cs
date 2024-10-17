@@ -213,26 +213,50 @@ public class UpgradeStats : MonoBehaviour
     }
     public void SubtractAttribute(string attributeName)
     {
+        float currentCoins = PlayerPrefs.GetFloat("Coins", 0);
+
         if (attributeName == "Strength")
         {
-            if (charStats.strength > baseStrength) charStats.strength--;
+            if (charStats.strength > baseStrength) 
+            {
+                currentCoins += strPrice - 5;
+                charStats.strength--;
+            }
         }
         else if (attributeName == "Agility")
         {
-            if (charStats.agility > baseAgility) charStats.agility--;
+            if (charStats.agility > baseAgility)
+            {
+                currentCoins += agiPrice - 5;
+                charStats.agility--; 
+            }
         }
         else if (attributeName == "Intelligence")
         {
-            if (charStats.intelligence > baseIntelligence) charStats.intelligence--;
+            if (charStats.intelligence > baseIntelligence)
+            {
+                currentCoins += intPrice - 5;
+                charStats.intelligence--;
+            }
         }
         else if (attributeName == "Dexterity") 
         {
-            if (charStats.dexterity > baseDexterity) charStats.dexterity--; 
+            if (charStats.dexterity > baseDexterity)
+            {
+                currentCoins += dexPrice - 5;
+                charStats.dexterity--;
+            }
         }
         else if (attributeName == "Vitality") 
         {
-            if (charStats.vitality > baseVitality) charStats.vitality--;
+            if (charStats.vitality > baseVitality)
+            {
+                currentCoins += vitPrice - 5;
+                charStats.vitality--;
+            }
         }
+
+        PlayerPrefs.SetFloat("Coins", currentCoins); // Save the updated coin count
     }
     public void ResetStats()
     {
