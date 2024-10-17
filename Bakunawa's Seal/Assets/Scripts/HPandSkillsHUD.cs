@@ -25,7 +25,10 @@ public class HPandSkillsHUD : MonoBehaviour
     public TextMeshProUGUI[] vitText;
 
     [Header("Kills, Coins, Waves, and Time")]
-    public TextMeshProUGUI killCount, coinCount, waveCount, timer;
+    public TextMeshProUGUI killCount;
+    public TextMeshProUGUI coinCount;
+    public TextMeshProUGUI waveCount;
+    public TextMeshProUGUI timer;
 
     public void Start()
     {

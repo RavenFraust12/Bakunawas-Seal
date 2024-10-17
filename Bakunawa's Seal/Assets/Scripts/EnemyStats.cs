@@ -30,6 +30,7 @@ public class EnemyStats : MonoBehaviour
 
     [Header("Drops")]
     public GameObject lootDrop;
+    private GameObject coinHolder;
 
     [Header("Scripts")]
     private SpawnManager spawnManager;
@@ -37,6 +38,7 @@ public class EnemyStats : MonoBehaviour
     private void Start()
     {
         spawnManager = FindObjectOfType<SpawnManager>();
+        coinHolder = GameObject.Find("Coin Holder");
         AttributeCalculation();
     }
 
@@ -73,7 +75,7 @@ public class EnemyStats : MonoBehaviour
     {
         if (Random.Range(0, 100) <= 50f)
         {
-            Instantiate(lootDrop, transform.position, Quaternion.identity);
+            Instantiate(lootDrop, transform.position, Quaternion.identity, coinHolder.transform);
         }
         Destroy(this.gameObject);
     }

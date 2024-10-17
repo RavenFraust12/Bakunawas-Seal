@@ -129,6 +129,9 @@ public class GameManager : MonoBehaviour
             charStatHUD[charCount].SetActive(true);
             charNames[charCount].text = charStats.playerName;
 
+            Image charImage = charSelection[charCount].GetComponent<Image>();
+            charImage = charStats.charProfile;
+
             charCount++;
         }
     }
