@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 43cb2c25a561fd345a6720e841e993fe
+guid: 53011165e6d97ff4683863836e09d440
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Woodgod 3D Italic
+  - Woodgod
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
