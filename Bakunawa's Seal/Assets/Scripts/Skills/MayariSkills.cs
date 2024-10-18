@@ -24,6 +24,7 @@ public class MayariSkills : MonoBehaviour
         maxCooldown = (charStats.currentAttackspeed * 5f) + 5f;
         charStats.skillCooldown = maxCooldown;
         charStats.skillTime = maxCooldown;
+        MayariStats();
     }
     public void Update()
     {

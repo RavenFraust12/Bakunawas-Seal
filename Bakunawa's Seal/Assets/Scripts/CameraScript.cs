@@ -14,6 +14,8 @@ public class CameraScript : MonoBehaviour
     public NavMeshSurface navMeshSurface;
     public Vector3 navMeshMinBounds;
     public Vector3 navMeshMaxBounds;
+
+    public GameObject joystick;
     private void Start()
     {
         
@@ -59,6 +61,7 @@ public class CameraScript : MonoBehaviour
         if (playerUnits[charNumber] != null && charSelected == charNumber)
         {
             playerUnits[charNumber].GetComponent<PlayerAI>().isPlayerControlled = false;
+            joystick.SetActive(false);
             charSelected = 4;
         }
         else if (playerUnits[charNumber] != null)
@@ -68,6 +71,7 @@ public class CameraScript : MonoBehaviour
                 playerUnits[charNumber].GetComponent<PlayerAI>().isPlayerControlled = true;
             }
             charSelected = charNumber;
+            joystick.SetActive(true);
         }
     }
 

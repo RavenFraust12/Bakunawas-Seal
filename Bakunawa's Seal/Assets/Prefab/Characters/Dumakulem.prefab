@@ -180,22 +180,22 @@ MonoBehaviour:
   baseCritRate: 5
   baseMovespeed: 5
   baseAttackSpeed: 1.5
-  totalHealth: 0
-  currentHealth: 0
-  currentAttack: 0
-  currentMagicAttack: 0
-  currentArmor: 0
-  currentMagicDefense: 0
-  currentCritRate: 0
-  currentMovespeed: 0
-  currentAttackspeed: 0
+  totalHealth: 185
+  currentHealth: 185
+  currentAttack: 28
+  currentMagicAttack: 20
+  currentArmor: 6.7
+  currentMagicDefense: 6.5
+  currentCritRate: 6.7
+  currentMovespeed: 5.002
+  currentAttackspeed: 1.485
   strength: 1
   agility: 1
   intelligence: 1
   dexterity: 1
   vitality: 1
   charProfile: {fileID: 21300000, guid: 3a9319fd70a170e46b2e463d0f790758, type: 3}
-  playerName: Dumakulem
+  playerName: Dumangan
   isDead: 0
   skillCooldown: 0
   skillTime: 0

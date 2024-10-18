@@ -9,4 +9,17 @@ public class ButtonFunctions : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+    public void QuitButton()
+    {
+        Application.Quit();
+    }
+    public void PauseButton()
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void ResumeButton()
+    {
+        Time.timeScale = 1f;
+    }
 }

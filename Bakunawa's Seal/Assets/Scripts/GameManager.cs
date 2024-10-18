@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
             UpdateHealthSliders();
             OnGameCounts();
             DeathChecker();
+            timer += Time.deltaTime;
         }
     }
 
@@ -100,7 +101,6 @@ public class GameManager : MonoBehaviour
         if (!allDead)
         {
             // Increment the timer by the time passed since the last frame
-            timer += Time.deltaTime;
 
             // Calculate minutes and seconds
             TimeSpan timeSpan = TimeSpan.FromSeconds(timer);
