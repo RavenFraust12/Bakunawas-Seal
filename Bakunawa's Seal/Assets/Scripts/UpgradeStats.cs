@@ -115,11 +115,11 @@ public class UpgradeStats : MonoBehaviour
             attackspeedText.text = charStats.currentAttackspeed.ToString();
 
             //Attribute Text
-            strText.text = charStats.strength.ToString();
-            agiText.text = charStats.agility.ToString();
-            intText.text = charStats.intelligence.ToString();
-            dexText.text = charStats.dexterity.ToString();
-            vitText.text = charStats.vitality.ToString();
+            strText.text = PlayerPrefs.GetFloat(charName + "_Str", 1).ToString();
+            agiText.text = PlayerPrefs.GetFloat(charName + "_Agi", 1).ToString();
+            intText.text = PlayerPrefs.GetFloat(charName + "_Int", 1).ToString();
+            dexText.text = PlayerPrefs.GetFloat(charName + "_Dex", 1).ToString();
+            vitText.text = PlayerPrefs.GetFloat(charName + "_Vit", 1).ToString();
 
             //Attribute Price
             strPrice = charStats.strength * 5f;
