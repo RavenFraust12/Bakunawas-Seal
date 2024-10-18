@@ -18,7 +18,12 @@ public class CameraScript : MonoBehaviour
     public GameObject joystick;
     private void Start()
     {
-        
+        playerUnits = GameObject.FindGameObjectsWithTag("Player");
+        if (playerUnits.Length > 0)
+        {
+            charSelected = 0; // Automatically select the first character
+            joystick.SetActive(true); // Enable joystick for player control
+        }
     }
     private void Update()
     {

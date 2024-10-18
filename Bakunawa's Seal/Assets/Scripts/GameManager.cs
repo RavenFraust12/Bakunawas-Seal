@@ -48,6 +48,11 @@ public class GameManager : MonoBehaviour
     {
         InstantiateSelectedCharacters();//test
         CharacterSelection();
+        //if (charCount > 0)
+        //{
+        //    CameraScript cameraScript = FindObjectOfType<CameraScript>();
+        //    cameraScript.PickChar(0);  // Automatically follow the first character (index 0)
+        //}
     }
     public void Update()
     {

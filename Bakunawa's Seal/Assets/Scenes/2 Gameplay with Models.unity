@@ -686,7 +686,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 180, y: -110}
+  m_AnchoredPosition: {x: 180, y: -425}
   m_SizeDelta: {x: 110, y: 110}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &39489397
@@ -23435,6 +23435,7 @@ GameObject:
   - component: {fileID: 1787428952}
   - component: {fileID: 1787428951}
   - component: {fileID: 1787428950}
+  - component: {fileID: 1787428953}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -23479,7 +23480,7 @@ Terrain:
   m_DetailObjectDistance: 80
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
-  m_SplatMapDistance: 1000
+  m_SplatMapDistance: 100
   m_HeightmapMinimumLODSimplification: 0
   m_HeightmapMaximumLOD: 0
   m_ShadowCastingMode: 2
@@ -23517,6 +23518,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1787428953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787428949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9d037bc3f166a1408ecb0a212f67049, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  treePrefabs:
+  - {fileID: 919132149155446097, guid: a05478f65a34829478e94d2a8450e134, type: 3}
+  - {fileID: 919132149155446097, guid: 571decf37fae5d54194cba00a4ee983f, type: 3}
+  - {fileID: 919132149155446097, guid: 4304ad40433191944975199e28c8ad55, type: 3}
+  - {fileID: 919132149155446097, guid: deccf85fd1d357b47b1bf8cb78e1ee02, type: 3}
+  rockPrefabs:
+  - {fileID: 919132149155446097, guid: 99480dbf87afc6a4297a6f2aec49da3f, type: 3}
+  - {fileID: 919132149155446097, guid: 0dc3132577e0e794180b9d302d42d153, type: 3}
+  - {fileID: 919132149155446097, guid: 436c56e36c74f7d44bdd087ba03b5fe4, type: 3}
+  - {fileID: 919132149155446097, guid: 6937178a687a0f1478c4b4ecbd4d2a5d, type: 3}
+  terrainWidth: 100
+  terrainLength: 100
+  minSpawnHeight: 1
+  maxSpawnHeight: 2
+  numberOfTrees: 10
+  numberOfRocks: 5
+  terrain: {fileID: 1787428951}
 --- !u!1 &1801046866
 GameObject:
   m_ObjectHideFlags: 0
