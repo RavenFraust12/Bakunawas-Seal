@@ -23545,7 +23545,7 @@ MonoBehaviour:
   minSpawnHeight: 1
   maxSpawnHeight: 2
   numberOfTrees: 10
-  numberOfRocks: 5
+  numberOfRocks: 20
   terrain: {fileID: 1787428951}
 --- !u!1 &1801046866
 GameObject:
