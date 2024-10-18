@@ -24,6 +24,7 @@ public class DumakulemSkills : MonoBehaviour
         maxCooldown = (charStats.currentAttackspeed * 3f) + 3f;
         charStats.skillCooldown = maxCooldown;
         charStats.skillTime = maxCooldown;
+        DumanganStats();
     }
     public void Update()
     {
@@ -77,13 +78,13 @@ public class DumakulemSkills : MonoBehaviour
         }   
     }
 
-    public void DumakulemStats()
+    public void DumanganStats()
     {
-        charStats.strength = PlayerPrefs.GetInt("Dumakulem_Str", 1);
-        charStats.agility = PlayerPrefs.GetInt("Dumakulem_Agi", 1);
-        charStats.intelligence = PlayerPrefs.GetInt("Dumakulem_Int", 1);
-        charStats.dexterity = PlayerPrefs.GetInt("Dumakulem_Dex", 1);
-        charStats.vitality = PlayerPrefs.GetInt("Dumakulem_Vit", 1);
+        charStats.strength = PlayerPrefs.GetInt("Dumangan_Str", 1);
+        charStats.agility = PlayerPrefs.GetInt("Dumangan_Agi", 1);
+        charStats.intelligence = PlayerPrefs.GetInt("Dumangan_Int", 1);
+        charStats.dexterity = PlayerPrefs.GetInt("Dumangan_Dex", 1);
+        charStats.vitality = PlayerPrefs.GetInt("Dumangan_Vit", 1);
     }
 
     public void AcceptUpgrade(float strength, float agility, float intelligence, float dexterity, float vitality)

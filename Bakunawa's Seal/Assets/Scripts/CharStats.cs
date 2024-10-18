@@ -43,6 +43,7 @@ public class CharStats : MonoBehaviour
 
     private void Start()
     {
+        PlayerPrefsToAttribute();
         StatCalculation();
     }
 
@@ -73,6 +74,7 @@ public class CharStats : MonoBehaviour
     }
     public void StatCalculation()
     {
+
         currentHealth = baseHealth + (25f * strength) + (10f * intelligence) + (50f * vitality);
         currentAttack = baseAttack + (5f * strength) + (3f * dexterity);
         currentMagicAttack = baseMagicAttack + (5f * intelligence);
@@ -83,5 +85,16 @@ public class CharStats : MonoBehaviour
         currentAttackspeed = baseAttackSpeed - ((1f / 100f) * agility) - ((0.5f / 100f) * dexterity);
 
         totalHealth = currentHealth;
+    }
+
+    public void PlayerPrefsToAttribute()
+    {
+        strength = PlayerPrefs.GetFloat(playerName + "_Str", 1);
+        agility = PlayerPrefs.GetFloat(playerName + "_Agi", 1);
+        intelligence = PlayerPrefs.GetFloat(playerName + "_Int", 1);
+        dexterity = PlayerPrefs.GetFloat(playerName + "_Dex", 1);
+        vitality = PlayerPrefs.GetFloat(playerName + "_Vit", 1);
+
+        Debug.Log(playerName + "'s Str:" + strength + ", Agi:" + agility + ", Int:" + intelligence + ", Dex:" +  dexterity + ", Vit:" + vitality);
     }
 }

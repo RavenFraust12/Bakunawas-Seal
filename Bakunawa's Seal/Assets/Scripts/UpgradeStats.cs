@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UpgradeStats : MonoBehaviour
 {
     [Header("Archive Stats")]
     public TextMeshProUGUI charNameText;
     public string charName;
+    public Image charProfile;
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI attackText;
     public TextMeshProUGUI magicAttackText;
@@ -83,6 +85,14 @@ public class UpgradeStats : MonoBehaviour
         {
             // Get the CharStats component from the selected character
             charStats = characters[charNumber].GetComponent<CharStats>();
+
+            charProfile.sprite = charStats.charProfile;
+            charName = charStats.playerName;
+            baseStrength = charStats.strength;
+            baseAgility = charStats.agility;
+            baseIntelligence = charStats.intelligence;
+            baseDexterity = charStats.dexterity;
+            baseVitality = charStats.vitality;
         }
     }
     public void StatText()
@@ -93,6 +103,8 @@ public class UpgradeStats : MonoBehaviour
         {
             charStats.StatCalculation();
             //Stat Text
+
+            charNameText.text = charName;
             healthText.text = charStats.totalHealth.ToString();
             attackText.text = charStats.currentAttack.ToString();
             magicAttackText.text = charStats.currentMagicAttack.ToString();
@@ -127,13 +139,6 @@ public class UpgradeStats : MonoBehaviour
     {
         charNumber = selectNumber;
         StatText();
-
-        charName = charStats.playerName;
-        baseStrength = charStats.strength;
-        baseAgility = charStats.agility;
-        baseIntelligence = charStats.intelligence;
-        baseDexterity = charStats.dexterity;
-        baseVitality = charStats.vitality;
     }
     public void ConfirmStatUpgrade()
     {
@@ -144,6 +149,8 @@ public class UpgradeStats : MonoBehaviour
         PlayerPrefs.SetFloat(charName + "_Vit", charStats.vitality);
 
         PlayerPrefs.Save();
+
+        Debug.Log("Saved " + charName + "'s stats.");
 
         /*if (charNumber >= 0 && charNumber <= characters.Length)
         {
@@ -271,11 +278,13 @@ public class UpgradeStats : MonoBehaviour
     }
     public void ResetStats()
     {
-
         charStats.strength = 1;
         charStats.agility = 1;
         charStats.intelligence = 1;
         charStats.dexterity = 1;
         charStats.vitality = 1;
+
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
     }
 }

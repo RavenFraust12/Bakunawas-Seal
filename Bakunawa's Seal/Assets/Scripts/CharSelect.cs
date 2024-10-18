@@ -8,6 +8,12 @@ public class CharSelect : MonoBehaviour
     public GameObject[] characterPrefabs;  // Prefabs of characters available for selection
     public GameObject[] selectedCharacters = new GameObject[4];  // Array to hold up to 4 selected characters
     private int selectedCount = 0;  // To keep track of how many characters have been selected
+    public GameObject startButton;
+
+    public void Update()
+    {
+        if (selectedCount > 0) { startButton.SetActive(true); } else { startButton.SetActive(false); }
+    }
 
     // Call this function when a character is selected
     public void SelectCharacter(int index)
