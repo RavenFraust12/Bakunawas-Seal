@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 593545773528745100}
-  m_LocalEulerAnglesHint: {x: 5.6271744, y: -3.0524838, z: 8.631853}
+  m_LocalEulerAnglesHint: {x: -22.96532, y: 4.032558, z: -77.70298}
 --- !u!1 &689043271978338187
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ Transform:
   m_Children:
   - {fileID: 6364202480580580712}
   m_Father: {fileID: 2928270226851487325}
-  m_LocalEulerAnglesHint: {x: 0.30344766, y: -1.0085802, z: 8.341379}
+  m_LocalEulerAnglesHint: {x: -21.11176, y: 105.90931, z: 5.6355143}
 --- !u!1 &1694471815873968970
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,8 +91,8 @@ Transform:
   m_GameObject: {fileID: 1694471815873968970}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.104, y: 0.419, z: -0.19}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: -0.423, y: 0.26, z: 0.994}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7560220443263324637}
@@ -199,7 +199,7 @@ Transform:
   m_Children:
   - {fileID: 5292642952587472963}
   m_Father: {fileID: 5910384727146882564}
-  m_LocalEulerAnglesHint: {x: 10.943867, y: 129.94765, z: 151.99376}
+  m_LocalEulerAnglesHint: {x: 37.188984, y: -0.37626076, z: 94.94556}
 --- !u!1 &2708938638464178602
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +298,7 @@ Transform:
   - {fileID: 593545773528745100}
   - {fileID: 2928270226851487325}
   m_Father: {fileID: 1498344530578266481}
-  m_LocalEulerAnglesHint: {x: 2.5904984, y: -0.1538391, z: 0.22994274}
+  m_LocalEulerAnglesHint: {x: -0.64691573, y: 27.168339, z: 0.25670356}
 --- !u!1 &4825159714040853492
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,7 +329,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 749939880871475804}
-  m_LocalEulerAnglesHint: {x: -26.774094, y: -165.76918, z: -84.71755}
+  m_LocalEulerAnglesHint: {x: -73.59056, y: -167.7992, z: -111.660225}
 --- !u!1 &5678840484597693345
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,7 +743,7 @@ Transform:
   m_Children:
   - {fileID: 5910384727146882564}
   m_Father: {fileID: 2675355037159382341}
-  m_LocalEulerAnglesHint: {x: 88.34696, y: 5.7769885, z: -0.8437913}
+  m_LocalEulerAnglesHint: {x: 63.053913, y: 91.88613, z: 86.456825}
 --- !u!1 &8338846611536504103
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,7 +774,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2675355037159382341}
-  m_LocalEulerAnglesHint: {x: -15.690592, y: 89.1361, z: -95.152214}
+  m_LocalEulerAnglesHint: {x: -70.353745, y: 71.48221, z: -93.0553}
 --- !u!1 &8609030176705773585
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,7 +806,7 @@ Transform:
   m_Children:
   - {fileID: 749939880871475804}
   m_Father: {fileID: 5910384727146882564}
-  m_LocalEulerAnglesHint: {x: -17.158789, y: -161.9692, z: 162.89763}
+  m_LocalEulerAnglesHint: {x: -73.02216, y: -119.55262, z: 150.72519}
 --- !u!1 &8898002524685575854
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,7 +1046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canSkill: 1
-  pointOfFire: {fileID: 1694471815873968970}
+  pointOfFire: {fileID: 6720264544776544489}
   rangeProjectile: {fileID: 8335370796416993505, guid: 3939190a78b21f040aa6044fa9d09554,
     type: 3}
   bulletHolder: {fileID: 0}
@@ -1081,7 +1081,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5910384727146882564}
-  m_LocalEulerAnglesHint: {x: -0.34117097, y: 0.16942634, z: 9.702487}
+  m_LocalEulerAnglesHint: {x: -8.535331, y: -45.955822, z: 6.4779105}
 --- !u!1 &9155975690501057842
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,7 +1109,7 @@ Transform:
   m_GameObject: {fileID: 9155975690501057842}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.17, y: -0.85, z: 0.76}
+  m_LocalPosition: {x: 0.55, y: -1.06, z: 0.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
