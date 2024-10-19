@@ -4736,7 +4736,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57255f3dee2aa09428a163a306e7800f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigidbody: {fileID: 0}
   _joystick: {fileID: 2929252283773209651}
   _moveSpeed: 0
 --- !u!65 &357896571
@@ -4948,7 +4947,7 @@ GameObject:
   m_Layer: 0
   m_Name: Char Spawn Point (3)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -9514,7 +9513,7 @@ GameObject:
   m_Layer: 0
   m_Name: Char Spawn Point
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -22119,7 +22118,7 @@ GameObject:
   m_Layer: 0
   m_Name: Char Spawn Point (2)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -24838,7 +24837,7 @@ GameObject:
   m_Layer: 0
   m_Name: Char Spawn Point (1)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
