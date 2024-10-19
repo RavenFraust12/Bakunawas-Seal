@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     }
     public void Start()
     {
+        Application.targetFrameRate = 60;
         InstantiateSelectedCharacters();//test
         CharacterSelection();
         //if (charCount > 0)
