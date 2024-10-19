@@ -170,10 +170,10 @@ public class PlayerAI : MonoBehaviour
             if (canAttack == true)
             {
                 animationManager.PlayAttack(); // Play melee attack animation
-                weapon.SetActive(true);
+                //weapon.SetActive(true);
                 canAttack = false;
                 yield return new WaitForSeconds(0.1f);
-                weapon.SetActive(false);
+                //weapon.SetActive(false);
                 yield return new WaitForSeconds(charStats.currentAttackspeed);
                 canAttack = true;
             }

@@ -4736,8 +4736,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57255f3dee2aa09428a163a306e7800f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  _rigidbody: {fileID: 0}
   _joystick: {fileID: 2929252283773209651}
   _moveSpeed: 0
+  currentTarget: {fileID: 0}
 --- !u!65 &357896571
 BoxCollider:
   m_ObjectHideFlags: 0

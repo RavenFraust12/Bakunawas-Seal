@@ -218,7 +218,7 @@ MonoBehaviour:
   attackRange: 2.5
   detectionRange: 20
   canAttack: 1
-  weapon: {fileID: 8618981462315351383}
+  weapon: {fileID: 2762403297196722818}
   charSelection: 1
   isRanged: 0
   pointOfFire: {fileID: 0}
@@ -601,6 +601,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7389907913969541628}
   - component: {fileID: 8644534740100396216}
+  - component: {fileID: 3565577317031059440}
+  - component: {fileID: 7400120054903644545}
   m_Layer: 0
   m_Name: Sword.001
   m_TagString: Untagged
@@ -686,6 +688,46 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0033439724, y: 0.032921836, z: 0.03044904}
     m_Extent: {x: 0.03373332, y: 0.03423457, z: 0.03363187}
   m_DirtyAABB: 0
+--- !u!64 &3565577317031059440
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2762403297196722818}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3692127853521153910, guid: 9939a16fb956c2a42b3079a057701113, type: 3}
+--- !u!114 &7400120054903644545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2762403297196722818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d1e0748b7a2f9043833459dedf07975, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: Enemy
+  enemyStats: {fileID: 0}
+  charStats: {fileID: 1422972022949466770}
+  isProjectile: 0
+  projectileSpeed: 0
+  isMagicDealing: 0
 --- !u!1 &2839183885134398258
 GameObject:
   m_ObjectHideFlags: 0
@@ -1470,7 +1512,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4767325381589634578
 Transform:
   m_ObjectHideFlags: 0
