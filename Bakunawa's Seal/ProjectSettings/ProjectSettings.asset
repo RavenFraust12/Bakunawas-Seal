@@ -766,8 +766,8 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Bakunawa's Seal
-  metroPackageVersion: 
+  metroPackageName: BakunawasSeal
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -775,7 +775,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: Bakunawa's Seal
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: Bakunawa's Seal
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
