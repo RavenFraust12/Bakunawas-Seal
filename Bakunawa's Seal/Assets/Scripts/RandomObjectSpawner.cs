@@ -35,9 +35,9 @@ public class RandomObjectSpawner : MonoBehaviour
         {
             // Generate random position within the terrain bounds
             Vector3 spawnPosition = new Vector3(
-                Random.Range(0, terrainWidth),
+                Random.Range(10, terrainWidth),
                 Random.Range(minSpawnHeight, maxSpawnHeight),
-                Random.Range(0, terrainLength)
+                Random.Range(10, terrainLength)
             );
 
             // Adjust the Y position based on the terrain height at the x, z location

@@ -94,7 +94,7 @@ public class Damage : MonoBehaviour
         }
         else if (isProjectile)
         {
-            Destroy(this.gameObject, 5f);
+            Destroy(this.gameObject, 3f);
         }
     }
 

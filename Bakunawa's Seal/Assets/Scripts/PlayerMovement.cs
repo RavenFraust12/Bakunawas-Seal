@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody), typeof(BoxCollider))]
 public class PlayerMovement : MonoBehaviour
 {
-    public GameObject player; // Reference to the Player GameObject
+    //public GameObject player; // Reference to the Player GameObject
     public Rigidbody _rigidbody;
 
     [Header("Joystick Holder")]
@@ -16,8 +16,8 @@ public class PlayerMovement : MonoBehaviour
     public Transform currentTarget; // Reference to the enemy the player was attacking
 
     private CameraScript _cameraScript;
-    private AnimationManager animationManager; // Reference to AnimationManager
-    private bool playerInitialized = false; // Flag to check if the player has been initialized
+    public AnimationManager animationManager; // Reference to AnimationManager
+    //private bool playerInitialized = false; // Flag to check if the player has been initialized
 
     private void Awake()
     {
@@ -34,12 +34,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void Update()
+    /*private void Update()
     {
         // Check if the player has been spawned and components initialized
         if (!playerInitialized)
         {
-            FindPlayerComponents();
+            //FindPlayerComponents();
         }
 
         // Only proceed if player and AnimationManager are initialized and found
@@ -49,12 +49,47 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        if (_cameraScript.charSelected == 4 || player.GetComponent<CharStats>().isDead == true) return;
+        if (_cameraScript.charSelected == 4 /*|| player.GetComponent<CharStats>().isDead == true) return;
 
-        HandleMovementAndAnimation();
+        //HandleMovementAndAnimation();
+    }*/
+    private void FixedUpdate()
+    {
+        if (_joystick == null) return;
+        if (_cameraScript.charSelected == 4 ||
+            _cameraScript.playerUnits[_cameraScript.charSelected].GetComponent<CharStats>().isDead == true) return;
+
+            if (_cameraScript.playerUnits[_cameraScript.charSelected] != null)
+            {
+                _rigidbody = _cameraScript.playerUnits[_cameraScript.charSelected].GetComponent<Rigidbody>();
+                animationManager = _cameraScript.playerUnits[_cameraScript.charSelected].GetComponentInChildren<AnimationManager>();
+        }
+
+            _moveSpeed = _cameraScript.playerUnits[_cameraScript.charSelected].GetComponent<CharStats>().currentMovespeed;
+
+            _rigidbody.velocity = new Vector3(_joystick.Horizontal * _moveSpeed, _rigidbody.velocity.y, _joystick.Vertical * _moveSpeed);
+
+            if (_joystick.Horizontal != 0 || _joystick.Vertical != 0 && animationManager != null)
+            {
+                transform.rotation = Quaternion.LookRotation(_rigidbody.velocity);
+                animationManager.PlayWalk();
+                //_animator.SetBool("isRunning", true);
+            }
+            else
+            {
+                //_animator.SetBool("isRunning", false);
+                animationManager.PlayIdle();
+            }
     }
+    /*public void FaceTarget()
+    {
+        if (currentTarget == null) return;  // Ensure there's a valid target
 
-    public void HandleMovementAndAnimation()
+        Vector3 direction = (currentTarget.position - _rigidbody.transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        _rigidbody.transform.rotation = Quaternion.Slerp(_rigidbody.transform.rotation, lookRotation, Time.deltaTime * 5f);
+    }
+    /*public void HandleMovementAndAnimation()
     {
         // Set the player's velocity based on joystick input
         if (_joystick.Horizontal != 0 || _joystick.Vertical != 0)
@@ -84,24 +119,17 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Triggering Idle Animation in PlayerMovement");
             animationManager.PlayIdle();  // Trigger the Idle animation
         }
-    }
+    }*/
     // This method can be called from PlayerAI when the player takes control
-    public void SetTarget(Transform target)
+    /*public void SetTarget(Transform target)
     {
         currentTarget = target;
-    }
+    }*/
     // Method to rotate and face the target (enemy)
-    public void FaceTarget()
-    {
-        if (currentTarget == null) return;  // Ensure there's a valid target
-
-        Vector3 direction = (currentTarget.position - player.transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        player.transform.rotation = Quaternion.Slerp(player.transform.rotation, lookRotation, Time.deltaTime * 5f);
-    }
+    
 
     // Method to find the player object and its components after spawning
-    private void FindPlayerComponents()
+    /*private void FindPlayerComponents()
     {
         // Try to find the player using the "Player" tag
         player = GameObject.FindGameObjectWithTag("Player");
@@ -126,7 +154,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.LogError("Player object not found in the scene.");
         }
-    }
+    }*/
 }
 
 

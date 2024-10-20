@@ -33,7 +33,7 @@ public class PlayerAI : MonoBehaviour
         bulletHolder = GameObject.Find("BulletHolder");
 
         cameraScript = FindObjectOfType<CameraScript>();
-      //  animationManager = GetComponent<AnimationManager>(); // Get the AnimationManager component
+
         animationManager = GetComponentInChildren<AnimationManager>(); // Get the AnimationManager component
 
         GameObject movementManager = GameObject.Find("Movement Manager"); // Ensure this matches the exact name
@@ -85,17 +85,10 @@ public class PlayerAI : MonoBehaviour
         {
             navAgent.ResetPath(); // Stop AI movement
 
-            // Pass the target to PlayerMovement so it can maintain rotation
-            //PlayerMovement playerMovement = GetComponent<PlayerMovement>();
-            if (playerMovement != null)
-            {
-                playerMovement.SetTarget(target);  // Set the current target in PlayerMovement
-            }
-
             // If in attack range, trigger attack animation
             if (Vector3.Distance(transform.position, target.position) <= attackRange)
             {
-                animationManager.PlayAttack(); // Play attack animation
+                //animationManager.PlayAttack(); // Play attack animation
                 StartCoroutine(AttackDelay());
                 SkillDelay();
                 Debug.Log("Attacking " + target.name);
@@ -111,8 +104,8 @@ public class PlayerAI : MonoBehaviour
             // If in attack range, stop and attack
             if (Vector3.Distance(transform.position, target.position) <= attackRange)
             {
-               // navAgent.ResetPath();
-                animationManager.PlayAttack(); // Trigger attack animation
+                navAgent.ResetPath();
+                //animationManager.PlayAttack(); // Trigger attack animation
                 StartCoroutine(AttackDelay());
                 SkillDelay();
                 Debug.Log("Attacking " + target.name);
@@ -170,10 +163,11 @@ public class PlayerAI : MonoBehaviour
             if (canAttack == true)
             {
                 animationManager.PlayAttack(); // Play melee attack animation
-                //weapon.SetActive(true);
+                weapon.SetActive(true);
                 canAttack = false;
                 yield return new WaitForSeconds(0.1f);
-                //weapon.SetActive(false);
+                animationManager.PlayIdle();
+                weapon.SetActive(false);
                 yield return new WaitForSeconds(charStats.currentAttackspeed);
                 canAttack = true;
             }
@@ -185,9 +179,10 @@ public class PlayerAI : MonoBehaviour
                 canAttack = false;
                 animationManager.PlayAttack(); // Play ranged attack animation
                 GameObject projectile = Instantiate(rangeProjectile, pointOfFire.transform.position, pointOfFire.transform.rotation, bulletHolder.transform);
+                //projectile.transform.rotation *= Quaternion.Euler(0, 180, 0);
                 Damage projectileScript = projectile.GetComponent<Damage>();
                 projectileScript.charStats = GetComponent<CharStats>();
-
+                animationManager.PlayIdle();
                 yield return new WaitForSeconds(charStats.currentAttackspeed);
                 canAttack = true;
             }
