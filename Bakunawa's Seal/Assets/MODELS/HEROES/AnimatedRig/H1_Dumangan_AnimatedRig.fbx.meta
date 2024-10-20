@@ -1,0 +1,364 @@
+fileFormatVersion: 2
+guid: 77808e231d753094c8b8f4e624394391
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature|Idle (1)
+      takeName: Armature|Idle
+      internalID: 4723146814002874508
+      firstFrame: 0
+      lastFrame: 23
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Death
+      takeName: Armature|Death
+      internalID: -982115091633673366
+      firstFrame: 0
+      lastFrame: 22
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Idle
+      takeName: Armature|Idle
+      internalID: -8945691123924629249
+      firstFrame: 0
+      lastFrame: 23
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Skill
+      takeName: Armature|Skill
+      internalID: 1082017293189562544
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Walk
+      takeName: Armature|Walk
+      internalID: 8349542763059015795
+      firstFrame: 0
+      lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 0
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: H1_Dumangan_AnimatedRig(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: body
+      parentName: H1_Dumangan_AnimatedRig(Clone)
+      position: {x: -0, y: 1.8458385, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 61.869114, y: 61.869114, z: 61.869114}
+    - name: hEADWEAR
+      parentName: H1_Dumangan_AnimatedRig(Clone)
+      position: {x: -0.3143054, y: 2.2557435, z: -0.03564751}
+      rotation: {x: -0.58968896, y: -0.39212206, z: 0.3964157, w: 0.5842618}
+      scale: {x: 10.084172, y: 10.084173, z: 10.084172}
+    - name: Shoulerpads
+      parentName: H1_Dumangan_AnimatedRig(Clone)
+      position: {x: -0, y: 1.8458385, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 61.869114, y: 61.869114, z: 61.869114}
+    - name: Top
+      parentName: H1_Dumangan_AnimatedRig(Clone)
+      position: {x: -0, y: 1.8458385, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 61.869114, y: 61.869114, z: 61.869114}
+    - name: Innertop
+      parentName: H1_Dumangan_AnimatedRig(Clone)
+      position: {x: -0, y: 1.8458384, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 61.869114, y: 61.869114, z: 61.869114}
+    - name: Cuff
+      parentName: H1_Dumangan_AnimatedRig(Clone)
+      position: {x: -0, y: 1.8458385, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 61.869114, y: 61.869114, z: 61.869114}
+    - name: Belt
+      parentName: H1_Dumangan_AnimatedRig(Clone)
+      position: {x: -0, y: 1.8458385, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 61.869114, y: 61.869114, z: 61.869114}
+    - name: Pants
+      parentName: H1_Dumangan_AnimatedRig(Clone)
+      position: {x: -0, y: 1.8458385, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 61.869114, y: 61.869114, z: 61.869114}
+    - name: Hair
+      parentName: H1_Dumangan_AnimatedRig(Clone)
+      position: {x: -0, y: 2.453068, z: -0.09652153}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 18.695717, y: 9.807742, z: 28.247017}
+    - name: Armature
+      parentName: H1_Dumangan_AnimatedRig(Clone)
+      position: {x: -0.028303418, y: 0.5767323, z: 0.0042383303}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 32.419327, y: 32.419327, z: 32.419327}
+    - name: LowerBody
+      parentName: Armature
+      position: {x: -0.00071229844, y: -0.000008623744, z: 0.0021031084}
+      rotation: {x: 0.682186, y: -0.17417376, z: -0.13893476, w: 0.69640714}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: UpperBody
+      parentName: LowerBody
+      position: {x: 9.313225e-11, y: 0.009571586, z: 6.519258e-11}
+      rotation: {x: 0.01599047, y: -0.11371252, z: -0.030773377, w: 0.99290824}
+      scale: {x: 1, y: 0.9999999, z: 1}
+    - name: Head
+      parentName: UpperBody
+      position: {x: -3.929017e-12, y: 0.00967352, z: -1.0768417e-11}
+      rotation: {x: 0.006976479, y: 0.0919055, z: 0.112701, w: 0.98934484}
+      scale: {x: 0.99999994, y: 1, z: 1.0000001}
+    - name: ShoulderR
+      parentName: UpperBody
+      position: {x: 0.0005652391, y: 0.0066735856, z: -0.0093516875}
+      rotation: {x: 0.7969895, y: 0.51776767, z: -0.14309937, w: -0.27612853}
+      scale: {x: 0.9999999, y: 1, z: 0.99999994}
+    - name: ArmR
+      parentName: ShoulderR
+      position: {x: 0.000000001490116, y: 0.012909661, z: -7.45058e-10}
+      rotation: {x: 0.029645037, y: 0.0629135, z: 0.35795167, w: 0.93114644}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ShoulderL
+      parentName: UpperBody
+      position: {x: 0.00031660963, y: 0.009000271, z: 0.006606141}
+      rotation: {x: 0.57033956, y: 0.034404483, z: 0.53030026, w: 0.62634724}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ArmL
+      parentName: ShoulderL
+      position: {x: 5.9604643e-10, y: 0.013360528, z: 0.0000000011920929}
+      rotation: {x: -0.096925534, y: -0.13904348, z: -0.15301271, w: 0.9735807}
+      scale: {x: 0.9999998, y: 0.9999998, z: 0.9999998}
+    - name: ArmL.001
+      parentName: ArmL
+      position: {x: -0.0040705865, y: 0.010825151, z: -0.00097410765}
+      rotation: {x: -0.12216373, y: 0.86942047, z: 0.21612401, w: 0.42717037}
+      scale: {x: 0.9999999, y: 0.9999999, z: 0.9999998}
+    - name: LegR
+      parentName: Armature
+      position: {x: -0.0010466219, y: 0.0039634504, z: 0.0050906613}
+      rotation: {x: -0.41952577, y: 0.31809404, z: -0.4912926, w: 0.6938631}
+      scale: {x: 0.99999994, y: 1.0000002, z: 1}
+    - name: LegL
+      parentName: Armature
+      position: {x: -0.0018280515, y: -0.0064191986, z: 0.003062126}
+      rotation: {x: -0.5706268, y: 0.44690028, z: -0.40286636, w: 0.5588953}
+      scale: {x: 0.9999999, y: 1, z: 0.99999994}
+    - name: Shield
+      parentName: H1_Dumangan_AnimatedRig(Clone)
+      position: {x: -0.1709101, y: 1.3536444, z: 0.9784043}
+      rotation: {x: -0.5793573, y: -0.4053951, z: -0.4053953, w: 0.579357}
+      scale: {x: 42.6254, y: 4.515255, z: 4.5152555}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
