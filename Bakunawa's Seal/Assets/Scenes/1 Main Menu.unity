@@ -7494,8 +7494,8 @@ MonoBehaviour:
   characters:
   - {fileID: 224860449981939120, guid: fd1b1640d11e50441915d58938308717, type: 3}
   - {fileID: 1940074806959869395, guid: 2ea14e0fad4b0ff4f9681f211b9b216e, type: 3}
-  - {fileID: 8898002524685575854, guid: d87d1e57aa3344a4b9389d013e09aaed, type: 3}
-  - {fileID: 4666918264517803756, guid: 1d97d2fb15be3504b8da01635ab10e04, type: 3}
+  - {fileID: 8898002524685575854, guid: 1d97d2fb15be3504b8da01635ab10e04, type: 3}
+  - {fileID: 4666918264517803756, guid: d87d1e57aa3344a4b9389d013e09aaed, type: 3}
   charStats: {fileID: 0}
   charNumber: 0
 --- !u!1 &360367747

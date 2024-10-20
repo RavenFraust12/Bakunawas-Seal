@@ -7,10 +7,11 @@ public class RandomObjectSpawner : MonoBehaviour
     // Arrays of tree and rock prefabs
     public GameObject[] treePrefabs;
     public GameObject[] rockPrefabs;
+    public GameObject objectHolder;
 
     // Terrain dimensions (width and length)
-    public float terrainWidth = 100f;
-    public float terrainLength = 100f;
+    public float terrainWidth = 90f;
+    public float terrainLength = 90f;
     public float minSpawnHeight = 0f;
     public float maxSpawnHeight = 2f;
 
@@ -46,10 +47,10 @@ public class RandomObjectSpawner : MonoBehaviour
             GameObject prefabToSpawn = prefabs[Random.Range(0, prefabs.Length)];
 
             // Set the rotation to -90 degrees on the X-axis
-            Quaternion rotation = Quaternion.Euler(-90, 0, 0);
+            Quaternion rotation = Quaternion.Euler(-90, 0, Random.Range(0,360));
 
             // Instantiate the selected prefab at the random position with the specified rotation
-            Instantiate(prefabToSpawn, spawnPosition, rotation);
+            Instantiate(prefabToSpawn, spawnPosition, rotation, objectHolder.transform);
         }
     }
     //public GameObject[] treePrefabs;

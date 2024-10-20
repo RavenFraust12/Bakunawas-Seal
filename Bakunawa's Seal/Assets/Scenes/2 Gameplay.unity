@@ -218,7 +218,7 @@ MonoBehaviour:
   m_text: 999
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ec2fb83bfd31c09469ca40421f55d257, type: 2}
-  m_sharedMaterial: {fileID: 2865966710519426453, guid: ec2fb83bfd31c09469ca40421f55d257,
+  m_sharedMaterial: {fileID: 150000599543164097, guid: ec2fb83bfd31c09469ca40421f55d257,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3233,7 +3233,7 @@ MonoBehaviour:
   m_text: Kill Count
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ec2fb83bfd31c09469ca40421f55d257, type: 2}
-  m_sharedMaterial: {fileID: 2865966710519426453, guid: ec2fb83bfd31c09469ca40421f55d257,
+  m_sharedMaterial: {fileID: 150000599543164097, guid: ec2fb83bfd31c09469ca40421f55d257,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4284,8 +4284,8 @@ MonoBehaviour:
   characterPrefabs:
   - {fileID: 224860449981939120, guid: fd1b1640d11e50441915d58938308717, type: 3}
   - {fileID: 1940074806959869395, guid: 2ea14e0fad4b0ff4f9681f211b9b216e, type: 3}
-  - {fileID: 8898002524685575854, guid: d87d1e57aa3344a4b9389d013e09aaed, type: 3}
-  - {fileID: 4666918264517803756, guid: 1d97d2fb15be3504b8da01635ab10e04, type: 3}
+  - {fileID: 8898002524685575854, guid: 1d97d2fb15be3504b8da01635ab10e04, type: 3}
+  - {fileID: 4666918264517803756, guid: d87d1e57aa3344a4b9389d013e09aaed, type: 3}
 --- !u!4 &334610647
 Transform:
   m_ObjectHideFlags: 0
@@ -4736,9 +4736,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57255f3dee2aa09428a163a306e7800f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   _rigidbody: {fileID: 0}
   _joystick: {fileID: 2929252283773209651}
   _moveSpeed: 0
+  currentTarget: {fileID: 0}
 --- !u!65 &357896571
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16218,6 +16220,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1255484340}
   m_CullTransparentMesh: 1
+--- !u!1 &1263035759
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1263035760}
+  m_Layer: 0
+  m_Name: Map Design Holder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1263035760
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263035759}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1280108532
 GameObject:
   m_ObjectHideFlags: 0
@@ -23540,8 +23573,9 @@ MonoBehaviour:
   - {fileID: 919132149155446097, guid: 0dc3132577e0e794180b9d302d42d153, type: 3}
   - {fileID: 919132149155446097, guid: 436c56e36c74f7d44bdd087ba03b5fe4, type: 3}
   - {fileID: 919132149155446097, guid: 6937178a687a0f1478c4b4ecbd4d2a5d, type: 3}
-  terrainWidth: 100
-  terrainLength: 100
+  objectHolder: {fileID: 1263035759}
+  terrainWidth: 90
+  terrainLength: 90
   minSpawnHeight: 1
   maxSpawnHeight: 2
   numberOfTrees: 10
@@ -26461,7 +26495,7 @@ MonoBehaviour:
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ec2fb83bfd31c09469ca40421f55d257, type: 2}
-  m_sharedMaterial: {fileID: 2865966710519426453, guid: ec2fb83bfd31c09469ca40421f55d257,
+  m_sharedMaterial: {fileID: 150000599543164097, guid: ec2fb83bfd31c09469ca40421f55d257,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -29686,6 +29720,7 @@ SceneRoots:
   - {fileID: 1113057099}
   - {fileID: 1404091805}
   - {fileID: 797944474}
+  - {fileID: 1263035760}
   - {fileID: 802750979}
   - {fileID: 191682576}
   - {fileID: 1678984414}
