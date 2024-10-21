@@ -9,6 +9,7 @@ public class CameraScript : MonoBehaviour
     public GameObject[] playerUnits;
     public GameObject cameraObject;
     public float cameraSpeed;
+    public float panSpeed;
     public int charSelected;
 
     public NavMeshSurface navMeshSurface;
@@ -93,7 +94,7 @@ public class CameraScript : MonoBehaviour
                 if (touch.phase == TouchPhase.Moved) // Detect swipe movement
                 {
                     // Scale down delta to control the movement speed
-                    Vector2 delta = touch.deltaPosition * cameraSpeed * Time.deltaTime;
+                    Vector2 delta = touch.deltaPosition * panSpeed * Time.deltaTime;
 
                     // Calculate the movement on XZ plane (Y stays constant)
                     Vector3 move = new Vector3(-delta.x, 0, -delta.y);

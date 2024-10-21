@@ -68,11 +68,11 @@ public class UpgradeStats : MonoBehaviour
     {
         UpdateSelectedCharacterStats();
 
-        baseStrength = charStats.strength;
+        /*baseStrength = charStats.strength;
         baseAgility = charStats.agility;
         baseIntelligence = charStats.intelligence;
         baseDexterity = charStats.dexterity;
-        baseVitality = charStats.vitality;
+        baseVitality = charStats.vitality;*/
     }
     private void Update()
     {
@@ -86,13 +86,7 @@ public class UpgradeStats : MonoBehaviour
             // Get the CharStats component from the selected character
             charStats = characters[charNumber].GetComponent<CharStats>();
 
-            charProfile.sprite = charStats.charProfile;
-            charName = charStats.playerName;
-            baseStrength = charStats.strength;
-            baseAgility = charStats.agility;
-            baseIntelligence = charStats.intelligence;
-            baseDexterity = charStats.dexterity;
-            baseVitality = charStats.vitality;
+            
         }
     }
     public void StatText()
@@ -115,11 +109,17 @@ public class UpgradeStats : MonoBehaviour
             attackspeedText.text = charStats.currentAttackspeed.ToString();
 
             //Attribute Text
-            strText.text = PlayerPrefs.GetFloat(charName + "_Str", 1).ToString();
-            agiText.text = PlayerPrefs.GetFloat(charName + "_Agi", 1).ToString();
-            intText.text = PlayerPrefs.GetFloat(charName + "_Int", 1).ToString();
-            dexText.text = PlayerPrefs.GetFloat(charName + "_Dex", 1).ToString();
-            vitText.text = PlayerPrefs.GetFloat(charName + "_Vit", 1).ToString();
+            /*charStats.strength = PlayerPrefs.GetFloat(charName + "_Str", 1);
+            charStats.agility = PlayerPrefs.GetFloat(charName + "_Agi", 1);
+            charStats.intelligence = PlayerPrefs.GetFloat(charName + "_Int", 1);
+            charStats.dexterity = PlayerPrefs.GetFloat(charName + "_Dex", 1);
+            charStats.vitality = PlayerPrefs.GetFloat(charName + "_Vit", 1);*/
+
+            strText.text = charStats.strength.ToString();
+            agiText.text = charStats.agility.ToString();//PlayerPrefs.GetFloat(charName + "_Agi", 1).ToString();
+            intText.text = charStats.intelligence.ToString();//PlayerPrefs.GetFloat(charName + "_Int", 1).ToString();
+            dexText.text = charStats.dexterity.ToString();//PlayerPrefs.GetFloat(charName + "_Dex", 1).ToString();
+            vitText.text = charStats.vitality.ToString();//PlayerPrefs.GetFloat(charName + "_Vit", 1).ToString();
 
             //Attribute Price
             strPrice = charStats.strength * 5f;
@@ -139,6 +139,14 @@ public class UpgradeStats : MonoBehaviour
     {
         charNumber = selectNumber;
         StatText();
+
+        charProfile.sprite = charStats.charProfile;
+        charName = charStats.playerName;
+        baseStrength = charStats.strength;
+        baseAgility = charStats.agility;
+        baseIntelligence = charStats.intelligence;
+        baseDexterity = charStats.dexterity;
+        baseVitality = charStats.vitality;
     }
     public void ConfirmStatUpgrade()
     {
@@ -147,6 +155,12 @@ public class UpgradeStats : MonoBehaviour
         PlayerPrefs.SetFloat(charName + "_Int", charStats.intelligence);
         PlayerPrefs.SetFloat(charName + "_Dex", charStats.dexterity);
         PlayerPrefs.SetFloat(charName + "_Vit", charStats.vitality);
+
+        baseStrength = charStats.strength;
+        baseAgility = charStats.agility;
+        baseIntelligence = charStats.intelligence;
+        baseDexterity = charStats.dexterity;
+        baseVitality = charStats.vitality;
 
         PlayerPrefs.Save();
 
@@ -284,7 +298,11 @@ public class UpgradeStats : MonoBehaviour
         charStats.dexterity = 1;
         charStats.vitality = 1;
 
-        PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteKey(charName + "_Str");
+        PlayerPrefs.DeleteKey(charName + "_Agi");
+        PlayerPrefs.DeleteKey(charName + "_Int");
+        PlayerPrefs.DeleteKey(charName + "_Dex");
+        PlayerPrefs.DeleteKey(charName + "_Vit");
         PlayerPrefs.Save();
     }
 }

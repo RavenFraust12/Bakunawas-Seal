@@ -4736,11 +4736,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57255f3dee2aa09428a163a306e7800f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   _rigidbody: {fileID: 0}
   _joystick: {fileID: 2929252283773209651}
   _moveSpeed: 0
   currentTarget: {fileID: 0}
+  animationManager: {fileID: 0}
 --- !u!65 &357896571
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10003,6 +10003,7 @@ MonoBehaviour:
   playerUnits: []
   cameraObject: {fileID: 963194225}
   cameraSpeed: 5
+  panSpeed: 1
   charSelected: 4
   navMeshSurface: {fileID: 513967552}
   navMeshMinBounds: {x: 15, y: 0, z: 2}
@@ -16181,6 +16182,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 690751830}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1255484343
 MonoBehaviour:
