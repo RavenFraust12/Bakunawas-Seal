@@ -10,6 +10,10 @@ public class CharSelect : MonoBehaviour
     private int selectedCount = 0;  // To keep track of how many characters have been selected
     public GameObject startButton;
 
+    public void Start()
+    {
+        characterPrefabs = new GameObject[4];
+    }
     public void Update()
     {
         if (selectedCount > 0) { startButton.SetActive(true); } else { startButton.SetActive(false); }

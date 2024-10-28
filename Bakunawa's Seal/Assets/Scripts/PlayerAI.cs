@@ -47,7 +47,7 @@ public class PlayerAI : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Movement Manager not found.");
+            //Debug.LogError("Movement Manager not found.");
         }
     }
 

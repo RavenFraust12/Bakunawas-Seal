@@ -22,4 +22,10 @@ public class ButtonFunctions : MonoBehaviour
     {
         Time.timeScale = 1f;
     }
+
+    public void ResetAll()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+    }
 }

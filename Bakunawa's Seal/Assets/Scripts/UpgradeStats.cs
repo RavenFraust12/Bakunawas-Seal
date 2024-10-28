@@ -50,7 +50,7 @@ public class UpgradeStats : MonoBehaviour
     public float dexPrice;
     public float vitPrice;
 
-[Header("Characters")]
+    [Header("Characters")]
     public GameObject[] characters;
     public CharStats charStats;
     public int charNumber;
@@ -59,13 +59,9 @@ public class UpgradeStats : MonoBehaviour
     private GameManager gameManager;
 
 
-    private void Awake()
-    {
-        
-    }
-
     private void Start()
     {
+        characters = new GameObject[4];
         UpdateSelectedCharacterStats();
 
         /*baseStrength = charStats.strength;
@@ -81,12 +77,14 @@ public class UpgradeStats : MonoBehaviour
 
     public void UpdateSelectedCharacterStats()
     {
-        if (characters != null && characters.Length > 0 && charNumber >= 0 && charNumber < characters.Length)
+        if (characters == null || characters.Length == 0 || charStats == null)
+        {
+            Debug.Log("No character yet");
+        }
+        else if (characters != null && characters.Length > 0 && charNumber >= 0 && charNumber < characters.Length)
         {
             // Get the CharStats component from the selected character
-            charStats = characters[charNumber].GetComponent<CharStats>();
-
-            
+            charStats = characters[charNumber].GetComponent<CharStats>();    
         }
     }
     public void StatText()
