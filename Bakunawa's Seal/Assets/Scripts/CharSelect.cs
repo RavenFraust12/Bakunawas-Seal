@@ -16,7 +16,21 @@ public class CharSelect : MonoBehaviour
     }
     public void Update()
     {
-        if (selectedCount > 0) { startButton.SetActive(true); } else { startButton.SetActive(false); }
+        // Check each character in characterPrefabs and activate the corresponding selectedCharacters slot
+        for (int i = 0; i < characterPrefabs.Length; i++)
+        {
+            if (characterPrefabs[i] != null)
+            {
+                selectedCharacters[i]?.SetActive(true);  // Set active if there is a character
+            }
+            else
+            {
+                selectedCharacters[i]?.SetActive(false); // Deactivate if no character is selected
+            }
+        }
+
+        // Enable or disable the start button based on selectedCount
+        startButton.SetActive(selectedCount > 0);
     }
 
     // Call this function when a character is selected

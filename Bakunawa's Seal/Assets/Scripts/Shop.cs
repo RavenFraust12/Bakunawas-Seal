@@ -9,6 +9,8 @@ public class Shop : MonoBehaviour
     public UpgradeStats archive;
 
     public TextMeshProUGUI currentCoins;
+    public TextMeshProUGUI currentCost;
+
     public float cost = 0;
     public int currentIndex;
 
@@ -25,6 +27,7 @@ public class Shop : MonoBehaviour
     {
         currentIndex = PlayerPrefs.GetInt("Bought Units", 0);
         cost = 500 * currentIndex;
+        currentCost.text = "Cost: " + cost.ToString();
         currentCoins.text = PlayerPrefs.GetFloat("Coins", 0).ToString();
     }
     public void BuyHero(GameObject playerUnit)
