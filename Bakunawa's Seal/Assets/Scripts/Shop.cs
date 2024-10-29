@@ -12,6 +12,7 @@ public class Shop : MonoBehaviour
     public float cost = 0;
     public int currentIndex;
 
+    public GameObject cantAfford;
     public void Start()
     {
         /*archive.characters = new GameObject[10];  // Adjust size as needed
@@ -24,11 +25,12 @@ public class Shop : MonoBehaviour
     {
         currentIndex = PlayerPrefs.GetInt("Bought Units", 0);
         cost = 500 * currentIndex;
-        //currentCoins.text = PlayerPrefs.GetFloat("Coins", 0).ToString();
+        currentCoins.text = PlayerPrefs.GetFloat("Coins", 0).ToString();
     }
     public void BuyHero(GameObject playerUnit)
     {
         float coinCount = PlayerPrefs.GetFloat("Coins", 1);
+
         if (cost < coinCount)
         {
             if (currentIndex < archive.characters.Length)
@@ -49,9 +51,24 @@ public class Shop : MonoBehaviour
             {
                 Debug.Log("wow laki etit");
             }
-
-            
+        }
+        else
+        {
+            //cantAfford.SetActive(true);
         }
     }
 
+    public void CanAfford(GameObject confirm)
+    {
+        float coinCount = PlayerPrefs.GetFloat("Coins", 1);
+
+        if (cost < coinCount)
+        {
+            confirm.SetActive(true);
+        }
+        else
+        {
+            cantAfford.SetActive(true);
+        }
+    }
 }
