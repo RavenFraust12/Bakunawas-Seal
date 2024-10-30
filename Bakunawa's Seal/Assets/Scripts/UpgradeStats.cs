@@ -51,7 +51,8 @@ public class UpgradeStats : MonoBehaviour
     public float vitPrice;
 
     [Header("Characters")]
-    public GameObject[] characters;
+    //public GameObject[] characters;
+    public List<GameObject> characters = new List<GameObject>(); // Use List for dynamic resizing
     public CharStats charStats;
     public int charNumber;
 
@@ -61,21 +62,50 @@ public class UpgradeStats : MonoBehaviour
 
     private void Start()
     {
-        characters = new GameObject[4];
+        //characters = new GameObject[4];
+        UpdateBoughtCharacters(); // Populate the characters list with bought characters
         UpdateSelectedCharacterStats();
-
-        /*baseStrength = charStats.strength;
-        baseAgility = charStats.agility;
-        baseIntelligence = charStats.intelligence;
-        baseDexterity = charStats.dexterity;
-        baseVitality = charStats.vitality;*/
     }
     private void Update()
     {
         StatText();
     }
 
+    public void UpdateBoughtCharacters()
+    {
+        characters.Clear(); // Clear the list to start fresh
+
+        foreach (var character in GameManager.Instance.mm_charPrefab)
+        {
+            CharStats stats = character.GetComponent<CharStats>();
+
+            if (stats != null && stats.isBought == 1) // Check if the character is bought
+            {
+                characters.Add(character); // Add to the characters list
+            }
+        }
+
+        if (characters.Count == 0)
+        {
+            Debug.Log("No characters bought yet.");
+        }
+        else
+        {
+            Debug.Log(characters.Count + " characters have been added to the list.");
+        }
+    }
     public void UpdateSelectedCharacterStats()
+    {
+        if (characters == null || characters.Count == 0 || charStats == null)
+        {
+            Debug.Log("No character yet");
+        }
+        else if (characters != null && characters.Count > 0 && charNumber >= 0 && charNumber < characters.Count)
+        {
+            charStats = characters[charNumber].GetComponent<CharStats>();
+        }
+    }
+    /*public void UpdateSelectedCharacterStats()
     {
         if (characters == null || characters.Length == 0 || charStats == null)
         {
@@ -86,7 +116,7 @@ public class UpgradeStats : MonoBehaviour
             // Get the CharStats component from the selected character
             charStats = characters[charNumber].GetComponent<CharStats>();    
         }
-    }
+    }*/
     public void StatText()
     {
         UpdateSelectedCharacterStats();
@@ -120,11 +150,11 @@ public class UpgradeStats : MonoBehaviour
             vitText.text = charStats.vitality.ToString();//PlayerPrefs.GetFloat(charName + "_Vit", 1).ToString();
 
             //Attribute Price
-            strPrice = charStats.strength * 5f;
-            agiPrice = charStats.agility * 5f;
-            intPrice = charStats.intelligence * 5f;
-            dexPrice = charStats.dexterity * 5f;
-            vitPrice = charStats.vitality * 5f;
+            strPrice = charStats.strength * 3f;
+            agiPrice = charStats.agility * 3f;
+            intPrice = charStats.intelligence * 3f;
+            dexPrice = charStats.dexterity * 3f;
+            vitPrice = charStats.vitality * 3;
 
             strPriceText.text = strPrice.ToString();
             agiPriceText.text = agiPrice.ToString();

@@ -39,6 +39,7 @@ public class CharStats : MonoBehaviour
     public bool isDead;
     public float skillCooldown;
     public float skillTime;
+    public int isBought; // 0 is for sale, 1 is for bought
 
 
     private void Start()
@@ -49,8 +50,9 @@ public class CharStats : MonoBehaviour
 
     private void Update()
     {
-        DeathChecker();
+        isBought = PlayerPrefs.GetInt(playerName + "_isBought", 0);
 
+        DeathChecker();
         if (currentCritRate >= 100) currentCritRate = 100;
         if (currentAttackspeed <= 0.25f) currentAttackspeed = 0.25f;
     }

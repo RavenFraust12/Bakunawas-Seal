@@ -28,7 +28,10 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI finalKillCountText, finalCoinCountText, finalWaveCountText, finalGameTimeText;
 
     [Header("Main Menu")]
-    public GameObject[] charactersPrefab, charSpawnPoint;
+    public GameObject[] mm_charPrefab;
+
+    [Header("Gameplay")]
+    public GameObject[] charSpawnPoint;
     public GameObject charHolder;
 
     [Header("Scripts")]
@@ -106,16 +109,11 @@ public class GameManager : MonoBehaviour
     {
         if (!allDead)
         {
-            // Increment the timer by the time passed since the last frame
-
             // Calculate minutes and seconds
             TimeSpan timeSpan = TimeSpan.FromSeconds(timer);
 
             // Format the time as MM:SS
             finalTimer = string.Format("{0:D2}:{1:D2}", timeSpan.Minutes, timeSpan.Seconds);
-
-            // Update the clockText UI
-            //finalGameTimeText.text = timeText;
         }   
     }
 

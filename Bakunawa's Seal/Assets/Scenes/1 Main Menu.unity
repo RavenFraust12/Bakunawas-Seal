@@ -1884,7 +1884,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1216560926}
         m_TargetAssemblyTypeName: CharSelect, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
@@ -2017,7 +2017,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 533810964}
         m_TargetAssemblyTypeName: UpgradeStats, Assembly-CSharp
         m_MethodName: SelectChar
         m_Mode: 3
@@ -5907,7 +5907,7 @@ GameObject:
   - component: {fileID: 255629436}
   - component: {fileID: 255629435}
   m_Layer: 0
-  m_Name: Deselect Dumakulem
+  m_Name: Bought Dumakulem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8716,10 +8716,10 @@ RectTransform:
   - {fileID: 255629433}
   m_Father: {fileID: 1929860867}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1995, y: -664}
+  m_SizeDelta: {x: 500, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &417477230
 GameObject:
@@ -9321,10 +9321,10 @@ RectTransform:
   - {fileID: 1151102534}
   m_Father: {fileID: 1929860867}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1445, y: -664}
+  m_SizeDelta: {x: 500, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &459602582
 GameObject:
@@ -9434,13 +9434,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 946466a42445f61468f4b0733c998513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charSelect: {fileID: 1216560926}
-  archive: {fileID: 533810964}
   currentCoins: {fileID: 1209887920}
   currentCost: {fileID: 2140513811}
   cost: 0
   currentIndex: 0
   cantAfford: {fileID: 1993038647}
+  charSelect: {fileID: 1216560926}
+  archive: {fileID: 533810964}
+  apolakiPrefab: {fileID: 224860449981939120, guid: fd1b1640d11e50441915d58938308717,
+    type: 3}
+  mayariPrefab: {fileID: 1940074806959869395, guid: 2ea14e0fad4b0ff4f9681f211b9b216e,
+    type: 3}
+  dumanganPrefab: {fileID: 4666918264517803756, guid: d87d1e57aa3344a4b9389d013e09aaed,
+    type: 3}
+  dumakulemPrefab: {fileID: 8898002524685575854, guid: 1d97d2fb15be3504b8da01635ab10e04,
+    type: 3}
+  characterPrefabs: []
+  canApolaki: {fileID: 1954402828}
+  boughtApolaki: {fileID: 1656212855}
+  canMayari: {fileID: 389906530}
+  boughtMayari: {fileID: 1260777160}
+  canDumangan: {fileID: 1439981044}
+  boughtDumangan: {fileID: 1151102533}
+  canDumakulem: {fileID: 1347228724}
+  boughtDumakulem: {fileID: 255629432}
 --- !u!4 &468214921
 Transform:
   m_ObjectHideFlags: 0
@@ -10779,138 +10796,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 797784239}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &534537853
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 534537854}
-  - component: {fileID: 534537857}
-  - component: {fileID: 534537856}
-  - component: {fileID: 534537855}
-  m_Layer: 5
-  m_Name: Reset
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &534537854
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534537853}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1376517082}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.93125, y: 0.8487501}
-  m_AnchorMax: {x: 0.98125005, y: 0.95875}
-  m_AnchoredPosition: {x: -1592, y: -37}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 1, y: 1}
---- !u!114 &534537855
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534537853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 534537856}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 468214920}
-        m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: ResetBought
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &534537856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534537853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a9d2b8d2d171860499809abed966b645, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &534537857
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534537853}
-  m_CullTransparentMesh: 1
 --- !u!1 &540508207
 GameObject:
   m_ObjectHideFlags: 0
@@ -11891,13 +11776,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 468214920}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: BuyHero
-        m_Mode: 2
+        m_MethodName: CharacterPrefab
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 4666918264517803756, guid: d87d1e57aa3344a4b9389d013e09aaed,
-            type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -11913,30 +11797,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1439981044}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1151102533}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &581020394
 MonoBehaviour:
@@ -12601,7 +12461,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1216560926}
         m_TargetAssemblyTypeName: CharSelect, Assembly-CSharp
-        m_MethodName: SelectCharacter
+        m_MethodName: DeselectCharacter
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13526,7 +13386,11 @@ MonoBehaviour:
   finalCoinCountText: {fileID: 0}
   finalWaveCountText: {fileID: 0}
   finalGameTimeText: {fileID: 0}
-  charactersPrefab: []
+  mm_charPrefab:
+  - {fileID: 224860449981939120, guid: fd1b1640d11e50441915d58938308717, type: 3}
+  - {fileID: 1940074806959869395, guid: 2ea14e0fad4b0ff4f9681f211b9b216e, type: 3}
+  - {fileID: 4666918264517803756, guid: d87d1e57aa3344a4b9389d013e09aaed, type: 3}
+  - {fileID: 8898002524685575854, guid: 1d97d2fb15be3504b8da01635ab10e04, type: 3}
   charSpawnPoint: []
   charHolder: {fileID: 0}
   characterPrefabs: []
@@ -14145,7 +14009,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 533810964}
         m_TargetAssemblyTypeName: UpgradeStats, Assembly-CSharp
         m_MethodName: SelectChar
         m_Mode: 3
@@ -14654,6 +14518,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 468214920}
+        m_TargetAssemblyTypeName: Shop, Assembly-CSharp
+        m_MethodName: ResetShop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &771174174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14789,10 +14665,10 @@ RectTransform:
   - {fileID: 1656212856}
   m_Father: {fileID: 1929860867}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 345, y: -664}
+  m_SizeDelta: {x: 500, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &797784238
 GameObject:
@@ -20099,13 +19975,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 468214920}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: BuyHero
-        m_Mode: 2
+        m_MethodName: CharacterPrefab
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 1940074806959869395, guid: 2ea14e0fad4b0ff4f9681f211b9b216e,
-            type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -20121,30 +19996,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 389906530}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1260777160}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1030399541
 MonoBehaviour:
@@ -20961,13 +20812,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 468214920}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: BuyHero
-        m_Mode: 2
+        m_MethodName: CharacterPrefab
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 8898002524685575854, guid: 1d97d2fb15be3504b8da01635ab10e04,
-            type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -20983,30 +20833,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1347228724}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 255629432}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1064625638
 MonoBehaviour:
@@ -22897,7 +22723,7 @@ GameObject:
   - component: {fileID: 1151102537}
   - component: {fileID: 1151102536}
   m_Layer: 0
-  m_Name: Deselect Dumangan
+  m_Name: Bought Dumangan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23046,7 +22872,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1216560926}
         m_TargetAssemblyTypeName: CharSelect, Assembly-CSharp
-        m_MethodName: SelectCharacter
+        m_MethodName: DeselectCharacter
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24164,11 +23990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b079aa01dd120e4f882cca8a5ed877b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  characterPrefabs: []
   selectedCharacters:
   - {fileID: 638873393}
   - {fileID: 479006758}
@@ -25264,7 +25086,7 @@ GameObject:
   - component: {fileID: 1260777164}
   - component: {fileID: 1260777163}
   m_Layer: 0
-  m_Name: Deselect Mayari
+  m_Name: Bought Mayari
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25488,7 +25310,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1216560926}
         m_TargetAssemblyTypeName: CharSelect, Assembly-CSharp
-        m_MethodName: SelectCharacter
+        m_MethodName: DeselectCharacter
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -26704,7 +26526,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1376517082
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26720,7 +26542,6 @@ RectTransform:
   - {fileID: 1908642217}
   - {fileID: 1858901639}
   - {fileID: 1226116012}
-  - {fileID: 534537854}
   - {fileID: 655840376}
   - {fileID: 2140513810}
   - {fileID: 1929860867}
@@ -27410,12 +27231,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 468214920}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: BuyHero
-        m_Mode: 2
+        m_MethodName: CharacterPrefab
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 224860449981939120, guid: fd1b1640d11e50441915d58938308717,
-            type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -27432,30 +27252,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1954402828}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1656212855}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1408576808
 MonoBehaviour:
@@ -29551,7 +29347,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 533810964}
         m_TargetAssemblyTypeName: UpgradeStats, Assembly-CSharp
         m_MethodName: SelectChar
         m_Mode: 3
@@ -30897,7 +30693,7 @@ GameObject:
   - component: {fileID: 1656212859}
   - component: {fileID: 1656212858}
   m_Layer: 0
-  m_Name: Deselect Apolaki
+  m_Name: Bought Apolaki
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31649,7 +31445,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1216560926}
         m_TargetAssemblyTypeName: CharSelect, Assembly-CSharp
-        m_MethodName: SelectCharacter
+        m_MethodName: DeselectCharacter
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -33297,7 +33093,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 533810964}
         m_TargetAssemblyTypeName: UpgradeStats, Assembly-CSharp
         m_MethodName: SelectChar
         m_Mode: 3
@@ -38534,10 +38330,10 @@ RectTransform:
   - {fileID: 1260777161}
   m_Father: {fileID: 1929860867}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 895, y: -664}
+  m_SizeDelta: {x: 500, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2123207051
 GameObject:
