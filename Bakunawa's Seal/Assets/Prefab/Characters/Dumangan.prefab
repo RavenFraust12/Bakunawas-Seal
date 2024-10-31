@@ -1068,9 +1068,11 @@ MonoBehaviour:
   vitality: 1
   charProfile: {fileID: 21300000, guid: 3a9319fd70a170e46b2e463d0f790758, type: 3}
   playerName: Dumangan
+  charID: 2
   isDead: 0
   skillCooldown: 0
   skillTime: 0
+  isBought: 0
 --- !u!114 &1852640768953525740
 MonoBehaviour:
   m_ObjectHideFlags: 0

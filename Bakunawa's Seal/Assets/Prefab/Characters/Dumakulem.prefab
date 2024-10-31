@@ -1004,9 +1004,11 @@ MonoBehaviour:
   vitality: 1
   charProfile: {fileID: 21300000, guid: 0e8b2e63f4da86a4e89810ea71d62b63, type: 3}
   playerName: Dumakulem
+  charID: 3
   isDead: 0
   skillCooldown: 0
   skillTime: 0
+  isBought: 0
 --- !u!114 &5572463999382277058
 MonoBehaviour:
   m_ObjectHideFlags: 0

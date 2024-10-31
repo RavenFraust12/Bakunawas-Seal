@@ -66,8 +66,9 @@ public class Shop : MonoBehaviour
 
         if (cost <= coinCount)
         {
-            charSelect.PopulateCharacterPrefabs();
-            archive.UpdateBoughtCharacters();
+            //charSelect.PopulateCharacterPrefabs();
+            //archive.UpdateBoughtCharacters();
+            Debug.Log("Populated and Updated Prefabs");
 
             currentIndex++;
             coinCount -= cost;
@@ -151,6 +152,8 @@ public class Shop : MonoBehaviour
             stats.isBought = 0;
             PlayerPrefs.DeleteAll();
             PlayerPrefs.Save();
+
+            //charSelect.characterPrefabs.Clear();
         }
     }
 }

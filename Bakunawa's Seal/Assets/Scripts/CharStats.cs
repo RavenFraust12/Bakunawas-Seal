@@ -36,10 +36,12 @@ public class CharStats : MonoBehaviour
     [Header("Gameplay")]
     public Sprite charProfile;
     public string playerName;
+    public int charID;
     public bool isDead;
     public float skillCooldown;
     public float skillTime;
     public int isBought; // 0 is for sale, 1 is for bought
+    public int isSelected; // 0 is for not selected, 1 is for selected
 
 
     private void Start()

@@ -55,6 +55,7 @@ public class UpgradeStats : MonoBehaviour
     public List<GameObject> characters = new List<GameObject>(); // Use List for dynamic resizing
     public CharStats charStats;
     public int charNumber;
+    public GameObject[] charButtons;
 
     [Header("Scripts")]
     private GameManager gameManager;
@@ -69,6 +70,20 @@ public class UpgradeStats : MonoBehaviour
     private void Update()
     {
         StatText();
+        for (int i = 0; i < characters.Count; i++)
+        {
+            CharStats stats = characters[i].GetComponent<CharStats>();
+
+            if (stats.isBought == 1)
+            {     
+                // Set the character's name
+                charButtons[i]?.SetActive(true);  // Set active if there is a character
+            }
+            else if (stats.isBought == 0)
+            {
+                charButtons[i]?.SetActive(false); // Deactivate if no character is selected
+            }
+        }
     }
 
     public void UpdateBoughtCharacters()
@@ -105,18 +120,7 @@ public class UpgradeStats : MonoBehaviour
             charStats = characters[charNumber].GetComponent<CharStats>();
         }
     }
-    /*public void UpdateSelectedCharacterStats()
-    {
-        if (characters == null || characters.Length == 0 || charStats == null)
-        {
-            Debug.Log("No character yet");
-        }
-        else if (characters != null && characters.Length > 0 && charNumber >= 0 && charNumber < characters.Length)
-        {
-            // Get the CharStats component from the selected character
-            charStats = characters[charNumber].GetComponent<CharStats>();    
-        }
-    }*/
+
     public void StatText()
     {
         UpdateSelectedCharacterStats();

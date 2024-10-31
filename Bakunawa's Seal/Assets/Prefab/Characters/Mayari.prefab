@@ -453,9 +453,11 @@ MonoBehaviour:
   vitality: 1
   charProfile: {fileID: 21300000, guid: 5eddb4f8dd751cc498779887942c56fa, type: 3}
   playerName: Mayari
+  charID: 1
   isDead: 0
   skillCooldown: 0
   skillTime: 0
+  isBought: 0
 --- !u!114 &2785278379452383576
 MonoBehaviour:
   m_ObjectHideFlags: 0

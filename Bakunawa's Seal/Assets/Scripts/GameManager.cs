@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Main Menu")]
     public GameObject[] mm_charPrefab;
+    public CharSelect charSelect;
 
     [Header("Gameplay")]
     public GameObject[] charSpawnPoint;
@@ -50,8 +52,16 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         Application.targetFrameRate = 60;
-        InstantiateSelectedCharacters();//test
-        CharacterSelection();
+
+        if (isMainMenu)
+        {
+
+        }
+        else if (!isMainMenu)
+        {
+            InstantiateSelectedCharacters();//test
+            CharacterSelection();
+        }
         //if (charCount > 0)
         //{
         //    CameraScript cameraScript = FindObjectOfType<CameraScript>();
@@ -64,7 +74,7 @@ public class GameManager : MonoBehaviour
         {
             OnMainMenuCounts();
         }
-        if (!isMainMenu)
+        else if (!isMainMenu)
         {
             UpdateHealthSliders();
             OnGameCounts();
@@ -159,17 +169,36 @@ public class GameManager : MonoBehaviour
 
     private void InstantiateSelectedCharacters()
     {
-        int selectedCount = PlayerPrefs.GetInt("SelectedCount", 0);
 
-        for (int i = 0; i < selectedCount; i++)
+        for (int i = 0; i < characterPrefabs.Length; i++)
         {
-            int characterIndex = PlayerPrefs.GetInt("SelectedCharacter_" + i, 0);
+            CharStats stats = characterPrefabs[i].GetComponent<CharStats>();
+            int characterIndex = PlayerPrefs.GetInt(stats.playerName + "_Selected", 0);
 
-            if (i < charSpawnPoint.Length)  // Ensure there are enough spawn points
+            if (characterIndex == 1)
             {
-                Instantiate(characterPrefabs[characterIndex], charSpawnPoint[i].transform.position, Quaternion.identity, charHolder.transform);
+                Instantiate(characterPrefabs[i], charSpawnPoint[i].transform.position, Quaternion.identity, charHolder.transform);
             }
 
+            // Retrieve the saved index of each selected character
+            /*int characterIndex = PlayerPrefs.GetInt("SelectedCharacter_" + i, -1);
+             int selectedCount = PlayerPrefs.GetInt("SelectedCount", 0);  // Number of selected characters
+
+
+            Instantiate(characterPrefabs[characterIndex], charSpawnPoint[i].transform.position, Quaternion.identity, charHolder.transform);
+            Debug.Log("Spawning " + characterPrefabs[characterIndex].name);*/
+
+            // Check if the characterIndex is valid and within bounds
+            /*if (characterIndex >= 0 && characterIndex < characterPrefabs.Length)
+            {
+                if (i < charSpawnPoint.Length)  // Ensure there's a corresponding spawn point
+                {
+                    // Instantiate the character at the assigned spawn point
+                    Instantiate(characterPrefabs[characterIndex], charSpawnPoint[i].transform.position, Quaternion.identity, charHolder.transform);
+                    Debug.Log("Spawning " + characterPrefabs[characterIndex].name);
+                }
+            }*/
         }
     }
+
 }
