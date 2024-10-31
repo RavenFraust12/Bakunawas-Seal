@@ -68,6 +68,8 @@ public class GameManager : MonoBehaviour
             InstantiateSelectedCharacters();//test
             CharacterSelection();
         }
+        UpdateHealthSliders();
+
         //if (charCount > 0)
         //{
         //    CameraScript cameraScript = FindObjectOfType<CameraScript>();
@@ -112,6 +114,7 @@ public class GameManager : MonoBehaviour
             finalWaveCountText.text = spawnManager.waveCount.ToString();
             finalKillCountText.text = spawnManager.killedUnits.ToString();
             finalGameTimeText.text = finalTimer;
+           // Time.timeScale = 0;
         }
     }
     public void OnGameCounts()

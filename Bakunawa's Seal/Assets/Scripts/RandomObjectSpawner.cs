@@ -12,10 +12,10 @@ public class RandomObjectSpawner : MonoBehaviour
     public GameObject objectHolder;
 
     // Terrain dimensions (width and length)
-    public float terrainWidth = 90f;
-    public float terrainLength = 90f;
-    public float minSpawnHeight = 0f;
-    public float maxSpawnHeight = 2f;
+    public float terrainWidth;
+    public float terrainLength;
+    public float minSpawnHeight;
+    public float maxSpawnHeight;
 
     // Number of objects to spawn
     public int numberOfTrees = 10;

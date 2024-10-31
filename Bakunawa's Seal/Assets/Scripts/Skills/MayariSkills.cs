@@ -52,18 +52,24 @@ public class MayariSkills : MonoBehaviour
             float closestDistance = Mathf.Infinity;
             GameObject closestPlayer = null;
 
-            // Find the closest player with less than full health (excluding the caster unless their health is below 50%)
+            // Find the closest player with less than full health and more than 0 health
             foreach (GameObject player in playerUnits)
             {
                 CharStats otherChar = player.GetComponent<CharStats>();
 
-                // Skip checking for caster unless their health is <= 50% of their base health
-                if (player == gameObject && otherChar.currentHealth > (charStats.baseHealth / 2f))
+                // Skip the player if they are dead (currentHealth is 0)
+                if (otherChar.currentHealth == 0)
                 {
-                    continue; // Skip to the next player if caster's health is > 50%
+                    continue;
                 }
 
-                // If player's health is below full, consider them as a healing target
+                // Skip checking for the caster unless their health is <= 50% of base health
+                if (player == gameObject && otherChar.currentHealth > (charStats.baseHealth / 2f))
+                {
+                    continue;
+                }
+
+                // If the player's health is below full, consider them as a healing target
                 if (otherChar.currentHealth < otherChar.baseHealth)
                 {
                     float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
@@ -103,6 +109,69 @@ public class MayariSkills : MonoBehaviour
             canSkill = true;
         }
     }
+
+    //walang condition na pag namatay any players di na siya dapat mag heal
+    //IEnumerator SkillNiMayari()
+    //{
+    //    if (canSkill)
+    //    {
+    //        charStats.skillTime = 0f;
+    //        canSkill = false;
+
+    //        float closestDistance = Mathf.Infinity;
+    //        GameObject closestPlayer = null;
+
+    //        // Find the closest player with less than full health (excluding the caster unless their health is below 50%)
+    //        foreach (GameObject player in playerUnits)
+    //        {
+    //            CharStats otherChar = player.GetComponent<CharStats>();
+
+    //            // Skip checking for caster unless their health is <= 50% of their base health
+    //            if (player == gameObject && otherChar.currentHealth > (charStats.baseHealth / 2f))
+    //            {
+    //                continue; // Skip to the next player if caster's health is > 50%
+    //            }
+
+    //            // If player's health is below full, consider them as a healing target
+    //            if (otherChar.currentHealth < otherChar.baseHealth)
+    //            {
+    //                float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+
+    //                // Find the closest player to the caster
+    //                if (distanceToPlayer < closestDistance)
+    //                {
+    //                    closestDistance = distanceToPlayer;
+    //                    closestPlayer = player;
+    //                }
+    //            }
+    //        }
+
+    //        // If a closest player was found, perform the healing
+    //        if (closestPlayer != null)
+    //        {
+    //            CharStats closestCharStats = closestPlayer.GetComponent<CharStats>();
+
+    //            // Heal the closest player or the caster themselves if they are below 50% health
+    //            closestCharStats.currentHealth += (charStats.currentMagicAttack * 2f);
+
+    //            // Trigger healing effect
+    //            heal = Instantiate(healEffect, closestPlayer.transform.position, Quaternion.identity);
+    //            Debug.Log("Healed " + closestPlayer.name);
+
+    //            // Disable healing for the duration of the cooldown
+    //            canHeal = false;
+    //        }
+
+    //        // Disable healing effect after a delay
+    //        yield return new WaitForSeconds(1f);
+    //        Destroy(heal.gameObject);
+
+    //        // Wait for skill cooldown (based on current attack speed)
+    //        yield return new WaitForSeconds((charStats.currentAttackspeed * 5) + 5);
+    //        canHeal = true;
+    //        canSkill = true;
+    //    }
+    //}
 
     public void MayariStats()
     {

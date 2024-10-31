@@ -24,6 +24,7 @@ public class PlayerAI : MonoBehaviour
     private CameraScript cameraScript;
     public bool isPlayerControlled;
     public PlayerMovement playerMovement;
+    private bool hasPlayedDeath = false; // New flag to track death animation
 
     // Start is called before the first frame update
     void Start()
@@ -50,17 +51,24 @@ public class PlayerAI : MonoBehaviour
             //Debug.LogError("Movement Manager not found.");
         }
     }
-
-    // Update is called once per frame
     void Update()
     {
         FindClosestEnemy();
 
         if (charStats.isDead)
         {
+            if (!hasPlayedDeath) // Check if death animation has not been played yet
+            {
+                animationManager.PlayDeath(); // Trigger death animation once
+                hasPlayedDeath = true; // Set flag to prevent re-triggering
+            }
+
             isPlayerControlled = false;
-            animationManager.PlayDeath(); // Trigger death animation
             return;
+        }
+        else
+        {
+            hasPlayedDeath = false; // Reset flag if character is not dead
         }
 
         if (target != null)
@@ -69,58 +77,97 @@ public class PlayerAI : MonoBehaviour
         }
         else
         {
-            animationManager.PlayIdle(); // If no target, play idle animation
+            animationManager.PlayIdle();
+            navAgent.velocity = Vector3.zero;
+
         }
     }
 
+    // old update where death animation is paralyzed lol
+    //void Update()
+    //{
+    //    FindClosestEnemy();
+
+    //    if (charStats.isDead)
+    //    {
+    //        isPlayerControlled = false;
+    //        return;
+    //    }
+
+    //    if (target != null)
+    //    {
+    //        PlayerActionAI();
+    //    }
+    //    else
+    //    {
+    //        animationManager.PlayIdle(); // If no target, play idle animation
+    //    }
+    //}
+
     void PlayerActionAI()
     {
-        // Rotate towards the target
-        Vector3 direction = (target.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
-
-        // Stop AI movement when the player is controlling the character
-        if (isPlayerControlled)
+        if (target != null && Vector3.Distance(transform.position, target.position) <= detectionRange)
         {
-            navAgent.ResetPath(); // Stop AI movement
+            // Rotate towards the target only if within detection range
+            Vector3 direction = (target.position - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
 
-            // If in attack range, trigger attack animation
-            if (Vector3.Distance(transform.position, target.position) <= attackRange)
-            {
-                //animationManager.PlayAttack(); // Play attack animation
-                StartCoroutine(AttackDelay());
-                SkillDelay();
-                Debug.Log("Attacking " + target.name);
-            }
-            return;
-        }
-        else if (!isPlayerControlled)
-        {
-            navAgent.SetDestination(target.transform.position);
-            animationManager.PlayWalk(); // Trigger walking animation
-            Debug.Log("WalkingAnimation is triggered on Ai");
-
-            // If in attack range, stop and attack
-            if (Vector3.Distance(transform.position, target.position) <= attackRange)
+            // Stop AI movement when the player is controlling the character
+            if (isPlayerControlled)
             {
                 navAgent.ResetPath();
-                //animationManager.PlayAttack(); // Trigger attack animation
-                StartCoroutine(AttackDelay());
-                SkillDelay();
-                Debug.Log("Attacking " + target.name);
+                navAgent.velocity = Vector3.zero;
+
+                // If in attack range, trigger attack animation
+                if (Vector3.Distance(transform.position, target.position) <= attackRange)
+                {
+                    StartCoroutine(AttackDelay());
+                    SkillDelay();
+                    Debug.Log("Attacking " + target.name);
+                }
+                return;
+            }
+            else
+            {
+                navAgent.SetDestination(target.position);
+                animationManager.PlayWalk();
+                Debug.Log("Walking animation triggered on AI");
+
+                // If in attack range, stop and attack
+                if (Vector3.Distance(transform.position, target.position) <= attackRange)
+                {
+                    navAgent.ResetPath();
+                    navAgent.velocity = Vector3.zero;
+                    StartCoroutine(AttackDelay());
+                    SkillDelay();
+                    Debug.Log("Attacking " + target.name);
+                }
             }
         }
         else
         {
+            // If no target or out of range, stop moving and play idle animation
             navAgent.ResetPath();
-            animationManager.PlayIdle(); // If no movement, idle
-            Debug.Log("No Enemy Detected");
+            navAgent.velocity = Vector3.zero;
+            animationManager.PlayIdle();
+            Debug.Log("No enemy detected; idle animation triggered");
         }
     }
 
 
+    void OnDrawGizmosSelected()
+    {
+        // Set Gizmo color for attack range
+        Gizmos.color = Color.red;
+        // Draw a sphere for attack range
+        Gizmos.DrawWireSphere(transform.position, attackRange);
 
+        // Set Gizmo color for detection range
+        Gizmos.color = Color.yellow;
+        // Draw a sphere for detection range
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
+    }
     void FindClosestEnemy()
     {
         if (charStats.isDead == false)
