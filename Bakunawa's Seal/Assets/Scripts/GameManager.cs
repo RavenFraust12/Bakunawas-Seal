@@ -24,6 +24,12 @@ public class GameManager : MonoBehaviour
     public string finalTimer;
     public bool allDead = false;
 
+    [Header("Main Slider")]
+    public GameObject currentSlider;
+    public Image mainHealthSlider;
+    public Image mainSkillSlider;
+    public Image currentIcon;
+
     [Header("Defeat Panel")]
     public GameObject losePanel;
     public TextMeshProUGUI finalKillCountText, finalCoinCountText, finalWaveCountText, finalGameTimeText;
@@ -155,6 +161,8 @@ public class GameManager : MonoBehaviour
 
         GameObject[] playerUnits = GameObject.FindGameObjectsWithTag("Player");
 
+        //bool isAnyPlayerControlled = false; // Flag to check if any player is controlled
+
         foreach (GameObject player in playerUnits)
         {
             CharStats charStats = player.GetComponent<CharStats>();
@@ -164,7 +172,21 @@ public class GameManager : MonoBehaviour
             skillSlider[charCount].fillAmount = charStats.skillTime / charStats.skillCooldown;
 
             charCount++;
+
+            /*PlayerAI playerAI = player.GetComponent<PlayerAI>();
+            if (playerAI.isPlayerControlled)
+            {
+                isAnyPlayerControlled = true; // Set flag if any player is controlled
+
+                // Update the main sliders with the current character's health/skill if controlled
+                mainHealthSlider.fillAmount = charStats.currentHealth / charStats.totalHealth;
+                mainSkillSlider.fillAmount = charStats.skillTime / charStats.skillCooldown;
+                currentIcon.sprite = charStats.charProfile;
+            }*/
         }
+
+        // Set the slider's active state only after the loop based on the flag
+        //currentSlider.SetActive(isAnyPlayerControlled);
     }
 
     private void InstantiateSelectedCharacters()

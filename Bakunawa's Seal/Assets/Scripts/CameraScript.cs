@@ -35,16 +35,16 @@ public class CameraScript : MonoBehaviour
 
     public void CameraLocation() //Camera on who to follow
     {
-        if (charSelected == 4)
+        if (charSelected == 4) //Not Selected
         {
             cameraObject.transform.position = new Vector3(cameraObject.transform.position.x, 15f, cameraObject.transform.position.z);
         }
-        else
+        else //Selected
         {
             Vector3 playerPos = playerUnits[charSelected].transform.position;
 
             // Set target camera position
-            Vector3 targetPosition = new Vector3(playerPos.x, 15f, playerPos.z - 3f);
+            Vector3 targetPosition = new Vector3(playerPos.x, 15f, playerPos.z - 10f);
 
             // Lerp the camera position
             cameraObject.transform.position = Vector3.Lerp(cameraObject.transform.position, targetPosition, Time.deltaTime * cameraSpeed);
@@ -68,6 +68,7 @@ public class CameraScript : MonoBehaviour
         {
             playerUnits[charNumber].GetComponent<PlayerAI>().isPlayerControlled = false;
             joystick.SetActive(false);
+            GameManager.Instance.currentSlider.SetActive(false);
             charSelected = 4;
         }
         else if (playerUnits[charNumber] != null)
@@ -75,6 +76,15 @@ public class CameraScript : MonoBehaviour
             if (playerUnits[charNumber].GetComponent<CharStats>().isDead == false)
             {
                 playerUnits[charNumber].GetComponent<PlayerAI>().isPlayerControlled = true;
+
+                CharStats charStats = playerUnits[charNumber].GetComponent<CharStats>();
+
+                // Update the main sliders with the current character's health/skill if controlled
+                GameManager.Instance.mainHealthSlider.fillAmount = charStats.currentHealth / charStats.totalHealth;
+                GameManager.Instance.mainSkillSlider.fillAmount = charStats.skillTime / charStats.skillCooldown;
+                GameManager.Instance.currentIcon.sprite = charStats.charProfile;
+
+                GameManager.Instance.currentSlider.SetActive(true);
             }
             charSelected = charNumber;
             joystick.SetActive(true);

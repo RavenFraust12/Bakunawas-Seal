@@ -57,15 +57,20 @@ public class UpgradeStats : MonoBehaviour
     public int charNumber;
     public GameObject[] charButtons;
 
-    [Header("Scripts")]
-    private GameManager gameManager;
+    [Header("Enemy")]
+    public TextMeshProUGUI description;
+    public Sprite[] enemyIcon;
+    public Image enemyProfile;
+    public TextMeshProUGUI enemyIdentity;
 
 
     private void Start()
     {
         //characters = new GameObject[4];
-        UpdateBoughtCharacters(); // Populate the characters list with bought characters
-        UpdateSelectedCharacterStats();
+        //UpdateBoughtCharacters(); // Populate the characters list with bought characters
+        //UpdateSelectedCharacterStats();
+
+        DefaultStats();
     }
     private void Update()
     {
@@ -88,7 +93,7 @@ public class UpgradeStats : MonoBehaviour
 
     public void UpdateBoughtCharacters()
     {
-        characters.Clear(); // Clear the list to start fresh
+        //characters.Clear(); // Clear the list to start fresh
 
         foreach (var character in GameManager.Instance.mm_charPrefab)
         {
@@ -123,7 +128,7 @@ public class UpgradeStats : MonoBehaviour
 
     public void StatText()
     {
-        UpdateSelectedCharacterStats();
+        //UpdateSelectedCharacterStats();
 
         if (charStats != null)
         {
@@ -167,8 +172,41 @@ public class UpgradeStats : MonoBehaviour
             vitPriceText.text = vitPrice.ToString();
         }
     }
+    public void DefaultStats()
+    {
+        charNameText.text = "";
+        healthText.text = 100.ToString();
+        attackText.text = 20.ToString();
+        magicAttackText.text = 15.ToString();
+        armorText.text = 5.ToString();
+        magicDefText.text = 5.ToString();
+        critRateText.text = 5.ToString();
+        movespeedText.text = 5.ToString();
+        attackspeedText.text = 1.5f.ToString();
+
+        strText.text = 1.ToString();
+        agiText.text = 1.ToString();
+        intText.text = 1.ToString();
+        dexText.text = 1.ToString();
+        vitText.text = 1.ToString();
+
+        //Attribute Price
+        strPrice = 3f;
+        agiPrice = 3f;
+        intPrice = 3f;
+        dexPrice = 3f;
+        vitPrice = 3f;
+
+        strPriceText.text = strPrice.ToString();
+        agiPriceText.text = agiPrice.ToString();
+        intPriceText.text = intPrice.ToString();
+        dexPriceText.text = dexPrice.ToString();
+        vitPriceText.text = vitPrice.ToString();
+    }
     public void SelectChar(int selectNumber)
     {
+        charStats = characters[selectNumber].GetComponent<CharStats>();
+
         charNumber = selectNumber;
         StatText();
 
@@ -336,5 +374,36 @@ public class UpgradeStats : MonoBehaviour
         PlayerPrefs.DeleteKey(charName + "_Dex");
         PlayerPrefs.DeleteKey(charName + "_Vit");
         PlayerPrefs.Save();
+    }
+
+    public void EnemyDescription(string enemyName)
+    {
+        if (enemyName == "Manananggal")
+        {
+            description.text = "The Manananggal is a vampire-like creature in Filipino folklore that detaches her upper body at night, growing bat-like wings to prey on pregnant women and newborns. Vulnerable when separated from her lower body, she can be repelled by garlic and salt, and her legend varies across the Visayas, making her one of the most feared figures in Philippine mythology.\r\n";
+            enemyProfile.sprite = enemyIcon[0];
+        }
+        else if (enemyName == "Duwende")
+        {
+            description.text = "The Duwende is a small, dwarf-like creature in Filipino folklore that resides in mounds, forests, or old houses, known for its playful or mischievous nature. People say \"Tabi-tabi po\" to avoid bad luck, as Duwende can hoard items and bring misfortune, with red and black ones considered malicious and white and green ones seen as playful.";
+            enemyProfile.sprite = enemyIcon[1];
+        }
+        else if (enemyName == "Mangkukulam")
+        {
+            description.text = "The Mangkukulam is a witch in Filipino folklore known for practicing black magic that inflicts ailments beyond modern medicine’s reach. Using personal items and voodoo dolls, she can summon pain and suffering, while traditional healers, or albularyos, may offer protection against her curses.";
+            enemyProfile.sprite = enemyIcon[2];
+        }
+        else if (enemyName == "Tikbalang")
+        {
+            description.text = "Encounter the Tikbalang, a tall, bony humanoid from Philippine folklore, with the head and hooves of a horse and impossibly long limbs. This mysterious creature lurks in the mountains and rainforests, embodying eerie tales of transformation and the supernatural.";
+            enemyProfile.sprite = enemyIcon[3];
+        }
+        else if (enemyName == "Diwata")
+        {
+            description.text = "Diwata are mystical nature spirits who guard the forests and waters, offering blessings to protectors of the land and curses to those who harm it. Dwelling in ancient trees, these elusive beings can be benevolent or fearsome, commanding both light and dark forces.";
+            enemyProfile.sprite = enemyIcon[4];
+        }
+
+        enemyIdentity.text = enemyName;
     }
 }
