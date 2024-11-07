@@ -19,6 +19,9 @@ public class PlayerMovement : MonoBehaviour
     public AnimationManager animationManager; // Reference to AnimationManager
     //private bool playerInitialized = false; // Flag to check if the player has been initialized
 
+    [Header("Rotation Settings")]
+    [SerializeField] private float rotationSpeed = 10f;
+
     private void Awake()
     {
         _cameraScript = FindObjectOfType<CameraScript>();
@@ -56,30 +59,51 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         if (_joystick == null) return;
-        if (_cameraScript.charSelected == 4 ||
-            _cameraScript.playerUnits[_cameraScript.charSelected].GetComponent<CharStats>().isDead == true) return;
+        if (_cameraScript.charSelected == 4 || _cameraScript.playerUnits[_cameraScript.charSelected].GetComponent<CharStats>().isDead == true) return;
 
-            if (_cameraScript.playerUnits[_cameraScript.charSelected] != null)
-            {
-                _rigidbody = _cameraScript.playerUnits[_cameraScript.charSelected].GetComponent<Rigidbody>();
-                animationManager = _cameraScript.playerUnits[_cameraScript.charSelected].GetComponentInChildren<AnimationManager>();
+        if (_cameraScript.playerUnits[_cameraScript.charSelected] != null)
+        {
+            _rigidbody = _cameraScript.playerUnits[_cameraScript.charSelected].GetComponent<Rigidbody>();
+            animationManager = _cameraScript.playerUnits[_cameraScript.charSelected].GetComponentInChildren<AnimationManager>();
         }
 
-            _moveSpeed = _cameraScript.playerUnits[_cameraScript.charSelected].GetComponent<CharStats>().currentMovespeed;
+        _moveSpeed = _cameraScript.playerUnits[_cameraScript.charSelected].GetComponent<CharStats>().currentMovespeed;
 
-            _rigidbody.velocity = new Vector3(_joystick.Horizontal * _moveSpeed, _rigidbody.velocity.y, _joystick.Vertical * _moveSpeed);
+        // Calculate movement velocity from the joystick input
+        Vector3 moveDirection = new Vector3(_joystick.Horizontal, 0, _joystick.Vertical).normalized;
 
-            if (_joystick.Horizontal != 0 || _joystick.Vertical != 0 && animationManager != null)
-            {
-                transform.rotation = Quaternion.LookRotation(_rigidbody.velocity);
-                animationManager.PlayWalk();
-                //_animator.SetBool("isRunning", true);
-            }
-            else
-            {
-                //_animator.SetBool("isRunning", false);
-                animationManager.PlayIdle();
-            }
+        // Apply velocity to the rigidbody
+        _rigidbody.velocity = new Vector3(moveDirection.x * _moveSpeed, _rigidbody.velocity.y, moveDirection.z * _moveSpeed);
+
+        // If the player is moving, rotate to face the movement direction
+        if (moveDirection.magnitude > 0.1f && animationManager != null)
+        {
+            // Smooth rotation towards the movement direction
+            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+            // Play walking animation
+            animationManager.PlayWalk();
+        }
+        else
+        {
+            // If no movement, play idle animation
+            animationManager.PlayIdle();
+        }
+
+        /*_rigidbody.velocity = new Vector3(_joystick.Horizontal * _moveSpeed, _rigidbody.velocity.y, _joystick.Vertical * _moveSpeed);
+
+        if (_joystick.Horizontal != 0 || _joystick.Vertical != 0 && animationManager != null)
+        {
+            transform.rotation = Quaternion.LookRotation(_rigidbody.velocity);
+            animationManager.PlayWalk();
+             //_animator.SetBool("isRunning", true);
+        }
+        else
+        {
+            //_animator.SetBool("isRunning", false);
+            animationManager.PlayIdle();
+        }*/
     }
     /*public void FaceTarget()
     {
@@ -126,7 +150,7 @@ public class PlayerMovement : MonoBehaviour
         currentTarget = target;
     }*/
     // Method to rotate and face the target (enemy)
-    
+
 
     // Method to find the player object and its components after spawning
     /*private void FindPlayerComponents()
