@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Rotation Settings")]
     [SerializeField] private float rotationSpeed = 10f;
 
+    public bool isKeyboard;
+
     private void Awake()
     {
         _cameraScript = FindObjectOfType<CameraScript>();
@@ -70,17 +72,40 @@ public class PlayerMovement : MonoBehaviour
         _moveSpeed = _cameraScript.playerUnits[_cameraScript.charSelected].GetComponent<CharStats>().currentMovespeed;
 
         // Calculate movement velocity from the joystick input
-        Vector3 moveDirection = new Vector3(_joystick.Horizontal, 0, _joystick.Vertical).normalized;
+        //Vector3 moveDirection = new Vector3(_joystick.Horizontal, 0, _joystick.Vertical).normalized;
+
+        // Determine the move direction based on the input method
+        Vector3 moveDirection;
+
+        if (isKeyboard)
+        {
+            // Using WASD input for debugging
+            float horizontal = 0f;
+            float vertical = 0f;
+
+            // Check for WASD inputs (assuming these are mapped to horizontal and vertical axes)
+            if (Input.GetKey(KeyCode.W)) vertical = 1f; // Move forward
+            if (Input.GetKey(KeyCode.S)) vertical = -1f; // Move backward
+            if (Input.GetKey(KeyCode.A)) horizontal = -1f; // Move left
+            if (Input.GetKey(KeyCode.D)) horizontal = 1f; // Move right
+
+            moveDirection = new Vector3(horizontal, 0, vertical).normalized;
+        }
+        else
+        {
+            // Using joystick input
+            moveDirection = new Vector3(_joystick.Horizontal, 0, _joystick.Vertical).normalized;
+        }
 
         // Apply velocity to the rigidbody
         _rigidbody.velocity = new Vector3(moveDirection.x * _moveSpeed, _rigidbody.velocity.y, moveDirection.z * _moveSpeed);
 
         // If the player is moving, rotate to face the movement direction
-        if (moveDirection.magnitude > 0.1f && animationManager != null)
+        if (moveDirection.magnitude > 0f && animationManager != null)
         {
             // Smooth rotation towards the movement direction
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            _cameraScript.playerUnits[_cameraScript.charSelected].transform.rotation = Quaternion.Slerp(_cameraScript.playerUnits[_cameraScript.charSelected].transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
             // Play walking animation
             animationManager.PlayWalk();

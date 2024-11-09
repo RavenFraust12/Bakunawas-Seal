@@ -44,7 +44,7 @@ public class DumanganSkills : MonoBehaviour
         if (canSkill)
         {
             //Attackspeed and Crit Skill
-            canSkill = false;
+            /*canSkill = false;
             float baseAtkspd = charStats.currentAttackspeed;
             float baseCrit = charStats.currentCritRate;
             charStats.currentAttackspeed -= 0.5f;
@@ -56,9 +56,10 @@ public class DumanganSkills : MonoBehaviour
 
             yield return new WaitForSeconds((baseAtkspd * 3) + 3);   
             canSkill = true;
+            */
 
             //SpreadShot Skill
-            /*canSkill = false;
+            canSkill = false;
             charStats.skillTime = 0f;
 
             int numberOfProjectiles = 5;
@@ -82,7 +83,7 @@ public class DumanganSkills : MonoBehaviour
 
             yield return new WaitForSeconds((charStats.currentAttackspeed * 3f) + 3f);
             canSkill = true;
-            */
+            
         }
     }
 

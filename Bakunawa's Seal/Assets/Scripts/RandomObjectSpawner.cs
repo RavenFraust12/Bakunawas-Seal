@@ -23,10 +23,12 @@ public class RandomObjectSpawner : MonoBehaviour
 
     // Reference to the Terrain
     public Terrain terrain;
+    //public NavMeshSurface navMesh;
 
     // Start is called before the first frame update
     void Start()
     {
+        //navMesh = FindObjectOfType<NavMeshSurface>();
         SpawnObjects(treePrefabs, numberOfTrees);
         SpawnObjects(rockPrefabs, numberOfRocks);
     }
@@ -37,9 +39,9 @@ public class RandomObjectSpawner : MonoBehaviour
         {
             // Generate random position within the terrain bounds
             Vector3 spawnPosition = new Vector3(
-                Random.Range(10, terrainWidth),
+                Random.Range(15, terrainWidth),
                 Random.Range(minSpawnHeight, maxSpawnHeight),
-                Random.Range(10, terrainLength)
+                Random.Range(5, terrainLength)
             );
 
             // Adjust the Y position based on the terrain height at the x, z location
@@ -53,6 +55,8 @@ public class RandomObjectSpawner : MonoBehaviour
 
             // Instantiate the selected prefab at the random position with the specified rotation
             Instantiate(prefabToSpawn, spawnPosition, rotation, objectHolder.transform);
+
+            //navMesh.BuildNavMesh();
         }
     }
     //public GameObject[] treePrefabs;

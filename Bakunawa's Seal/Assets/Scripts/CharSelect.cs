@@ -89,14 +89,14 @@ public class CharSelect : MonoBehaviour
         for (int i = 0; i < selectedCharacters.Length; i++)
         {
             CharStats stats = characterPrefabs[i].GetComponent<CharStats>();
-
-            if (stats.isBought == 1)
+            int isBoughtStatus = PlayerPrefs.GetInt(stats.playerName + "_isBought", 0);
+            if (isBoughtStatus == 1/*stats.isBought == 1*/)
             {
                 charImage[i].sprite = stats.charProfile;  // Set the character's image
                 charName[i].text = stats.playerName;      // Set the character's name
                 selectedCharacters[i]?.SetActive(true);  // Set active if there is a character
             }
-            else if(stats.isBought == 0)
+            else if(isBoughtStatus == 0/*stats.isBought == 0*/)
             {
                 selectedCharacters[i]?.SetActive(false); // Deactivate if no character is selected
             }

@@ -66,10 +66,6 @@ public class UpgradeStats : MonoBehaviour
 
     private void Start()
     {
-        //characters = new GameObject[4];
-        //UpdateBoughtCharacters(); // Populate the characters list with bought characters
-        //UpdateSelectedCharacterStats();
-
         DefaultStats();
     }
     private void Update()
@@ -78,13 +74,13 @@ public class UpgradeStats : MonoBehaviour
         for (int i = 0; i < characters.Count; i++)
         {
             CharStats stats = characters[i].GetComponent<CharStats>();
-
-            if (stats.isBought == 1)
+            int isBoughtStatus = PlayerPrefs.GetInt(stats.playerName + "_isBought", 0);
+            if (isBoughtStatus == 1)
             {     
                 // Set the character's name
                 charButtons[i]?.SetActive(true);  // Set active if there is a character
             }
-            else if (stats.isBought == 0)
+            else if (isBoughtStatus == 0)
             {
                 charButtons[i]?.SetActive(false); // Deactivate if no character is selected
             }

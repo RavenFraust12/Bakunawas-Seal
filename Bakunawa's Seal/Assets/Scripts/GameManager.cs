@@ -61,7 +61,10 @@ public class GameManager : MonoBehaviour
 
         if (isMainMenu)
         {
-
+            PlayerPrefs.DeleteKey("Apolaki_Selected");
+            PlayerPrefs.DeleteKey("Mayari_Selected");
+            PlayerPrefs.DeleteKey("Dumangan_Selected");
+            PlayerPrefs.DeleteKey("Dumakulem_Selected");
         }
         else if (!isMainMenu)
         {

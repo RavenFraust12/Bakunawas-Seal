@@ -13,6 +13,18 @@ public class SpawnManager : MonoBehaviour
     public float enemyStatIncrement;
     public float currentStat;
 
+    [Header("Z Axis Spawn Point")]
+    public int zMinSpawnPoint;
+    public int zMaxSpawnPoint;
+    public int zMinRandom;
+    public int zMaxRandom;
+
+    [Header("X Axis Spawn Point")]
+    public int xMinSpawnPoint;
+    public int xMaxSpawnPoint;
+    public int xMinRandom;
+    public int xMaxRandom;
+
     [Header("Wave")]
     public int waveCount;
     public int currentUnitCount;
@@ -32,19 +44,19 @@ public class SpawnManager : MonoBehaviour
         spawnedUnitThisWave++;
 
         //Set the point for x and z axis
-        int xspawnpoint = Random.Range(0, 2) == 0 ? 5 : 95;
-        int zspawnpoint = Random.Range(0, 2) == 0 ? 5 : 95;
+        int xspawnpoint = Random.Range(0, 2) == 0 ? xMinSpawnPoint : xMaxSpawnPoint;
+        int zspawnpoint = Random.Range(0, 2) == 0 ? zMinSpawnPoint : zMaxSpawnPoint;
 
         Vector3 spawnPosition;
         if (Random.Range(0, 2) == 0)
         {
             // x is fixed, z is random between 0 and 100
-            spawnPosition = new Vector3(xspawnpoint, 0.5f, Random.Range(0f, 100f));
+            spawnPosition = new Vector3(xspawnpoint, 0.5f, Random.Range(zMinRandom, zMaxRandom));
         }
         else
         {
             // z is fixed, x is random between 0 and 100
-            spawnPosition = new Vector3(Random.Range(0f, 100f), 0.5f, zspawnpoint);
+            spawnPosition = new Vector3(Random.Range(xMinRandom, xMaxRandom), 0.5f, zspawnpoint);
         }
 
         int randomEnemyIndex = Random.Range(0, unitsToSpawn.Length);

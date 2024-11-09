@@ -212,7 +212,11 @@ public class PlayerAI : MonoBehaviour
                 animationManager.PlayAttack(); // Play melee attack animation
                 weapon.SetActive(true);
                 canAttack = false;
-                yield return new WaitForSeconds(0.1f);
+
+                //yield return new WaitForSeconds(0.1f);
+                float attackAnimDuration = animationManager.animator.GetCurrentAnimatorStateInfo(0).length / animationManager.animator.speed; // Get attack animation length, adjusting for speed
+                yield return new WaitForSeconds(attackAnimDuration);
+
                 animationManager.PlayIdle();
                 weapon.SetActive(false);
                 yield return new WaitForSeconds(charStats.currentAttackspeed);

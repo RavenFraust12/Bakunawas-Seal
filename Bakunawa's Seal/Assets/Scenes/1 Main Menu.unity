@@ -2393,7 +2393,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -0.00024414062, y: -0.000045776367}
+  m_AnchoredPosition: {x: -0.00048828125, y: -0.000045776367}
   m_SizeDelta: {x: 400, y: 700}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &89020786
@@ -3807,7 +3807,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &145524617
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14522,6 +14522,10 @@ MonoBehaviour:
   timer: 0
   finalTimer: 
   allDead: 0
+  currentSlider: {fileID: 0}
+  mainHealthSlider: {fileID: 0}
+  mainSkillSlider: {fileID: 0}
+  currentIcon: {fileID: 0}
   losePanel: {fileID: 0}
   finalKillCountText: {fileID: 0}
   finalCoinCountText: {fileID: 0}
@@ -15599,11 +15603,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2145321647}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 25, y: 25}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -25, y: -25}
   m_SizeDelta: {x: 146, y: 146}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &771174173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26073,7 +26077,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 28375ffff7e48fe4eba52cd6f204b816, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0f0ae1757ed87a347a97dde036cf2b5b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -37040,11 +37044,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2145321647}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.91875, y: 0.8212501}
-  m_AnchorMax: {x: 0.98125, y: 0.9587501}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 25, y: 25}
+  m_SizeDelta: {x: 146, y: 146}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &1898360446
 MonoBehaviour:
   m_ObjectHideFlags: 0
