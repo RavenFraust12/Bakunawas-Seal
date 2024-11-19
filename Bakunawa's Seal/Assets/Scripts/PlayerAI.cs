@@ -38,23 +38,18 @@ public class PlayerAI : MonoBehaviour
         animationManager = GetComponentInChildren<AnimationManager>(); // Get the AnimationManager component
 
         GameObject movementManager = GameObject.Find("Movement Manager"); // Ensure this matches the exact name
-        if (movementManager != null)
+        playerMovement = movementManager.GetComponent<PlayerMovement>();
+        /*if (movementManager != null)
         {
             playerMovement = movementManager.GetComponent<PlayerMovement>();
             if (playerMovement == null)
             {
                 Debug.LogError("PlayerMovement script not found on Movement Manager.");
             }
-        }
-        else
-        {
-            //Debug.LogError("Movement Manager not found.");
-        }
+        }*/
     }
     void Update()
-    {
-        FindClosestEnemy();
-
+    {     
         if (charStats.isDead)
         {
             if (!hasPlayedDeath) // Check if death animation has not been played yet
@@ -71,42 +66,25 @@ public class PlayerAI : MonoBehaviour
             hasPlayedDeath = false; // Reset flag if character is not dead
         }
 
+        FindClosestEnemy();
+
         if (target != null)
         {
             PlayerActionAI();
         }
         else
         {
+            navAgent.ResetPath();
             animationManager.PlayIdle();
             navAgent.velocity = Vector3.zero;
+            Debug.Log("No enemy detected; idle animation triggered");
 
         }
     }
 
-    // old update where death animation is paralyzed lol
-    //void Update()
-    //{
-    //    FindClosestEnemy();
-
-    //    if (charStats.isDead)
-    //    {
-    //        isPlayerControlled = false;
-    //        return;
-    //    }
-
-    //    if (target != null)
-    //    {
-    //        PlayerActionAI();
-    //    }
-    //    else
-    //    {
-    //        animationManager.PlayIdle(); // If no target, play idle animation
-    //    }
-    //}
-
     void PlayerActionAI()
     {
-        if (target != null && Vector3.Distance(transform.position, target.position) <= detectionRange)
+        if (Vector3.Distance(transform.position, target.position) <= detectionRange)
         {
             // Rotate towards the target only if within detection range
             Vector3 direction = (target.position - transform.position).normalized;
@@ -117,7 +95,7 @@ public class PlayerAI : MonoBehaviour
             if (isPlayerControlled)
             {
                 navAgent.ResetPath();
-                navAgent.velocity = Vector3.zero;
+                //navAgent.velocity = Vector3.zero;
 
                 // If in attack range, trigger attack animation
                 if (Vector3.Distance(transform.position, target.position) <= attackRange)
@@ -144,14 +122,6 @@ public class PlayerAI : MonoBehaviour
                     Debug.Log("Attacking " + target.name);
                 }
             }
-        }
-        else
-        {
-            // If no target or out of range, stop moving and play idle animation
-            navAgent.ResetPath();
-            navAgent.velocity = Vector3.zero;
-            animationManager.PlayIdle();
-            Debug.Log("No enemy detected; idle animation triggered");
         }
     }
 

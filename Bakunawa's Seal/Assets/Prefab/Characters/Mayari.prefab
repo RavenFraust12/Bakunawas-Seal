@@ -458,6 +458,7 @@ MonoBehaviour:
   skillCooldown: 0
   skillTime: 0
   isBought: 0
+  isSelected: 0
 --- !u!114 &2785278379452383576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1543,6 +1544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4c60413ff05a0747897ac62b632881d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!1 &7571202185362564729
 GameObject:
   m_ObjectHideFlags: 0
