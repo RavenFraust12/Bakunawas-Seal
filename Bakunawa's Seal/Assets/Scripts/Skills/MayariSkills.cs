@@ -60,6 +60,7 @@ public class MayariSkills : MonoBehaviour
                 // Skip the player if they are dead (currentHealth is 0)
                 if (otherChar.currentHealth == 0)
                 {
+                    Debug.Log(otherChar.playerName + " is not healed");
                     continue;
                 }
 

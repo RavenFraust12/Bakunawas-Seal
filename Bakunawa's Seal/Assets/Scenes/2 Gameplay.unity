@@ -8414,6 +8414,7 @@ MonoBehaviour:
   currentTarget: {fileID: 0}
   animationManager: {fileID: 0}
   rotationSpeed: 10
+  isKeyboard: 0
 --- !u!65 &357896571
 BoxCollider:
   m_ObjectHideFlags: 0

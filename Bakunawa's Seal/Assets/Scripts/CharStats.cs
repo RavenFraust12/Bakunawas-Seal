@@ -98,7 +98,5 @@ public class CharStats : MonoBehaviour
         intelligence = PlayerPrefs.GetFloat(playerName + "_Int", 1);
         dexterity = PlayerPrefs.GetFloat(playerName + "_Dex", 1);
         vitality = PlayerPrefs.GetFloat(playerName + "_Vit", 1);
-
-        Debug.Log(playerName + "'s Str:" + strength + ", Agi:" + agility + ", Int:" + intelligence + ", Dex:" +  dexterity + ", Vit:" + vitality);
     }
 }
