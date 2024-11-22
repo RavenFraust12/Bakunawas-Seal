@@ -46,7 +46,6 @@ public class EnemyAI : MonoBehaviour
                 // Attack logic here, e.g., trigger attack animation
                 navAgent.ResetPath();
                 StartCoroutine(AttackDelay());
-                Debug.Log("Attacking " + target.name);
             }
         }
     }

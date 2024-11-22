@@ -69,8 +69,6 @@ public class PlayerAI : MonoBehaviour
             navAgent.ResetPath();
             animationManager.PlayIdle();
             navAgent.velocity = Vector3.zero;
-            Debug.Log("No enemy detected; idle animation triggered");
-
         }
     }
 
@@ -91,9 +89,7 @@ public class PlayerAI : MonoBehaviour
                 // If in attack range, trigger attack animation
                 if (Vector3.Distance(transform.position, target.position) <= attackRange)
                 {
-                    StartCoroutine(AttackDelay());
-                    SkillDelay();
-                    Debug.Log("Attacking " + target.name);
+                    SkillDelay();                  
                 }
                 return;
             }
@@ -108,8 +104,6 @@ public class PlayerAI : MonoBehaviour
                     navAgent.ResetPath();
                     navAgent.velocity = Vector3.zero;
                     SkillDelay();
-                    //StartCoroutine(AttackDelay());
-                    Debug.Log("Attacking " + target.name);
                 }
             }
         }
@@ -171,8 +165,6 @@ public class PlayerAI : MonoBehaviour
             {
                 animationManager.PlayAttack(); // Play melee attack animation
                 canAttack = false;
-
-                //yield return new WaitForSeconds(0.1f);
                 float attackAnimDuration = animationManager.animator.GetCurrentAnimatorStateInfo(0).length / animationManager.animator.speed; // Get attack animation length, adjusting for speed
                 yield return new WaitForSeconds(attackAnimDuration);
                 animationManager.PlayIdle();
@@ -189,6 +181,8 @@ public class PlayerAI : MonoBehaviour
                 GameObject projectile = Instantiate(rangeProjectile, pointOfFire.transform.position, pointOfFire.transform.rotation, bulletHolder.transform);
                 Damage projectileScript = projectile.GetComponent<Damage>();
                 projectileScript.charStats = GetComponent<CharStats>();
+                float attackAnimDuration = animationManager.animator.GetCurrentAnimatorStateInfo(0).length / animationManager.animator.speed; // Get attack animation length, adjusting for speed
+                yield return new WaitForSeconds(attackAnimDuration);
                 animationManager.PlayIdle();
                 yield return new WaitForSeconds(charStats.currentAttackspeed);
                 canAttack = true;
@@ -225,7 +219,6 @@ public class PlayerAI : MonoBehaviour
                 else StartCoroutine(AttackDelay());
                 break;
             default:
-                Debug.Log("No Skills Detected");
                 break;
         }
         

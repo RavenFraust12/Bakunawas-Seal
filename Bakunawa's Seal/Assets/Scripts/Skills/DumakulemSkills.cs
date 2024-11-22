@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class DumakulemSkills : MonoBehaviour
+public class DumakulemSkills : MonoBehaviour //Shield guy to, not the bow guy
 {
     public bool canSkill;
     private CharStats charStats;
 
     public GameObject[] playerUnits;
+    public GameObject shieldVFX;
 
     public float maxCooldown;
 
     public bool skillCountdown;
+
+    private AnimationManager animator;
+    private PlayerAI playerAI;
 
     private void Awake()
     {
@@ -21,6 +25,8 @@ public class DumakulemSkills : MonoBehaviour
     }
     private void Start()
     {
+        animator = GetComponentInChildren<AnimationManager>();
+        playerAI = GetComponent<PlayerAI>();
         maxCooldown = (charStats.currentAttackspeed * 3f) + 3f;
         charStats.skillCooldown = maxCooldown;
         charStats.skillTime = maxCooldown;
@@ -49,7 +55,8 @@ public class DumakulemSkills : MonoBehaviour
         {
             charStats.skillTime = 0f;
             canSkill = false;
-
+            playerAI.canAttack = false;
+            animator.PlaySkill();
             float[] addedArmorValues = new float[playerUnits.Length];
 
             for (int i = 0; i < playerUnits.Length; i++)
@@ -60,9 +67,16 @@ public class DumakulemSkills : MonoBehaviour
                 currentCharStats.currentArmor += addedArmor;
 
                 addedArmorValues[i] = addedArmor;
+
+                Instantiate(shieldVFX, playerUnits[i].transform.position, Quaternion.identity, playerUnits[i].transform);
             }
 
             skillCountdown = false;
+
+            float attackAnimDuration = animator.animator.GetCurrentAnimatorStateInfo(0).length / animator.animator.speed; // Get attack animation length, adjusting for speed
+            yield return new WaitForSeconds(attackAnimDuration);
+            playerAI.canAttack = true;
+
             yield return new WaitForSeconds(5f);
 
             for (int i = 0; i < playerUnits.Length; i++)
@@ -74,7 +88,6 @@ public class DumakulemSkills : MonoBehaviour
             skillCountdown = true;
             yield return new WaitForSeconds((charStats.currentAttackspeed * 3f) + 3f);
             canSkill = true;
-            Debug.Log("Dumakulem can skill again");
         }   
     }
 

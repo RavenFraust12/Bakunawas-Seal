@@ -61,33 +61,46 @@ public class CameraScript : MonoBehaviour
         // Return the clamped position while keeping the Y-axis as it is
         return new Vector3(clampedX, cameraPos.y, clampedZ);
     }
-
-    public void PickChar(int charNumber)//Picking of character for camera to follow
+    public void PickChar(int charNumber) // Picking a character for the camera to follow
     {
         if (playerUnits[charNumber] != null && charSelected == charNumber)
         {
+            // Deselect the currently selected character
             playerUnits[charNumber].GetComponent<PlayerAI>().isPlayerControlled = false;
             joystick.SetActive(false);
             GameManager.Instance.currentSlider.SetActive(false);
-            charSelected = 4;
+            charSelected = 4; // Reset the selected character index
         }
         else if (playerUnits[charNumber] != null)
         {
             if (playerUnits[charNumber].GetComponent<CharStats>().isDead == false)
             {
+                // Set all other characters' isPlayerControlled to false
+                foreach (var unit in playerUnits)
+                {
+                    if (unit != null)
+                    {
+                        unit.GetComponent<PlayerAI>().isPlayerControlled = false;
+                    }
+                }
+
+                // Set the selected character to controlled
                 playerUnits[charNumber].GetComponent<PlayerAI>().isPlayerControlled = true;
 
-                CharStats charStats = playerUnits[charNumber].GetComponent<CharStats>();
-
                 // Update the main sliders with the current character's health/skill if controlled
+                CharStats charStats = playerUnits[charNumber].GetComponent<CharStats>();
                 GameManager.Instance.mainHealthSlider.fillAmount = charStats.currentHealth / charStats.totalHealth;
                 GameManager.Instance.mainSkillSlider.fillAmount = charStats.skillTime / charStats.skillCooldown;
                 GameManager.Instance.currentIcon.sprite = charStats.charProfile;
 
                 GameManager.Instance.currentSlider.SetActive(true);
             }
-            charSelected = charNumber;
-            joystick.SetActive(true);
+            else
+            {
+                GameManager.Instance.currentSlider.SetActive(false);
+            }
+            charSelected = charNumber; // Update the selected character index
+            joystick.SetActive(true);  // Enable the joystick
         }
     }
 
@@ -98,8 +111,6 @@ public class CameraScript : MonoBehaviour
             if (Input.touchCount == 1) // Ensure there is exactly one touch
             {
                 Touch touch = Input.GetTouch(0);
-
-                Debug.Log("Camera Panned");
 
                 if (touch.phase == TouchPhase.Moved) // Detect swipe movement
                 {

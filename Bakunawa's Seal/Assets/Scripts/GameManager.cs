@@ -167,7 +167,7 @@ public class GameManager : MonoBehaviour
 
         GameObject[] playerUnits = GameObject.FindGameObjectsWithTag("Player");
 
-        //bool isAnyPlayerControlled = false; // Flag to check if any player is controlled
+        bool isAnyPlayerControlled = false; // Flag to check if any player is controlled
 
         foreach (GameObject player in playerUnits)
         {
@@ -179,7 +179,7 @@ public class GameManager : MonoBehaviour
 
             charCount++;
 
-            /*PlayerAI playerAI = player.GetComponent<PlayerAI>();
+            PlayerAI playerAI = player.GetComponent<PlayerAI>();
             if (playerAI.isPlayerControlled)
             {
                 isAnyPlayerControlled = true; // Set flag if any player is controlled
@@ -188,11 +188,11 @@ public class GameManager : MonoBehaviour
                 mainHealthSlider.fillAmount = charStats.currentHealth / charStats.totalHealth;
                 mainSkillSlider.fillAmount = charStats.skillTime / charStats.skillCooldown;
                 currentIcon.sprite = charStats.charProfile;
-            }*/
+            }
         }
 
         // Set the slider's active state only after the loop based on the flag
-        //currentSlider.SetActive(isAnyPlayerControlled);
+        currentSlider.SetActive(isAnyPlayerControlled);
     }
 
     private void InstantiateSelectedCharacters()

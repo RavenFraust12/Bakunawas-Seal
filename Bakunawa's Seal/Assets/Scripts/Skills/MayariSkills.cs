@@ -15,12 +15,18 @@ public class MayariSkills : MonoBehaviour
 
     public float maxCooldown;
 
+    private AnimationManager animator;
+    private PlayerAI playerAI;
+
     private void Awake()
     {
         charStats = GetComponentInParent<CharStats>();
     }
     private void Start()
     {
+        animator = GetComponentInChildren<AnimationManager>();
+        playerAI = GetComponent<PlayerAI>();
+
         maxCooldown = (charStats.currentAttackspeed * 5f) + 5f;
         charStats.skillCooldown = maxCooldown;
         charStats.skillTime = maxCooldown;
@@ -49,6 +55,9 @@ public class MayariSkills : MonoBehaviour
             charStats.skillTime = 0f;
             canSkill = false;
 
+            playerAI.canAttack = false;
+            animator.PlaySkill();
+
             float closestDistance = Mathf.Infinity;
             GameObject closestPlayer = null;
 
@@ -58,20 +67,20 @@ public class MayariSkills : MonoBehaviour
                 CharStats otherChar = player.GetComponent<CharStats>();
 
                 // Skip the player if they are dead (currentHealth is 0)
-                if (otherChar.currentHealth == 0)
+                /*if (otherChar.currentHealth == 0)
                 {
                     Debug.Log(otherChar.playerName + " is not healed");
                     continue;
-                }
+                }*/
 
                 // Skip checking for the caster unless their health is <= 50% of base health
-                if (player == gameObject && otherChar.currentHealth > (charStats.baseHealth / 2f))
+                if (player == gameObject && otherChar.currentHealth > (charStats.totalHealth / 2f))
                 {
                     continue;
                 }
 
                 // If the player's health is below full, consider them as a healing target
-                if (otherChar.currentHealth < otherChar.baseHealth)
+                if (otherChar.currentHealth < otherChar.totalHealth)
                 {
                     float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
@@ -99,6 +108,9 @@ public class MayariSkills : MonoBehaviour
                 // Disable healing for the duration of the cooldown
                 canHeal = false;
             }
+            float attackAnimDuration = animator.animator.GetCurrentAnimatorStateInfo(0).length / animator.animator.speed; // Get attack animation length, adjusting for speed
+            yield return new WaitForSeconds(attackAnimDuration);
+            playerAI.canAttack = true;
 
             // Disable healing effect after a delay
             yield return new WaitForSeconds(1f);

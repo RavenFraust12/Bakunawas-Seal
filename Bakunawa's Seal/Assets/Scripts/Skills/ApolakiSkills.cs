@@ -8,6 +8,8 @@ public class ApolakiSkills : MonoBehaviour
     public bool canSkill;
     private CharStats charStats;
     public float maxCooldown;
+    private AnimationManager animator;
+    private PlayerAI playerAI;
 
     private void Awake()
     {
@@ -16,6 +18,8 @@ public class ApolakiSkills : MonoBehaviour
 
     private void Start()
     {
+        animator = GetComponentInChildren<AnimationManager>();
+        playerAI = GetComponent<PlayerAI>();
         maxCooldown = (charStats.currentAttackspeed * 3f) + 3f;
         ApolakiStats();
         charStats.skillCooldown = maxCooldown;
@@ -44,9 +48,11 @@ public class ApolakiSkills : MonoBehaviour
         {
             charStats.skillTime = 0f;
             canSkill = false;
-            weaponSkill.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
-            weaponSkill.SetActive(false);
+            playerAI.canAttack = false;
+            animator.PlaySkill();
+            float attackAnimDuration = animator.animator.GetCurrentAnimatorStateInfo(0).length / animator.animator.speed; // Get attack animation length, adjusting for speed
+            yield return new WaitForSeconds(attackAnimDuration);
+            playerAI.canAttack = true;
             yield return new WaitForSeconds((charStats.currentAttackspeed * 3f) + 3f);
             canSkill = true;
         }
