@@ -12,7 +12,6 @@ public class PlayerAI : MonoBehaviour
     public float attackRange = 2f; // Set your attack range
     public float detectionRange = 5f;
     public bool canAttack; // Can the unit attack
-    public GameObject weapon; // Collider for damage
     public int charSelection; // 1 = Apolaki, 2 = Mayari, 3 = Dumangan, 4 = Dumakulem
 
     [Header("Range Attacks")]

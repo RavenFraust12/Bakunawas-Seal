@@ -507,11 +507,10 @@ MonoBehaviour:
   attackRange: 10
   detectionRange: 20
   canAttack: 1
-  weapon: {fileID: 0}
   charSelection: 2
   isRanged: 1
   pointOfFire: {fileID: 8354924409916782427}
-  rangeProjectile: {fileID: 1341722833746005908, guid: 9b0681e5c41ba324c96540a189a34b8c,
+  rangeProjectile: {fileID: 2327880461915782615, guid: 73a631e226df16f42bd43ff01496b26e,
     type: 3}
   bulletHolder: {fileID: 0}
   isPlayerControlled: 0

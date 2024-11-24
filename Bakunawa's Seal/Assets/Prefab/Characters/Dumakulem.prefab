@@ -1348,11 +1348,10 @@ MonoBehaviour:
   attackRange: 15
   detectionRange: 20
   canAttack: 1
-  weapon: {fileID: 8335370796416993505, guid: 3939190a78b21f040aa6044fa9d09554, type: 3}
   charSelection: 3
   isRanged: 1
   pointOfFire: {fileID: 1694471815873968970}
-  rangeProjectile: {fileID: 8335370796416993505, guid: 3939190a78b21f040aa6044fa9d09554,
+  rangeProjectile: {fileID: 8904129103597005827, guid: 5699eca37a8d89e4cab95157b6bb041a,
     type: 3}
   bulletHolder: {fileID: 0}
   isPlayerControlled: 0
@@ -1370,8 +1369,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canSkill: 1
-  pointOfFire: {fileID: 0}
-  rangeProjectile: {fileID: 8335370796416993505, guid: 3939190a78b21f040aa6044fa9d09554,
+  pointOfFire: {fileID: 1694471815873968970}
+  rangeProjectile: {fileID: 8904129103597005827, guid: 5699eca37a8d89e4cab95157b6bb041a,
     type: 3}
   bulletHolder: {fileID: 0}
   maxCooldown: 0
