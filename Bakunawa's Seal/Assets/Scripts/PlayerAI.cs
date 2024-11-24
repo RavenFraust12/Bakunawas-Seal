@@ -85,6 +85,7 @@ public class PlayerAI : MonoBehaviour
             {
                 navAgent.ResetPath();
 
+                Vector3 vector3 = Vector3.zero;
                 // If in attack range, trigger attack animation
                 if (Vector3.Distance(transform.position, target.position) <= attackRange)
                 {
@@ -177,9 +178,6 @@ public class PlayerAI : MonoBehaviour
             {
                 canAttack = false;
                 animationManager.PlayAttack(); // Play ranged attack animation
-                GameObject projectile = Instantiate(rangeProjectile, pointOfFire.transform.position, pointOfFire.transform.rotation, bulletHolder.transform);
-                Damage projectileScript = projectile.GetComponent<Damage>();
-                projectileScript.charStats = GetComponent<CharStats>();
                 float attackAnimDuration = animationManager.animator.GetCurrentAnimatorStateInfo(0).length / animationManager.animator.speed; // Get attack animation length, adjusting for speed
                 yield return new WaitForSeconds(attackAnimDuration);
                 animationManager.PlayIdle();
@@ -187,6 +185,13 @@ public class PlayerAI : MonoBehaviour
                 canAttack = true;
             }
         }
+    }
+
+    public void ReleaseProjectile()
+    {
+        GameObject projectile = Instantiate(rangeProjectile, pointOfFire.transform.position, pointOfFire.transform.rotation, bulletHolder.transform);
+        Damage projectileScript = projectile.GetComponent<Damage>();
+        projectileScript.charStats = GetComponent<CharStats>();
     }
 
     void SkillDelay()

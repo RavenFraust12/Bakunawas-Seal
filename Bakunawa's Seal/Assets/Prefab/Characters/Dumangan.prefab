@@ -1280,10 +1280,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationManager: {fileID: 0}
   target: {fileID: 0}
-  attackRange: 2
+  attackRange: 2.25
   detectionRange: 20
   canAttack: 1
-  weapon: {fileID: 5117355212716539066}
   charSelection: 4
   isRanged: 0
   pointOfFire: {fileID: 0}
@@ -1349,7 +1348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8604411049912995398
 Transform:
   m_ObjectHideFlags: 0

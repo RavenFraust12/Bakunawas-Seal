@@ -227,10 +227,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationManager: {fileID: 0}
   target: {fileID: 0}
-  attackRange: 2
+  attackRange: 2.25
   detectionRange: 20
   canAttack: 1
-  weapon: {fileID: 8618981462315351383}
   charSelection: 1
   isRanged: 0
   pointOfFire: {fileID: 0}
