@@ -5,9 +5,13 @@ using UnityEngine;
 public class AnimationManager : MonoBehaviour
 {
     public Animator animator; //0 = idle, 1 = walk, 2 = attack, 3 = skill, 4 = death
+    public PlayerAI playerAI;
+    public EnemyAI enemyAI;
     void Start()
     {
         animator = GetComponent<Animator>();
+        playerAI = GetComponentInParent<PlayerAI>();
+        enemyAI = GetComponentInParent<EnemyAI>();
         if (animator == null)
         {
             Debug.LogError("Animator component missing from this GameObject.");
@@ -32,6 +36,12 @@ public class AnimationManager : MonoBehaviour
     public void PlayDeath()
     {
         animator.SetInteger("AnimState", 4);
+    }
+
+    public void PlayProjectile()
+    {
+        if (enemyAI != null) enemyAI.ReleaseProjectile();
+        if (playerAI != null) playerAI.ReleaseProjectile();
     }
 }
 

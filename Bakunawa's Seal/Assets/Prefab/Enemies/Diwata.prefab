@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 3634529705031476366}
   - component: {fileID: 2617684604430242914}
   - component: {fileID: 7232573346128178930}
+  - component: {fileID: 2138667661267836158}
   m_Layer: 0
   m_Name: Diwata
   m_TagString: Enemy
@@ -225,7 +226,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9056591581679559955}
@@ -308,13 +309,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   canAttack: 1
-  weapon: {fileID: 3762184959253834985}
+  animationManager: {fileID: 0}
   attackRange: 7.5
   isRanged: 1
   pointOfFire: {fileID: 3762184959253834985}
   rangeProjectile: {fileID: 3195827127240966767, guid: 08b8293746a283a4abfda225d6b679f4,
     type: 3}
   bulletHolder: {fileID: 0}
+--- !u!136 &2138667661267836158
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608405182290959222}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2.333746
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.24435203, z: 0}
 --- !u!1 &2010595784781917973
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,6 +903,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5166316767874000937}
   - component: {fileID: 1248162777642299987}
+  - component: {fileID: 2483499975646695280}
   m_Layer: 0
   m_Name: DiwataAnimation
   m_TagString: Untagged
@@ -895,7 +920,7 @@ Transform:
   m_GameObject: {fileID: 5546641536121729683}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -0.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -916,7 +941,7 @@ Animator:
   m_GameObject: {fileID: 5546641536121729683}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: c2b9f2da598aee24798f5fd308b8f132, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 797e999c2721e4c4081f4e45ac34549d, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -927,6 +952,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2483499975646695280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5546641536121729683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c60413ff05a0747897ac62b632881d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1248162777642299987}
+  playerAI: {fileID: 0}
+  enemyAI: {fileID: 0}
 --- !u!1 &5576592465022436861
 GameObject:
   m_ObjectHideFlags: 0

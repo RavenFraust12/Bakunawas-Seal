@@ -10,7 +10,7 @@ public class EnemyAI : MonoBehaviour
 
     public Transform target; // The current target (closest unit)
     public bool canAttack; //Can the unit attack
-    public GameObject weapon; //Collider for damage
+    public AnimationManager animationManager; // Reference to the AnimationManager
 
     [Header("Range Attacks")]
     public float attackRange = 2f; // Set your attack range
@@ -24,6 +24,7 @@ public class EnemyAI : MonoBehaviour
     {
         navAgent = GetComponent<NavMeshAgent>();
         enemyStats = GetComponent<EnemyStats>();
+        animationManager = GetComponentInChildren<AnimationManager>(); // Get the AnimationManager component
         bulletHolder = GameObject.Find("BulletHolder");
     }
 
@@ -39,6 +40,7 @@ public class EnemyAI : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
             navAgent.speed = enemyStats.movespeed;
             navAgent.SetDestination(target.transform.position);
+            animationManager.PlayWalk();
 
             // Check if within attack range
             if (Vector3.Distance(transform.position, target.position) <= attackRange)
@@ -79,10 +81,12 @@ public class EnemyAI : MonoBehaviour
         {
             if (canAttack == true)
             {
-                weapon.SetActive(true);
                 canAttack = false;
-                yield return new WaitForSeconds(0.1f);
-                weapon.SetActive(false);
+                animationManager.PlayAttack();
+                canAttack = false;
+                float attackAnimDuration = animationManager.animator.GetCurrentAnimatorStateInfo(0).length / animationManager.animator.speed; // Get attack animation length, adjusting for speed
+                yield return new WaitForSeconds(attackAnimDuration);
+                animationManager.PlayIdle();
                 yield return new WaitForSeconds(enemyStats.attackspeed);
                 canAttack = true;
             }
@@ -92,7 +96,11 @@ public class EnemyAI : MonoBehaviour
             if (canAttack == true)
             {
                 canAttack = false;
-
+                animationManager.PlayAttack();
+                canAttack = false;
+                float attackAnimDuration = animationManager.animator.GetCurrentAnimatorStateInfo(0).length / animationManager.animator.speed; // Get attack animation length, adjusting for speed
+                yield return new WaitForSeconds(attackAnimDuration);
+                animationManager.PlayIdle();
                 GameObject projectile = Instantiate(rangeProjectile, pointOfFire.transform.position, pointOfFire.transform.rotation, bulletHolder.transform);
                 Damage projectileScript = projectile.GetComponent<Damage>();
                 projectileScript.enemyStats = GetComponent<EnemyStats>();
@@ -101,5 +109,12 @@ public class EnemyAI : MonoBehaviour
                 canAttack = true;
             }
         }
+    }
+
+    public void ReleaseProjectile()
+    {
+        GameObject projectile = Instantiate(rangeProjectile, pointOfFire.transform.position, pointOfFire.transform.rotation, bulletHolder.transform);
+        Damage projectileScript = projectile.GetComponent<Damage>();
+        projectileScript.enemyStats = GetComponent<EnemyStats>();
     }
 }

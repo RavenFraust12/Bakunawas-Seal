@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
             // Smooth rotation towards the movement direction
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
             _cameraScript.playerUnits[_cameraScript.charSelected].transform.rotation = Quaternion.Slerp(_cameraScript.playerUnits[_cameraScript.charSelected].transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-
+            Debug.Log("Player is controlled and moving");
             // Play walking animation
             animationManager.PlayWalk();
         }

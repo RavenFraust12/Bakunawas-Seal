@@ -1780,7 +1780,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 533810964}
         m_TargetAssemblyTypeName: UpgradeStats, Assembly-CSharp
         m_MethodName: AddAttribute
         m_Mode: 5
@@ -4088,7 +4088,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 533810964}
         m_TargetAssemblyTypeName: UpgradeStats, Assembly-CSharp
         m_MethodName: AddAttribute
         m_Mode: 5
@@ -4577,7 +4577,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 533810964}
         m_TargetAssemblyTypeName: UpgradeStats, Assembly-CSharp
         m_MethodName: SubtractAttribute
         m_Mode: 5
@@ -6184,7 +6184,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 533810964}
         m_TargetAssemblyTypeName: UpgradeStats, Assembly-CSharp
         m_MethodName: ConfirmStatUpgrade
         m_Mode: 1
@@ -6668,7 +6668,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 533810964}
         m_TargetAssemblyTypeName: UpgradeStats, Assembly-CSharp
         m_MethodName: AddAttribute
         m_Mode: 5
@@ -11537,7 +11537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &492771304
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17786,7 +17786,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 533810964}
         m_TargetAssemblyTypeName: UpgradeStats, Assembly-CSharp
         m_MethodName: SubtractAttribute
         m_Mode: 5
@@ -22276,7 +22276,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 533810964}
         m_TargetAssemblyTypeName: UpgradeStats, Assembly-CSharp
         m_MethodName: SubtractAttribute
         m_Mode: 5
@@ -27267,7 +27267,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 533810964}
         m_TargetAssemblyTypeName: UpgradeStats, Assembly-CSharp
         m_MethodName: AddAttribute
         m_Mode: 5
@@ -29569,7 +29569,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 533810964}
         m_TargetAssemblyTypeName: UpgradeStats, Assembly-CSharp
         m_MethodName: SubtractAttribute
         m_Mode: 5
@@ -30321,7 +30321,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 533810964}
         m_TargetAssemblyTypeName: UpgradeStats, Assembly-CSharp
         m_MethodName: SubtractAttribute
         m_Mode: 5
@@ -44058,7 +44058,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 533810964}
         m_TargetAssemblyTypeName: UpgradeStats, Assembly-CSharp
         m_MethodName: AddAttribute
         m_Mode: 5
