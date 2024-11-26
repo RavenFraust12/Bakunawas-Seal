@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DumanganSkills : MonoBehaviour
+public class DumanganSkills : MonoBehaviour //This is Dumakulem
 {
     private CharStats charStats;
     public bool canSkill;
@@ -66,6 +66,8 @@ public class DumanganSkills : MonoBehaviour
             float spreadAngle = 45f;  // Total spread angle for the cone
             float angleStep = spreadAngle / (numberOfProjectiles - 1);
             float startAngle = -spreadAngle / 2;  // Start at the leftmost angle of the cone
+
+            yield return new WaitForSeconds(0.5f);
 
             for (int i = 0; i < numberOfProjectiles; i++)
             {

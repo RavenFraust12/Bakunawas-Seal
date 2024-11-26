@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -47,6 +48,10 @@ public class GameManager : MonoBehaviour
 
     [Header("Character Objects")]
     public GameObject[] characterPrefabs;  // Same prefabs as in the main menu
+
+    [Header("LoadingScene")]
+    public GameObject loadingScene;
+    public Slider loadingBar;
 
     private void Awake()
     {
@@ -199,7 +204,7 @@ public class GameManager : MonoBehaviour
 
             if (characterIndex == 1)
             {
-                Instantiate(characterPrefabs[i], charSpawnPoint[i].transform.position, Quaternion.identity, charHolder.transform);
+                Instantiate(characterPrefabs[i], charSpawnPoint[i].transform.position, Quaternion.Euler(0,180,0), charHolder.transform);
             }
 
             // Retrieve the saved index of each selected character
@@ -223,4 +228,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void LoadScene(string sceneName)
+    {
+        StartCoroutine(LoadSceneAsync(sceneName));
+    }
+
+    IEnumerator LoadSceneAsync(string sceneName)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
+
+        loadingScene.SetActive(true);
+
+        while (!operation.isDone)
+        {
+            float progressValue = Mathf.Clamp01(operation.progress / 0.9f);
+
+            loadingBar.value = progressValue;
+
+            yield return null;
+        }
+    }
 }

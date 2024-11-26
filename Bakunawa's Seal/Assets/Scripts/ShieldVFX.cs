@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class ShieldVFX : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float vfxDuration;
+    private AudioSource sfx;
     void Start()
     {
-        Invoke("DestroyVFX", 6);
+        sfx = GetComponent<AudioSource>();
+        Invoke("DestroyVFX", vfxDuration);
+    }
+
+    private void Update()
+    {
+        sfx.volume = AudioManager.instance.sfx.volume;
     }
 
     void DestroyVFX()

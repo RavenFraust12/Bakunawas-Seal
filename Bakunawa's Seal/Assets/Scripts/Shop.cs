@@ -41,16 +41,14 @@ public class Shop : MonoBehaviour
     public GameObject boughtDumakulem;
     public void Start()
     {
-        /*archive.characters = new GameObject[10];  // Adjust size as needed
-        charSelect.characterPrefabs = new GameObject[10];*/
+        currentIndex = PlayerPrefs.GetInt("Bought Units", 0);
+        cost = 50 * currentIndex;
         charSelect = FindObjectOfType<CharSelect>();
         archive = FindObjectOfType<UpgradeStats>();
     }
 
     public void Update()
-    {
-        currentIndex = PlayerPrefs.GetInt("Bought Units", 0);
-        cost = 0 * currentIndex;
+    {       
         currentCost.text = "Cost: " + cost.ToString();
         currentCoins.text = PlayerPrefs.GetFloat("Coins", 0).ToString();
 
@@ -62,7 +60,7 @@ public class Shop : MonoBehaviour
 
     public void BuyHero(GameObject playerUnit, string charName)
     {
-        float coinCount = PlayerPrefs.GetFloat("Coins", 1);
+        float coinCount = PlayerPrefs.GetFloat("Coins", 0);
 
         if (cost <= coinCount)
         {

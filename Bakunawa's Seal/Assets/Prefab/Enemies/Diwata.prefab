@@ -295,6 +295,8 @@ MonoBehaviour:
   currentStat: 0
   lootDrop: {fileID: 8722337840919282068, guid: 4e6d415d86ac4734eb09585f17637e7d,
     type: 3}
+  bloodVFX: {fileID: 1024486181950062006, guid: a2bb103d64dd0874b948783145ce6a9b,
+    type: 3}
 --- !u!114 &7232573346128178930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,7 +333,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -967,6 +969,7 @@ MonoBehaviour:
   animator: {fileID: 1248162777642299987}
   playerAI: {fileID: 0}
   enemyAI: {fileID: 0}
+  sfxClips: []
 --- !u!1 &5576592465022436861
 GameObject:
   m_ObjectHideFlags: 0

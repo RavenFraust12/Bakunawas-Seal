@@ -232,49 +232,7 @@ public class UpgradeStats : MonoBehaviour
 
         Debug.Log("Saved " + charName + "'s stats.");
 
-        /*if (charNumber >= 0 && charNumber <= characters.Length)
-        {
-            GameObject selectedUnit = characters[charNumber]; // charNumber is 1-based, so subtract 1
-
-            switch (charNumber)
-            {
-                case 0:
-                    ApolakiSkills apolaki = selectedUnit.GetComponent<ApolakiSkills>();
-                    if (apolaki != null)
-                        apolaki.AcceptUpgrade(charStats.strength, charStats.agility, charStats.intelligence, charStats.dexterity, charStats.vitality);
-                    else
-                        Debug.LogError("ApolakiSkills not found on the selected unit");
-                    break;
-                case 1:
-                    MayariSkills mayari = selectedUnit.GetComponent<MayariSkills>();
-                    if (mayari != null)
-                        mayari.AcceptUpgrade(charStats.strength, charStats.agility, charStats.intelligence, charStats.dexterity, charStats.vitality);
-                    else
-                        Debug.LogError("MayariSkills not found on the selected unit");
-                    break;
-                case 2:
-                    DumanganSkills dumangan = selectedUnit.GetComponent<DumanganSkills>();
-                    if (dumangan != null)
-                        dumangan.AcceptUpgrade(charStats.strength, charStats.agility, charStats.intelligence, charStats.dexterity, charStats.vitality);
-                    else
-                        Debug.LogError("DumanganSkills not found on the selected unit");
-                    break;
-                case 3:
-                    DumakulemSkills dumakulem = selectedUnit.GetComponent<DumakulemSkills>();
-                    if (dumakulem != null)
-                        dumakulem.AcceptUpgrade(charStats.strength, charStats.agility, charStats.intelligence, charStats.dexterity, charStats.vitality);
-                    else
-                        Debug.LogError("DumakulemSkills not found on the selected unit");
-                    break;
-                default:
-                    Debug.LogError("Invalid charNumber, no skill detected");
-                    break;
-            }
-        }
-        else
-        {
-            Debug.LogError("charNumber out of range of playerUnits array");
-        }*/
+        
     }
     public void AddAttribute(string attributeName)
     {

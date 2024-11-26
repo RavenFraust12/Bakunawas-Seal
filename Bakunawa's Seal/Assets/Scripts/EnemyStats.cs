@@ -31,6 +31,7 @@ public class EnemyStats : MonoBehaviour
     [Header("Drops")]
     public GameObject lootDrop;
     private GameObject coinHolder;
+    public GameObject bloodVFX;
 
     [Header("Scripts")]
     private SpawnManager spawnManager;
@@ -73,6 +74,7 @@ public class EnemyStats : MonoBehaviour
 
     public void ChanceToDrop()
     {
+        Instantiate(bloodVFX, transform.position, Quaternion.identity);
         if (Random.Range(0, 100) <= 50f)
         {
             Instantiate(lootDrop, transform.position, Quaternion.identity, coinHolder.transform);

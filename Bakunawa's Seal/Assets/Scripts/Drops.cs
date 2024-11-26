@@ -8,6 +8,12 @@ public class Drops : MonoBehaviour
     public Transform target;
     public float detectionRange;
     public float speed;
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     public void Update()
     {
@@ -50,7 +56,8 @@ public class Drops : MonoBehaviour
             GameManager.Instance.coinCount++;
             float currentCoins = PlayerPrefs.GetFloat("Coins", 0);
             PlayerPrefs.SetFloat("Coins", currentCoins + 1);
-            Destroy(this.gameObject);
+            audioSource.PlayOneShot(audioSource.clip);
+            Destroy(this.gameObject, 1);
         }
     }
 }

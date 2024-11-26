@@ -168,8 +168,6 @@ public class CharSelect : MonoBehaviour
                     saveIndex++;
                 }
             }
-
-            SceneManager.LoadScene("2 Gameplay");  // Load the gameplay scene
         }
     }
 

@@ -102,7 +102,7 @@ public class MayariSkills : MonoBehaviour
                 closestCharStats.currentHealth += (charStats.currentMagicAttack * 2f);
 
                 // Trigger healing effect
-                heal = Instantiate(healEffect, closestPlayer.transform.position, Quaternion.identity);
+                heal = Instantiate(healEffect, closestPlayer.transform.position, Quaternion.identity, closestPlayer.transform);
                 Debug.Log("Healed " + closestPlayer.name);
 
                 // Disable healing for the duration of the cooldown
@@ -112,12 +112,8 @@ public class MayariSkills : MonoBehaviour
             yield return new WaitForSeconds(attackAnimDuration);
             playerAI.canAttack = true;
 
-            // Disable healing effect after a delay
-            yield return new WaitForSeconds(1f);
-            Destroy(heal.gameObject);
-
             // Wait for skill cooldown (based on current attack speed)
-            yield return new WaitForSeconds((charStats.currentAttackspeed * 5) + 5);
+            yield return new WaitForSeconds((charStats.currentAttackspeed * 5) + 7);
             canHeal = true;
             canSkill = true;
         }
