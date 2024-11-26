@@ -43244,7 +43244,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 49be3fd26083c3844be562df48291fbb, type: 3}
   - {fileID: 8300000, guid: 92600762663db934ead0509fcea22798, type: 3}
   sfxClip:
-  - {fileID: 8300000, guid: b9369c2b37698fa439b3190a10ce9294, type: 3}
+  - {fileID: 8300000, guid: e32d1973f332422448fbfe12aaaa204d, type: 3}
   musicSlider: {fileID: 684497995}
   sfxSlider: {fileID: 454071512}
 --- !u!1 &1825044387
