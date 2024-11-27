@@ -103,7 +103,8 @@ public class PlayerAI : MonoBehaviour
                 {
                     navAgent.ResetPath();
                     navAgent.velocity = Vector3.zero;
-                    SkillDelay();
+                    if(canAttack) SkillDelay();
+                    else animationManager.PlayIdle();
                 }
             }
         }
@@ -165,9 +166,9 @@ public class PlayerAI : MonoBehaviour
             {
                 animationManager.PlayAttack(); // Play melee attack animation
                 canAttack = false;
-                float attackAnimDuration = animationManager.animator.GetCurrentAnimatorStateInfo(0).length / animationManager.animator.speed; // Get attack animation length, adjusting for speed
-                yield return new WaitForSeconds(1f);
-                animationManager.PlayIdle();
+                //float attackAnimDuration = animationManager.animator.GetCurrentAnimatorStateInfo(0).length / animationManager.animator.speed; // Get attack animation length, adjusting for speed
+                //yield return new WaitForSeconds(1f);
+                //animationManager.PlayIdle();
                 yield return new WaitForSeconds(charStats.currentAttackspeed);
                 canAttack = true;
             }
@@ -178,9 +179,9 @@ public class PlayerAI : MonoBehaviour
             {
                 canAttack = false;
                 animationManager.PlayAttack(); // Play ranged attack animation
-                float attackAnimDuration = animationManager.animator.GetCurrentAnimatorStateInfo(0).length / animationManager.animator.speed; // Get attack animation length, adjusting for speed
-                yield return new WaitForSeconds(1f);
-                animationManager.PlayIdle();
+                //float attackAnimDuration = animationManager.animator.GetCurrentAnimatorStateInfo(0).length / animationManager.animator.speed; // Get attack animation length, adjusting for speed
+                //yield return new WaitForSeconds(1f);
+                //animationManager.PlayIdle();
                 yield return new WaitForSeconds(charStats.currentAttackspeed);
                 canAttack = true;
             }

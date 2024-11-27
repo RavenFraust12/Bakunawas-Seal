@@ -23,7 +23,7 @@ public class Drops : MonoBehaviour
 
         audioSource.volume = AudioManager.instance.sfx.volume;
 
-        if (Vector3.Distance(transform.position, target.position) <= detectionRange)
+        if (playerPos != null && Vector3.Distance(transform.position, target.position) <= detectionRange)
         {
             transform.position = Vector3.Lerp(transform.position, playerPos, Time.deltaTime * speed);
         }
