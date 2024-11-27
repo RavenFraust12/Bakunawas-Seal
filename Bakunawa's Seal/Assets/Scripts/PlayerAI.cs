@@ -66,7 +66,7 @@ public class PlayerAI : MonoBehaviour
         else
         {
             navAgent.ResetPath();
-            animationManager.PlayIdle();
+            if (!playerMovement.isMoving) animationManager.PlayIdle();
             navAgent.velocity = Vector3.zero;
         }
     }
@@ -78,7 +78,7 @@ public class PlayerAI : MonoBehaviour
             // Rotate towards the target only if within detection range
             Vector3 direction = (target.position - transform.position).normalized;
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+            if(!playerMovement.isMoving) transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
 
             // Stop AI movement when the player is controlling the character
             if (isPlayerControlled)

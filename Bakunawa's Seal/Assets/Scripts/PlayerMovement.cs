@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Rotation Settings")]
     [SerializeField] private float rotationSpeed = 10f;
-
+    public bool isMoving;
     public bool isKeyboard;
 
     private void Awake()
@@ -90,11 +90,13 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Player is controlled and moving");
             // Play walking animation
             animationManager.PlayWalk();
+            isMoving = true;
         }
         else
         {
             // If no movement, play idle animation
             animationManager.PlayIdle();
+            isMoving = false;
         }
     }
 }
