@@ -48,8 +48,9 @@ public class Shop : MonoBehaviour
     }
 
     public void Update()
-    {       
-        currentCost.text = "Cost: " + cost.ToString();
+    {
+        if (currentIndex == 4) currentCost.text = "Cost: Maxed";
+        else currentCost.text = "Cost: " + cost.ToString();
         currentCoins.text = PlayerPrefs.GetFloat("Coins", 0).ToString();
 
         CharState("Apolaki");

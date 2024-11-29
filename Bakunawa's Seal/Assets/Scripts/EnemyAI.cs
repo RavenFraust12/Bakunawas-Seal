@@ -47,11 +47,19 @@ public class EnemyAI : MonoBehaviour
             {
                 // Attack logic here, e.g., trigger attack animation
                 navAgent.ResetPath();
-                StartCoroutine(AttackDelay());
+                navAgent.velocity = Vector3.zero;
+                if (canAttack) StartCoroutine(AttackDelay());
+                else animationManager.PlayIdle();
             }
         }
     }
-
+    void OnDrawGizmosSelected()
+    {
+        // Set Gizmo color for attack range
+        Gizmos.color = Color.red;
+        // Draw a sphere for attack range
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
     void FindClosestPlayer()
     {
         GameObject[] playerUnits = GameObject.FindGameObjectsWithTag("Player");
@@ -101,10 +109,6 @@ public class EnemyAI : MonoBehaviour
                 float attackAnimDuration = animationManager.animator.GetCurrentAnimatorStateInfo(0).length / animationManager.animator.speed; // Get attack animation length, adjusting for speed
                 yield return new WaitForSeconds(attackAnimDuration);
                 animationManager.PlayIdle();
-                GameObject projectile = Instantiate(rangeProjectile, pointOfFire.transform.position, pointOfFire.transform.rotation, bulletHolder.transform);
-                Damage projectileScript = projectile.GetComponent<Damage>();
-                projectileScript.enemyStats = GetComponent<EnemyStats>();
-
                 yield return new WaitForSeconds(enemyStats.attackspeed);
                 canAttack = true;
             }

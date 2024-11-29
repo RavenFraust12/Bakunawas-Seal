@@ -85,9 +85,8 @@ public class PlayerAI : MonoBehaviour
             {
                 navAgent.ResetPath();
 
-                Vector3 vector3 = Vector3.zero;
                 // If in attack range, trigger attack animation
-                if (Vector3.Distance(transform.position, target.position) <= attackRange)
+                if (Vector3.Distance(transform.position, target.position) <= attackRange && !playerMovement.isMoving)
                 {
                     SkillDelay();                  
                 }
@@ -166,9 +165,6 @@ public class PlayerAI : MonoBehaviour
             {
                 animationManager.PlayAttack(); // Play melee attack animation
                 canAttack = false;
-                //float attackAnimDuration = animationManager.animator.GetCurrentAnimatorStateInfo(0).length / animationManager.animator.speed; // Get attack animation length, adjusting for speed
-                //yield return new WaitForSeconds(1f);
-                //animationManager.PlayIdle();
                 yield return new WaitForSeconds(charStats.currentAttackspeed);
                 canAttack = true;
             }
@@ -179,9 +175,6 @@ public class PlayerAI : MonoBehaviour
             {
                 canAttack = false;
                 animationManager.PlayAttack(); // Play ranged attack animation
-                //float attackAnimDuration = animationManager.animator.GetCurrentAnimatorStateInfo(0).length / animationManager.animator.speed; // Get attack animation length, adjusting for speed
-                //yield return new WaitForSeconds(1f);
-                //animationManager.PlayIdle();
                 yield return new WaitForSeconds(charStats.currentAttackspeed);
                 canAttack = true;
             }

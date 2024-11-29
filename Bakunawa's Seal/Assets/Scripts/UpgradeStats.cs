@@ -56,6 +56,7 @@ public class UpgradeStats : MonoBehaviour
     public CharStats charStats;
     public int charNumber;
     public GameObject[] charButtons;
+    public GameObject buyFirst;
 
     [Header("Enemy")]
     public TextMeshProUGUI description;
@@ -67,6 +68,7 @@ public class UpgradeStats : MonoBehaviour
     private void Start()
     {
         DefaultStats();
+
     }
     private void Update()
     {
@@ -79,6 +81,7 @@ public class UpgradeStats : MonoBehaviour
             {     
                 // Set the character's name
                 charButtons[i]?.SetActive(true);  // Set active if there is a character
+                buyFirst.SetActive(false);
             }
             else if (isBoughtStatus == 0)
             {
@@ -141,13 +144,6 @@ public class UpgradeStats : MonoBehaviour
             movespeedText.text = charStats.currentMovespeed.ToString();
             attackspeedText.text = charStats.currentAttackspeed.ToString();
 
-            //Attribute Text
-            /*charStats.strength = PlayerPrefs.GetFloat(charName + "_Str", 1);
-            charStats.agility = PlayerPrefs.GetFloat(charName + "_Agi", 1);
-            charStats.intelligence = PlayerPrefs.GetFloat(charName + "_Int", 1);
-            charStats.dexterity = PlayerPrefs.GetFloat(charName + "_Dex", 1);
-            charStats.vitality = PlayerPrefs.GetFloat(charName + "_Vit", 1);*/
-
             strText.text = charStats.strength.ToString();
             agiText.text = charStats.agility.ToString();//PlayerPrefs.GetFloat(charName + "_Agi", 1).ToString();
             intText.text = charStats.intelligence.ToString();//PlayerPrefs.GetFloat(charName + "_Int", 1).ToString();
@@ -206,8 +202,15 @@ public class UpgradeStats : MonoBehaviour
         charNumber = selectNumber;
         StatText();
 
-        charProfile.sprite = charStats.charProfile;
         charName = charStats.playerName;
+
+        charStats.strength = PlayerPrefs.GetFloat(charName + "_Str", 1);
+        charStats.agility = PlayerPrefs.GetFloat(charName + "_Agi", 1);
+        charStats.intelligence = PlayerPrefs.GetFloat(charName + "_Int", 1);
+        charStats.dexterity = PlayerPrefs.GetFloat(charName + "_Dex", 1);
+        charStats.vitality = PlayerPrefs.GetFloat(charName + "_Vit", 1);
+
+        charProfile.sprite = charStats.charProfile;
         baseStrength = charStats.strength;
         baseAgility = charStats.agility;
         baseIntelligence = charStats.intelligence;
@@ -275,7 +278,7 @@ public class UpgradeStats : MonoBehaviour
         {
             if (charStats.strength > baseStrength) 
             {
-                currentCoins += strPrice - 5;
+                currentCoins += strPrice - 3;
                 charStats.strength--;
             }
         }
@@ -283,7 +286,7 @@ public class UpgradeStats : MonoBehaviour
         {
             if (charStats.agility > baseAgility)
             {
-                currentCoins += agiPrice - 5;
+                currentCoins += agiPrice - 3;
                 charStats.agility--; 
             }
         }
@@ -291,7 +294,7 @@ public class UpgradeStats : MonoBehaviour
         {
             if (charStats.intelligence > baseIntelligence)
             {
-                currentCoins += intPrice - 5;
+                currentCoins += intPrice - 3;
                 charStats.intelligence--;
             }
         }
@@ -299,7 +302,7 @@ public class UpgradeStats : MonoBehaviour
         {
             if (charStats.dexterity > baseDexterity)
             {
-                currentCoins += dexPrice - 5;
+                currentCoins += dexPrice - 3;
                 charStats.dexterity--;
             }
         }
@@ -307,7 +310,7 @@ public class UpgradeStats : MonoBehaviour
         {
             if (charStats.vitality > baseVitality)
             {
-                currentCoins += vitPrice - 5;
+                currentCoins += vitPrice - 3;
                 charStats.vitality--;
             }
         }

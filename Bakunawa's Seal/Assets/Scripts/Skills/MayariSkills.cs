@@ -94,7 +94,7 @@ public class MayariSkills : MonoBehaviour
             }
 
             // If a closest player was found, perform the healing
-            if (closestPlayer != null)
+            if (closestPlayer != null && canHeal)
             {
                 CharStats closestCharStats = closestPlayer.GetComponent<CharStats>();
 
@@ -109,7 +109,7 @@ public class MayariSkills : MonoBehaviour
                 canHeal = false;
             }
             float attackAnimDuration = animator.animator.GetCurrentAnimatorStateInfo(0).length / animator.animator.speed; // Get attack animation length, adjusting for speed
-            yield return new WaitForSeconds(attackAnimDuration);
+            yield return new WaitForSeconds(1f);
             playerAI.canAttack = true;
 
             // Wait for skill cooldown (based on current attack speed)

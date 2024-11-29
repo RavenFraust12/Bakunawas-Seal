@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DumanganSkills : MonoBehaviour //This is Dumakulem
+public class DumanganSkills : MonoBehaviour //This is Dumakulem, Bow guy
 {
     private CharStats charStats;
     public bool canSkill;
