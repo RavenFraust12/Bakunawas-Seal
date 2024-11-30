@@ -33191,7 +33191,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ANGELES  JARA
+  m_text: ANGELES |  JARA
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ec2fb83bfd31c09469ca40421f55d257, type: 2}
   m_sharedMaterial: {fileID: 150000599543164097, guid: ec2fb83bfd31c09469ca40421f55d257,
@@ -33219,7 +33219,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46.95
+  m_fontSize: 45.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
