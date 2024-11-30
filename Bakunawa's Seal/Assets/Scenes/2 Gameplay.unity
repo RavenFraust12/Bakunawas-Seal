@@ -8730,7 +8730,7 @@ MonoBehaviour:
   animationManager: {fileID: 0}
   rotationSpeed: 10
   isMoving: 0
-  isKeyboard: 1
+  isKeyboard: 0
 --- !u!65 &357896571
 BoxCollider:
   m_ObjectHideFlags: 0
