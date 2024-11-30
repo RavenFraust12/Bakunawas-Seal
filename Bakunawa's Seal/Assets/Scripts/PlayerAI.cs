@@ -46,6 +46,7 @@ public class PlayerAI : MonoBehaviour
             if (!hasPlayedDeath) // Check if death animation has not been played yet
             {
                 animationManager.PlayDeath(); // Trigger death animation once
+
                 hasPlayedDeath = true; // Set flag to prevent re-triggering
             }
 

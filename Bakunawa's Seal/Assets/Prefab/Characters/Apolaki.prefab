@@ -1905,6 +1905,7 @@ MonoBehaviour:
   sfxClips:
   - {fileID: 8300000, guid: 03bd504fb3fa42940a91051c6924c03b, type: 3}
   - {fileID: 8300000, guid: 162c1eed96008fd4e914e872521709e0, type: 3}
+  - {fileID: 8300000, guid: f17828a215cbbf548bed8bf37d443d0c, type: 3}
 --- !u!82 &3975917787036120008
 AudioSource:
   m_ObjectHideFlags: 0

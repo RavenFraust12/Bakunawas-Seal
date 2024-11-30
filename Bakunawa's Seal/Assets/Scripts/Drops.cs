@@ -9,6 +9,7 @@ public class Drops : MonoBehaviour
     public float detectionRange;
     public float speed;
     private AudioSource audioSource;
+    private bool canGiveCoins = true;
 
     private void Start()
     {
@@ -53,13 +54,14 @@ public class Drops : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && canGiveCoins)
         {
+            canGiveCoins = false;
             GameManager.Instance.coinCount++;
             float currentCoins = PlayerPrefs.GetFloat("Coins", 0);
             PlayerPrefs.SetFloat("Coins", currentCoins + 1);
             audioSource.PlayOneShot(audioSource.clip);
-            Destroy(this.gameObject, 1);
+            Destroy(this.gameObject, 0.5f);
         }
     }
 }

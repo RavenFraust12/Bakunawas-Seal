@@ -67,6 +67,8 @@ public class CameraScript : MonoBehaviour
         {
             // Deselect the currently selected character
             playerUnits[charNumber].GetComponent<PlayerAI>().isPlayerControlled = false;
+            playerUnits[charNumber].GetComponent<Rigidbody>().velocity = Vector3.zero;
+            playerUnits[charNumber].GetComponentInChildren<AnimationManager>().PlayIdle();
             joystick.SetActive(false);
             GameManager.Instance.currentSlider.SetActive(false);
             charSelected = 4; // Reset the selected character index

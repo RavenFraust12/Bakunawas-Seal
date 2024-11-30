@@ -611,6 +611,8 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   sfxClips:
   - {fileID: 8300000, guid: f33ac08682bef044f866e9157b151dc0, type: 3}
+  - {fileID: 8300000, guid: f33ac08682bef044f866e9157b151dc0, type: 3}
+  - {fileID: 8300000, guid: f17828a215cbbf548bed8bf37d443d0c, type: 3}
 --- !u!82 &5447008197909887613
 AudioSource:
   m_ObjectHideFlags: 0

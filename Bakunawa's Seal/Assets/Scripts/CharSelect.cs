@@ -16,85 +16,22 @@ public class CharSelect : MonoBehaviour
     public GameObject startButton;
     public Image[] charImage;
     public TextMeshProUGUI[] charName;
-
-    void Start()
-    {
-        //PopulateCharacterPrefabs();  // Populate characterPrefabs only once at the start
-    }
-
-    public void PopulateCharacterPrefabs()
-    {
-        Debug.Log("Something happened");
-
-        int index = 0; // Initialize index to keep track of positions
-
-        // Ensure charImage and charName arrays are large enough to hold all prefabs
-        if (charImage.Length < GameManager.Instance.mm_charPrefab.Length)
-        {
-            charImage = new Image[GameManager.Instance.mm_charPrefab.Length];
-        }
-        if (charName.Length < GameManager.Instance.mm_charPrefab.Length)
-        {
-            charName = new TextMeshProUGUI[GameManager.Instance.mm_charPrefab.Length];
-        }
-
-        foreach (var character in GameManager.Instance.mm_charPrefab)
-        {
-            CharStats stats = character.GetComponent<CharStats>();
-
-            if (stats != null && stats.isBought == 1)  // Only process characters that are bought
-            {
-                // Add character if it’s not already in characterPrefabs
-                if (!characterPrefabs.Contains(character))
-                {
-                    characterPrefabs.Add(character);
-                }
-
-                // Assign profile image and name at the current index if within bounds
-                if (index < charImage.Length && index < charName.Length)
-                {
-                    charImage[index].sprite = stats.charProfile;  // Set the character's image
-                    charName[index].text = stats.playerName;      // Set the character's name
-                }
-
-                index++;  // Increment index after each bought character is processed
-                Debug.Log(stats.playerName + " is bought. isBought: " + stats.isBought);
-            }
-            else if (stats != null)
-            {
-                Debug.Log(stats.playerName + " is on Sale. isBought: " + stats.isBought);
-            }
-        }
-
-        Debug.Log(characterPrefabs.Count + " characters have been added to characterPrefabs.");
-    }
+    public GameObject buyFirst;
+    private bool haveHero = false;
 
     void Update()
     {
-        //PopulateCharacterPrefabs();
-
         // Check each character in characterPrefabs and activate the corresponding selectedCharacters slot
-        /*for (int i = 0; i < selectedCharacters.Length; i++)
-        {
-            if (i < characterPrefabs.Count && characterPrefabs[i] != null)
-            {
-                selectedCharacters[i]?.SetActive(true);  // Set active if there is a character
-            }
-            else
-            {
-                selectedCharacters[i]?.SetActive(false); // Deactivate if no character is selected
-            }
-        }*/
-
         for (int i = 0; i < selectedCharacters.Length; i++)
         {
             CharStats stats = characterPrefabs[i].GetComponent<CharStats>();
             int isBoughtStatus = PlayerPrefs.GetInt(stats.playerName + "_isBought", 0);
-            if (isBoughtStatus == 1/*stats.isBought == 1*/)
+            if (isBoughtStatus == 1)
             {
                 charImage[i].sprite = stats.charProfile;  // Set the character's image
                 charName[i].text = stats.playerName;      // Set the character's name
                 selectedCharacters[i]?.SetActive(true);  // Set active if there is a character
+                haveHero = true;
             }
             else if(isBoughtStatus == 0/*stats.isBought == 0*/)
             {
@@ -104,20 +41,13 @@ public class CharSelect : MonoBehaviour
 
         // Enable or disable the start button based on selectedCount
         startButton.SetActive(selectedCount > 0);
+        buyFirst.SetActive(!haveHero);
     }
 
     // Call this function when a character is selected
     public void SelectCharacter(int index)
     {
         // Check if there is room and character is not already selected
-        /*if (index < selectedCharacters.Length)
-        {
-            CharStats stats = characterPrefabs[index].GetComponent<CharStats>();
-
-            selectedCharacters[stats.charID] = characterPrefabs[index];  // Align index in selectedCharacters with characterPrefabs
-            selectedCount++;
-            Debug.Log("Character selected at index: " + index);
-        }*/
 
         if (index < selectedCharacters.Length)
         {

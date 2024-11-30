@@ -8,7 +8,7 @@ public class AnimationManager : MonoBehaviour
     public PlayerAI playerAI;
     public EnemyAI enemyAI;
     private AudioSource audioSource;
-    public AudioClip[] sfxClips; //0 = normal attack, 1 = skill
+    public AudioClip[] sfxClips; //0 = normal attack, 1 = skill, 2 = death
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -39,6 +39,9 @@ public class AnimationManager : MonoBehaviour
     public void PlayDeath()
     {
         animator.SetInteger("AnimState", 4);
+        audioSource.volume = AudioManager.instance.sfx.volume;
+        audioSource.clip = sfxClips[2];
+        audioSource.Play();
     }
 
     public void PlayProjectile()
