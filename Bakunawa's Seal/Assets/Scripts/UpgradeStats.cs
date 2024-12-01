@@ -49,6 +49,7 @@ public class UpgradeStats : MonoBehaviour
     public float intPrice;
     public float dexPrice;
     public float vitPrice;
+    public float currentCoins;
 
     [Header("Characters")]
     //public GameObject[] characters;
@@ -231,15 +232,15 @@ public class UpgradeStats : MonoBehaviour
         baseDexterity = charStats.dexterity;
         baseVitality = charStats.vitality;
 
+        PlayerPrefs.SetFloat("Coins", currentCoins); // Save the updated coin count
+
         PlayerPrefs.Save();
 
         Debug.Log("Saved " + charName + "'s stats.");
-
-        
     }
     public void AddAttribute(string attributeName)
     {
-        float currentCoins = PlayerPrefs.GetFloat("Coins", 0);
+        currentCoins = PlayerPrefs.GetFloat("Coins", 0);
 
         if (attributeName == "Strength" && strPrice <= currentCoins)
         {
@@ -266,9 +267,6 @@ public class UpgradeStats : MonoBehaviour
             currentCoins -= vitPrice;
             charStats.vitality++;
         }
-
-        PlayerPrefs.SetFloat("Coins", currentCoins); // Save the updated coin count
-
     }
     public void SubtractAttribute(string attributeName)
     {
@@ -314,8 +312,6 @@ public class UpgradeStats : MonoBehaviour
                 charStats.vitality--;
             }
         }
-
-        PlayerPrefs.SetFloat("Coins", currentCoins); // Save the updated coin count
     }
     public void ResetStats()
     {

@@ -65,27 +65,20 @@ public class CameraScript : MonoBehaviour
     {
         if (playerUnits[charNumber] != null && charSelected == charNumber)
         {
-            // Deselect the currently selected character
-            playerUnits[charNumber].GetComponent<PlayerAI>().isPlayerControlled = false;
-            playerUnits[charNumber].GetComponent<Rigidbody>().velocity = Vector3.zero;
-            playerUnits[charNumber].GetComponentInChildren<AnimationManager>().PlayIdle();
-            joystick.SetActive(false);
-            GameManager.Instance.currentSlider.SetActive(false);
-            charSelected = 4; // Reset the selected character index
+            ResetSelect(charNumber);
         }
         else if (playerUnits[charNumber] != null)
         {
+            foreach (var unit in playerUnits)
+            {
+                if (unit != null)
+                {
+                    unit.GetComponent<PlayerAI>().isPlayerControlled = false;
+                }
+            }
+
             if (playerUnits[charNumber].GetComponent<CharStats>().isDead == false)
             {
-                // Set all other characters' isPlayerControlled to false
-                foreach (var unit in playerUnits)
-                {
-                    if (unit != null)
-                    {
-                        unit.GetComponent<PlayerAI>().isPlayerControlled = false;
-                    }
-                }
-
                 // Set the selected character to controlled
                 playerUnits[charNumber].GetComponent<PlayerAI>().isPlayerControlled = true;
 
@@ -96,14 +89,31 @@ public class CameraScript : MonoBehaviour
                 GameManager.Instance.currentIcon.sprite = charStats.charProfile;
 
                 GameManager.Instance.currentSlider.SetActive(true);
+                joystick.SetActive(true);  // Enable the joystick
+
+                Debug.Log("Camera on " + playerUnits[charNumber].GetComponent<CharStats>().playerName);
             }
             else
             {
-                GameManager.Instance.currentSlider.SetActive(false);
+                ResetSelect(charNumber);
+                Debug.Log(playerUnits[charNumber].GetComponent<CharStats>().playerName + " is dead");
+
             }
-            charSelected = charNumber; // Update the selected character index
-            joystick.SetActive(true);  // Enable the joystick
+            charSelected = charNumber; // Update the selected character index  
         }
+    }
+
+    void ResetSelect(int charNumber)
+    {
+        // Deselect the currently selected character
+        playerUnits[charNumber].GetComponent<PlayerAI>().isPlayerControlled = false;
+        playerUnits[charNumber].GetComponent<Rigidbody>().velocity = Vector3.zero;
+        if (!playerUnits[charNumber].GetComponent<CharStats>().isDead) playerUnits[charNumber].GetComponentInChildren<AnimationManager>().PlayIdle();
+        joystick.SetActive(false);
+        GameManager.Instance.currentSlider.SetActive(false);
+        charSelected = 4; // Reset the selected character index
+
+        Debug.Log("Reset Camera");
     }
 
     public void CameraPanningMovement()

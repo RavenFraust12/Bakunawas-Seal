@@ -45,8 +45,10 @@ public class PlayerAI : MonoBehaviour
         {
             if (!hasPlayedDeath) // Check if death animation has not been played yet
             {
+                //animationManager.animator.speed = 1f;
                 animationManager.PlayDeath(); // Trigger death animation once
-
+                navAgent.ResetPath();
+                navAgent.velocity = Vector3.zero;
                 hasPlayedDeath = true; // Set flag to prevent re-triggering
             }
 
@@ -56,20 +58,20 @@ public class PlayerAI : MonoBehaviour
         else
         {
             hasPlayedDeath = false; // Reset flag if character is not dead
-        }
 
-        FindClosestEnemy();
+            FindClosestEnemy();
 
-        if (target != null)
-        {
-            PlayerActionAI();
-        }
-        else
-        {
-            navAgent.ResetPath();
-            if (!playerMovement.isMoving) animationManager.PlayIdle();
-            navAgent.velocity = Vector3.zero;
-        }
+            if (target != null)
+            {
+                PlayerActionAI();
+            }
+            else
+            {
+                navAgent.ResetPath();
+                if (!playerMovement.isMoving) animationManager.PlayIdle(); animationManager.animator.speed = 1f;
+                navAgent.velocity = Vector3.zero;
+            }
+        }    
     }
 
     void PlayerActionAI()
@@ -104,7 +106,7 @@ public class PlayerAI : MonoBehaviour
                     navAgent.ResetPath();
                     navAgent.velocity = Vector3.zero;
                     if(canAttack) SkillDelay();
-                    else animationManager.PlayIdle();
+                    else animationManager.PlayIdle(); //animationManager.animator.speed = 1f;
                 }
             }
         }
@@ -160,25 +162,17 @@ public class PlayerAI : MonoBehaviour
 
     IEnumerator AttackDelay() // Play attack animation during attack delay
     {
-        if (!isRanged)
+        if (canAttack == true)
         {
-            if (canAttack == true)
-            {
-                animationManager.PlayAttack(); // Play melee attack animation
-                canAttack = false;
-                yield return new WaitForSeconds(charStats.currentAttackspeed);
-                canAttack = true;
-            }
-        }
-        else if (isRanged)
-        {
-            if (canAttack == true)
-            {
-                canAttack = false;
-                animationManager.PlayAttack(); // Play ranged attack animation
-                yield return new WaitForSeconds(charStats.currentAttackspeed);
-                canAttack = true;
-            }
+            float attackSpeed = charStats.baseAttackSpeed / charStats.currentAttackspeed;
+            animationManager.animator.speed = attackSpeed;
+            animationManager.PlayAttack(); // Play melee attack animation
+            canAttack = false;
+            /*float attackAnimationDuration = animationManager.animator.GetCurrentAnimatorStateInfo(0).length;
+            yield return new WaitForSeconds(attackAnimationDuration);
+            animationManager.animator.speed = 1f;*/
+            yield return new WaitForSeconds(charStats.currentAttackspeed);
+            canAttack = true;
         }
     }
 
@@ -196,25 +190,25 @@ public class PlayerAI : MonoBehaviour
             case 1:
                 ApolakiSkills apolaki = GetComponent<ApolakiSkills>();
                 apolaki.Skills();
-                if(apolaki.canSkill) animationManager.PlaySkill();
+                if (apolaki.canSkill) animationManager.PlaySkill(); //animationManager.animator.speed = 1f; }
                 else StartCoroutine(AttackDelay());
                 break;
             case 2:
                 MayariSkills mayari = GetComponent<MayariSkills>();
                 mayari.Skills();
-                if (mayari.canSkill) animationManager.PlaySkill();
+                if (mayari.canSkill)  animationManager.PlaySkill(); //animationManager.animator.speed = 1f; }
                 else StartCoroutine(AttackDelay());
                 break;
             case 3:
                 DumanganSkills dumangan = GetComponent<DumanganSkills>();
                 dumangan.Skills();
-                if (dumangan.canSkill) animationManager.PlaySkill();
+                if (dumangan.canSkill)  animationManager.PlaySkill(); //animationManager.animator.speed = 1f; }
                 else StartCoroutine(AttackDelay());
                 break;
             case 4:
                 DumakulemSkills dumakulem = GetComponent<DumakulemSkills>();
                 dumakulem.Skills();
-                if (dumakulem.canSkill) animationManager.PlaySkill();
+                if (dumakulem.canSkill)  animationManager.PlaySkill(); //animationManager.animator.speed = 1f; }
                 else StartCoroutine(AttackDelay());
                 break;
             default:

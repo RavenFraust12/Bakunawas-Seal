@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Scripts")]
     private SpawnManager spawnManager;
+    private CameraScript cameraScript;
 
     [Header("Character Objects")]
     public GameObject[] characterPrefabs;  // Same prefabs as in the main menu
@@ -62,6 +63,7 @@ public class GameManager : MonoBehaviour
     }
     public void Start()
     {
+        cameraScript = FindObjectOfType<CameraScript>();
         Application.targetFrameRate = 60;
 
         if (isMainMenu)
@@ -115,8 +117,17 @@ public class GameManager : MonoBehaviour
             finalCoinCountText.text = coinCount.ToString();
             finalWaveCountText.text = spawnManager.waveCount.ToString();
             finalKillCountText.text = spawnManager.killedUnits.ToString();
+
             finalGameTimeText.text = finalTimer;
            // Time.timeScale = 0;
+        }
+        else
+        {
+            // Calculate minutes and seconds
+            TimeSpan timeSpan = TimeSpan.FromSeconds(timer);
+
+            // Format the time as MM:SS
+            finalTimer = string.Format("{0:D2}:{1:D2}", timeSpan.Minutes, timeSpan.Seconds);
         }
     }
     public void OnGameCounts()
@@ -192,6 +203,7 @@ public class GameManager : MonoBehaviour
 
         // Set the slider's active state only after the loop based on the flag
         currentSlider.SetActive(isAnyPlayerControlled);
+        cameraScript.joystick.SetActive(isAnyPlayerControlled);
     }
 
     private void InstantiateSelectedCharacters()
