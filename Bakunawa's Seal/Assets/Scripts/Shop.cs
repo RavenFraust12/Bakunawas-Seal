@@ -62,13 +62,8 @@ public class Shop : MonoBehaviour
     public void BuyHero(GameObject playerUnit, string charName)
     {
         float coinCount = PlayerPrefs.GetFloat("Coins", 0);
-
         if (cost <= coinCount)
         {
-            //charSelect.PopulateCharacterPrefabs();
-            //archive.UpdateBoughtCharacters();
-            Debug.Log("Populated and Updated Prefabs");
-
             currentIndex++;
             coinCount -= cost;
             cost += 50;
@@ -84,7 +79,7 @@ public class Shop : MonoBehaviour
             // Update other PlayerPrefs
             PlayerPrefs.SetInt("Bought Units", currentIndex);
             PlayerPrefs.SetFloat("Coins", coinCount);
-
+            PlayerPrefs.SetFloat("OriginalCoins", coinCount);
             PlayerPrefs.Save();
 
             CharState(charName);
@@ -130,9 +125,9 @@ public class Shop : MonoBehaviour
     }
     public void CanAfford(GameObject confirm)
     {
-        float coinCount = PlayerPrefs.GetFloat("Coins", 1);
+        float coinCount = PlayerPrefs.GetFloat("Coins", 0);
 
-        if (cost < coinCount)
+        if (cost <= coinCount)
         {
             confirm.SetActive(true);
         }

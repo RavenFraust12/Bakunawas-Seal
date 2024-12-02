@@ -67,12 +67,14 @@ public class UpgradeStats : MonoBehaviour
     [Header("Shop")]
     public bool didConfirmed;
     public float originalCoins;
+    public float currentCoins;
 
 
     private void Start()
     {
         DefaultStats();
-        PlayerPrefs.SetFloat("OriginalCoins", PlayerPrefs.GetFloat("Coins", 0));
+        currentCoins = PlayerPrefs.GetFloat("Coins", 0);
+        PlayerPrefs.SetFloat("OriginalCoins", currentCoins);
     }
     private void Update()
     {
@@ -251,7 +253,7 @@ public class UpgradeStats : MonoBehaviour
     }
     public void AddAttribute(string attributeName)
     {
-        float currentCoins = PlayerPrefs.GetFloat("Coins", 0);
+        currentCoins = PlayerPrefs.GetFloat("Coins", 0);
 
         if (attributeName == "Strength" && strPrice <= currentCoins)
         {
@@ -282,7 +284,7 @@ public class UpgradeStats : MonoBehaviour
     }
     public void SubtractAttribute(string attributeName)
     {
-        float currentCoins = PlayerPrefs.GetFloat("Coins", 0);
+        currentCoins = PlayerPrefs.GetFloat("Coins", 0);
 
         if (attributeName == "Strength")
         {
